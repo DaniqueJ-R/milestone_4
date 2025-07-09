@@ -23,24 +23,24 @@
 ## 📌 PHASE 2: ORGANIZATION & GITHUB
 
 ### Step 3: GitHub Repo
-- [ ] Create new GitHub repo
-- [ ] Add .gitignore
-- [ ] Add collaborators
+- [x] Create new GitHub repo
+- [x] Add .gitignore
+- [x] Add collaborators
 
 ### Step 4: Project Board
-- [ ] Create GitHub Project board (To Do, In Progress, Done)
-- [ ] Add user stories as cards
+- [x] Create GitHub Project board (To Do, In Progress, Done)
+- [x] Add user stories as cards
 
 ---
 
 ## 🧱 PHASE 3: UI/UX DESIGN
 
 ### Step 5: Wireframes / Mockups
-- [ ] Design pages (home, book, shelf, forms)
+- [x] Design pages (home, book, shelf, forms)
 
 ### Step 6: Database Schema
-- [ ] Identify models & relationships
-- [ ] Draw ERD
+- [x] Identify models & relationships
+- [x] Draw ERD
 
 ---
 
