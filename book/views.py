@@ -3,4 +3,6 @@ from django.http import HttpResponse
 
 # Create your views here.
 def books_page(request):
-    return HttpResponse("I LOVE BOOKS!")
+    """ A view to render index page"""
+
+    return render(request, "book/index.html")

@@ -35,11 +35,15 @@
     {% if messages %}
         <div class="message-container"></div>
     {% endif %}
-    <h1>Hello, world!</h1>
 
+    {% block extra_header %}
+    {% endblock %}
 
+    {% block content %}
+    {% endblock %}
 
-        
+    {% block postloadjs %}
+    {% endblock %}
 
 </body>
 </html>
