@@ -3,9 +3,9 @@
 
 /*CSS Variables*/
 :root {
-  --primary-font: "EB Garamond", serif;
-  --secondary-font: "Lato", sans-serif;
-  --accent-font: "Space Mono", monospace;
+  --primary-font: "EB Garamond", serif; /*headings*/
+  --secondary-font: "Lato", sans-serif; /*body text */
+  --accent-font: "Space Mono", monospace; /*accents for shelf labels, progrssbar, etc*/
   --primary-color: #153526;
   /*dark green*/
   --secondary-color: #d2c09c;
@@ -21,20 +21,61 @@
 body {
   color: var(--highlight-color);
   background-color: var(--white);
-  padding-top: 57px; /*Added for nav bar space to not overlap as it is now fixed top*/
+  font-family: var(--primary-font);
+  padding-top: 60px; /*Added for nav bar space to not overlap as it is now fixed top*/
   margin: 0;
 }
 
-h1,h2,h3 {
+h1 {
   color: var(--highlight-color);
   text-align: center;
   font-family: var(--primary-font);
 }
 
-p{
-      font-family: var(--secondary-font);
+p {
+  font-family: var(--secondary-font);
 }
 
 .accent {
   font-family: var(--accent-font);
+}
+
+.black {
+    color: var(--black) !important;
+}
+
+/* Base HTML */
+/* Nav bar */
+.navbar{
+  background-color: var(--primary-color) !important;
+}
+
+.navbar a {
+    color: var(--white);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.active, .nav-link:focus, .nav-link:hover, .navbar-brand:hover {
+  color: var(--secondary-color) !important;
+}
+
+.user-dropdown > .dropdown-menu {
+  left: -77px;
+}
+
+#main-search-bar {
+  padding-left: 10%;
+}
+
+/* Footer */
+
+/* Base HMTL End */
+
+.btn-outline-success{
+  color: var(--white);
+  --bs-btn-border-color: var(--primary-color);
 }

@@ -1,0 +1,107 @@
+      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand logo" href="#">
+            <img
+              class="logo"
+              src="\static\images\image05.jpg"
+              alt="Little Library"
+            />
+          </a>
+          <a class="navbar-brand" href="#">Little Library</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  My Library
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item black" href="#">Reading</a></li>
+                  <li><a class="dropdown-item black" href="#">Complete</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item black" href="#">Plan to read</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Browse
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item black" href="#">Action</a></li>
+                  <li><a class="dropdown-item black" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item black" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <form class="d-flex" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
+              </li>
+            </ul>
+
+            <!-- log in section to displpay user name -->
+              {% if user.is_authenticated %}
+            <span class="nav-item dropdown user-dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="{% url 'index' %}"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Username
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item black" href="#">My Shelves</a></li>
+                <li><a class="dropdown-item black" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item black" href="#">Something else here</a>
+                </li>
+              </ul>
+            </span>
+            {% else %}
+                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
