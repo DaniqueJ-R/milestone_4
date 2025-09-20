@@ -1,4 +1,5 @@
-      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+{% load static %}      
+      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top d-block d-lg-none">
         <div class="container-fluid">
           <a class="navbar-brand logo" href="#">
             <img
@@ -86,7 +87,7 @@
                   My Account
                 </a>
                 <ul class="dropdown-menu">
-                  <!-- {% if request.user.is_authenticated %} -->
+                  {% if request.user.is_authenticated %}
                   <li><a href="" class="dropdown-item black">My Profile</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
@@ -97,7 +98,7 @@
                     >
                   </li>
                   <li><hr class="dropdown-divider" /></li>
-                  <!-- {% else %} -->
+                  {% else %}
                   <li>
                     <a
                       href="{% url 'account_login' %}"
@@ -112,7 +113,7 @@
                       >Register</a
                     >
                   </li>
-                  <!-- {% endif %} -->
+                  {% endif %}
                 </ul>
               </li>
               

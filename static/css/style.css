@@ -44,6 +44,12 @@ p {
   color: var(--black) !important;
 }
 
+.ul-blank {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* Base HTML */
 /* Nav bar */
 .navbar {
@@ -86,8 +92,4 @@ p {
 .btn-outline-success {
   color: var(--white);
   --bs-btn-border-color: var(--primary-color);
-}
-
-body{
-  background-color: aqua;
 }
