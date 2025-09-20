@@ -41,17 +41,17 @@ p {
 }
 
 .black {
-    color: var(--black) !important;
+  color: var(--black) !important;
 }
 
 /* Base HTML */
 /* Nav bar */
-.navbar{
+.navbar {
   background-color: var(--primary-color) !important;
 }
 
 .navbar a {
-    color: var(--white);
+  color: var(--white);
 }
 
 .logo {
@@ -59,7 +59,10 @@ p {
   height: 40px;
 }
 
-.active, .nav-link:focus, .nav-link:hover, .navbar-brand:hover {
+.active,
+.nav-link:focus,
+.nav-link:hover,
+.navbar-brand:hover {
   color: var(--secondary-color) !important;
 }
 
@@ -71,11 +74,20 @@ p {
   padding-left: 10%;
 }
 
+/* Only affects search bar dropdown inside #mobile-search */
+#mobile-search + .dropdown-menu {
+  --bs-dropdown-padding-y: 0rem;
+}
+
 /* Footer */
 
 /* Base HMTL End */
 
-.btn-outline-success{
+.btn-outline-success {
   color: var(--white);
   --bs-btn-border-color: var(--primary-color);
+}
+
+body{
+  background-color: aqua;
 }
