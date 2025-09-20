@@ -2,23 +2,18 @@
 {% load static %}
 
     {% block extra_header %}
-    <!-- Side Nav Bar -->
-    <div> Side Nav bar
-        <div>Social Media</div>
-    </div>
-
     <!-- Header with user info -->
     <header class="text-center py-5">
-        <div> Search bar</div>
         <h1>Welcome to Little Library</h1>
         <p>Your hub for the world of books</p>
 
         <!-- User name greeting -->
         <h2>Welcome back (username)</h2>
+    </header>
     {% endblock %}
 
     {% block content %}
-    <main class="container my-5">
+    <main class="container text-center my-5">
 
     <!-- Current books user is reading -->
     <section class="books-row" id="current-books">
@@ -39,14 +34,6 @@
         <div class="display-books">4</div>
         <div class="display-books">5</div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-        
-        <div class="container">
-            <p>&copy; 2023 Little Library. All rights reserved.</p>
-        </div>
-    </footer>
     </main>
     {% endblock %}
     
