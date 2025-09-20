@@ -44,6 +44,10 @@ p {
   color: var(--black) !important;
 }
 
+.ul-blank {
+  list-style-type: none;
+}
+
 .no-decor{
   text-decoration: none;
 }
