@@ -36,6 +36,10 @@ p {
   font-family: var(--secondary-font);
 }
 
+hr{
+  color: transparent;
+}
+
 .accent {
   font-family: var(--accent-font);
 }
@@ -269,6 +273,39 @@ p {
   padding-right: 32px;
 }
 
+.join-us{
+  width: 18rem;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin: 0.5rem;
+}
+
+.join-gold {
+  color: var(--highlight-color);
+}
+
+.join-green {
+  color: var(--primary-color);
+}
+
+.join-gold:hover {
+  color: var(--secondary-color);
+  background-color: var(--highlight-color);
+}
+
+.join-green:hover {
+  color: var(--black);
+  background-color: var(--light-highlight-color);
+}
+
+#promo {
+  color: var(--light-highlight-color);
+  font-size: 1.5rem;
+}
+
+.reviews{
+  border: transparent;
+}
 /* End Index HTML */
 
 /* Changes settings below 619 pix */

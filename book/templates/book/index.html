@@ -1,112 +1,282 @@
 {% extends "base.html" %}
 {% load static %}
-
-      {% block extra_header %}
-      <!-- Header with user info -->
-      <div class="text-center pt-1">
-        <h1>Welcome to Little Library</h1>
-        <p>Your hub for the world of books</p>
-
-        <!-- User name greeting -->
-        {% if request.user.is_authenticated %}
-            <p class="index-greeting">Welcome back <a href="" class="no-decor main-color accent">Username</a>, Let's catch up on your progress!</p>
-        {% else %}
-            <p class="index-greeting">Welcome! You can <a href="{% url 'account_login' %}" class="no-decor main-color accent">log in</a> or <a href="{% url 'account_signup' %}" class="no-decor main-color accent">register</a> so you can log your progress.</p>
-        {% endif %}
+{% block extra_header %}
+<!-- Header with user info -->
+<div class="text-center pt-1">
+  <h1>Welcome to Little Library</h1>
+  <p>Your hub for the world of books</p>
+  <!-- User name greeting -->
+  {% if request.user.is_authenticated %}
+  <p class="index-greeting">Welcome back <a href="" class="no-decor main-color accent">Username</a>, Let's catch up on your progress!</p>
+  {% else %}
+  <p class="index-greeting">Welcome! You can <a href="{% url 'account_login' %}" class="no-decor main-color accent">log in</a> or <a href="{% url 'account_signup' %}" class="no-decor main-color accent">register</a> so you can log your progress.</p>
+  {% endif %}
+</div>
+{% endblock %}
+{% block content %}
+<main class="container text-center my-2">
+  <!-- Books to read this week carasol -->
+  {% if request.user.is_authenticated %}
+  <section class="books-row row-cols-auto py-3 text-center" id="bookshelves">
+    <h2>Bookselves</h2>
+    <a href="" class="shelves-link-text p-3"><span class="accent">1</span> Reading</a>
+    <a href="" class="shelves-link-text p-3"><span class="accent">76</span> Read</a>
+    <a href="" class="shelves-link-text p-3"><span class="accent">12</span> Plan to Read</a>
+  </section>
+  <!-- Current books user is reading -->
+  <section class="books-row row-cols-auto" id="current-books">
+    <a href="" class="no-decor main-color">
+      <h2>In Progress</h2>
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
+      <img src="../static/images/books/book-cover-1.jpg" class="" alt="...">                 
+      <div class="card-body">
+        <p class="card-text accent current-books-text progress-bar-animated">77% Complete
+        </p>
       </div>
-      {% endblock %}
-
-    {% block content %}
-    <main class="container text-center my-2">
-      <!-- Books to read this week carasol -->
-       {% if request.user.is_authenticated %}
-      <section class="books-row row-cols-auto py-3 text-center" id="bookshelves">
-        <h2>Bookselves</h2>
-        <a href="" class="shelves-link-text p-3"><span class="accent">1</span> Reading</a>
-        <a href="" class="shelves-link-text p-3"><span class="accent">76</span> Read</a>
-        <a href="" class="shelves-link-text p-3"><span class="accent">12</span> Plan to Read</a>
-      </section>
-
-          <!-- Current books user is reading -->
-    <section class="books-row row-cols-auto" id="current-books">
-      <a href="" class="no-decor main-color">  <h2>In Progress</h2> </a>
-
-
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="" alt="...">                 <div class="card-body">
-    <p class="card-text accent current-books-text progress-bar-animated">77% Complete
-    </p>
-         </div> 
-        </a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 <div class="card-body">
-    <p class="card-text accent current-books-text">77% Complete
-    </p>
-         </div> 
-        </a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 <div class="card-body">
-    <p class="card-text accent current-books-text">77% Complete
-    </p>
-         </div> 
-        </a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 <div class="card-body">
-    <p class="card-text accent current-books-text">77% Complete
-    </p>
-         </div> 
-        </a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 <div class="card-body">
-    <p class="card-text accent current-books-text">77% Complete
-    </p>
-         </div> 
-        </a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 <div class="card-body">
-    <p class="card-text accent current-books-text">77% Complete
-    </p>
-         </div> 
-        </a>
-        
-    </section>
-
-    <!-- Books to read this week carasol -->
-    <section class="books-row row-cols-auto pt-5" id="books-to-read">
-        <a href="" class="no-decor main-color"><h2>Books this week</h2></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        </section>
-    {% else %}
-        <!-- Books to read this week carasol -->
-    <section class="books-row row-cols-auto pt-5" id="books-to-read">
-        <a href="" class="no-decor main-color"><h2>Books this week</h2></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        </section>
-
-            <!-- Books to read this week carasol -->
-    <section class="books-row row-cols-auto pt-5" id="books-to-read">
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-        </section>
-            {% endif %}
-    </main>
-    {% endblock %}
-    
-    {% block postloadjs %}
-    <!-- Bootstraps Javascript Link -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- My JS -->
-     <script src="static/js/script.js"></script>
-      <!-- FontAwesom link -->
-    <script src="https://kit.fontawesome.com/9e540e0242.js" crossorigin="anonymous"></script>
-    {% endblock %}
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
+      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
+      <div class="card-body">
+        <p class="card-text accent current-books-text">77% Complete
+        </p>
+      </div>
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
+      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
+      <div class="card-body">
+        <p class="card-text accent current-books-text">77% Complete
+        </p>
+      </div>
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
+      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
+      <div class="card-body">
+        <p class="card-text accent current-books-text">77% Complete
+        </p>
+      </div>
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
+      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
+      <div class="card-body">
+        <p class="card-text accent current-books-text">77% Complete
+        </p>
+      </div>
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
+      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
+      <div class="card-body">
+        <p class="card-text accent current-books-text">77% Complete
+        </p>
+      </div>
+    </a>
+  </section>
+  <!-- Books to read this week carasol -->
+  <section class="books-row row-cols-auto pt-5" id="books-to-read">
+    <a href="" class="no-decor main-color">
+      <h2>Books this week</h2>
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+  </section>
+  <section class="row justify-content-center" id="reviews-area">
+    <div class=" text-center py-4">
+      <p>See your more recent reviews here:</p>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% else %}
+  <!-- Books to read this week carasol -->
+  <section class="books-row row-cols-auto pt-5" id="books-to-read">
+    <a href="" class="no-decor main-color">
+      <h2>Books this week</h2>
+    </a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+  </section>
+  <!-- Books to read this week carasol -->
+  <section class="books-row row-cols-auto pt-5" id="books-to-read">
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+  </section>
+  <!-- Why sign up -->
+  <section class="row pt-5 justify-content-center">
+    <div class="card text-center col-12 col-sm-2 join-us">
+      <div class="card-body join-gold">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+    <div class="card text-center col-12 col-sm-2 join-us">
+      <div class="card-body join-green">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+    <div class="card text-center col-12 col-sm-2 join-us">
+      <div class="card-body join-gold">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+    <div class="card text-center col-12 col-sm-2 join-us">
+      <div class="card-body join-gold">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+    <div class="card text-center col-12 col-sm-2 join-us">
+      <div class="card-body join-green">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+    <div class="card text-center col-12 col-sm-2 join-us">
+      <div class="card-body join-gold">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </section>
+  <section class="row justify-content-center" id="reviews-area">
+    <div class=" text-center py-4">
+      <p id="promo">Write and share reviews. Compile your own lists. Share your life through the pages.</p>
+      <p>Below are some popular reviews and lists from this week.  <a href="{% url 'account_signup' %}" class="no-decor main-color accent">Sign up</a> to leave your own signature.</p>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <div class="card-body">
+            <h5 class="card-title">Best Book Ever!</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</main>
+{% endblock %}
+{% block postloadjs %}
+<!-- Bootstraps Javascript Link -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!-- My JS -->
+<script src="static/js/script.js"></script>
+<!-- FontAwesom link -->
+<script src="https://kit.fontawesome.com/9e540e0242.js" crossorigin="anonymous"></script>
+{% endblock %}
 </body>
 </html>
