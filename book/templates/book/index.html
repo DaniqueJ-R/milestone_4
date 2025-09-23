@@ -2,16 +2,20 @@
 {% load static %}
 {% block extra_header %}
 <!-- Header with user info -->
-<div class="text-center pt-1">
-  <h1>Welcome to Little Library</h1>
-  <p>Your hub for the world of books</p>
-  <!-- User name greeting -->
-  {% if request.user.is_authenticated %}
-  <p class="index-greeting">Welcome back <a href="" class="no-decor main-color accent">Username</a>, Let's catch up on your progress!</p>
-  {% else %}
-  <p class="index-greeting">Welcome! You can <a href="{% url 'account_login' %}" class="no-decor main-color accent">log in</a> or <a href="{% url 'account_signup' %}" class="no-decor main-color accent">register</a> so you can log your progress.</p>
-  {% endif %}
-</div>
+       <div class="container">
+        <div class="my-auto pt-4 text-center row justify-content-end">
+      <div class="col-7">
+        <h1>Welcome to Little Library</h1>
+        <p>Your hub for the world of books</p>
+        <!-- User name greeting -->
+        {% if request.user.is_authenticated %}
+        <p class="index-greeting">Welcome back <a href="" class="no-decor main-color accent">Username</a>, Let's catch up on your progress!</p>
+        {% else %}
+        <p class="index-greeting">Welcome! You can <a href="{% url 'account_login' %}" class="no-decor main-color accent">log in</a> or <a href="{% url 'account_signup' %}" class="no-decor main-color accent">register</a> so you can log your progress.</p>
+        {% endif %}
+      </div>
+      </div>
+      </div>
 {% endblock %}
 {% block content %}
 <main class="container text-center my-2">
@@ -29,14 +33,14 @@
       <h2>In Progress</h2>
     </a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../static/images/books/book-cover-1.jpg" class="" alt="...">                 
+      <img src="../media/books/book-cover-1.jpg" class="" alt="...">                 
       <div class="card-body">
         <p class="card-text accent current-books-text progress-bar-animated">77% Complete
         </p>
       </div>
     </a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
+      <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
       <div class="card-body">
         <p class="card-text accent current-books-text">77% Complete
         </p>
@@ -78,7 +82,7 @@
     </a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
@@ -104,7 +108,7 @@
     <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+          <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8 align-self-center">
           <div class="card-body">
@@ -153,7 +157,7 @@
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
   </section>
@@ -164,7 +168,7 @@
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
     <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
   </section>
   <!-- Why sign up -->
   <section class="row pt-5 justify-content-center">
@@ -213,7 +217,7 @@
     <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+          <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8 align-self-center">
           <div class="card-body">
@@ -227,7 +231,7 @@
     <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+          <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8 align-self-center">
           <div class="card-body">

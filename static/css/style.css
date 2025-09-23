@@ -20,10 +20,21 @@
 
 body {
   color: var(--highlight-color);
-  background-color: var(--white);
   font-family: var(--primary-font);
-  padding-top: 60px; /*Added for nav bar space to not overlap as it is now fixed top*/
-  margin: 0;
+  padding-top: 50px; /*Added for nav bar space to not overlap as it is now fixed top*/
+  background-color: var(--white);
+  max-width: 2000px;
+  margin: 0px auto;
+}
+
+.bg-image {
+    background: url(../media/front-view-books-with-copy-space.jpg) no-repeat fixed;
+    background-size: contain;
+    height: 15rem;
+    width: auto;
+    box-shadow: inset 0 -6px 24px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-top: 42px;
 }
 
 h1 {
@@ -36,7 +47,7 @@ p {
   font-family: var(--secondary-font);
 }
 
-hr{
+hr {
   color: transparent;
 }
 
@@ -52,11 +63,11 @@ hr{
   list-style-type: none;
 }
 
-.no-decor{
+.no-decor {
   text-decoration: none;
 }
 
-.main-color{
+.main-color {
   color: var(--highlight-color);
 }
 
@@ -64,6 +75,7 @@ hr{
 /* Nav bar */
 .navbar {
   background-color: var(--primary-color) !important;
+  z-index: 1;
 }
 
 .navbar a {
@@ -139,7 +151,7 @@ hr{
 
 .footer-link-block,
 .footer-link-icon-block {
-  background-image: url(../tester/images/footer-sns-border.png);
+  background-image: url(/media/footer-sns-border.png);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 720px 1px;
@@ -236,13 +248,13 @@ hr{
 
 /* Index HTML */
 
-.index-greeting{
+.index-greeting {
   font-size: 1.5rem;
   color: var(--black);
   padding-top: 1rem;
 }
 
-.shelves-link-text{
+.shelves-link-text {
   color: var(--black);
   text-decoration: none;
   text-align: center;
@@ -273,7 +285,7 @@ hr{
   padding-right: 32px;
 }
 
-.join-us{
+.join-us {
   width: 18rem;
   padding-right: 0 !important;
   padding-left: 0 !important;
@@ -303,7 +315,7 @@ hr{
   font-size: 1.5rem;
 }
 
-.reviews{
+.reviews {
   border: transparent;
 }
 /* End Index HTML */
@@ -314,3 +326,20 @@ hr{
     padding: 4px 18px 0 39px;
   }
 }
+/* 
+
+.for-overlap-posters{
+ .poster-list-overlapped .posterlist>.posteritem:nth-child(4) {
+    z-index: 12;
+}
+.poster-list-overlapped .posterlist>.posteritem {
+    margin-inline-start: calc(-1 * var(--poster-overlap));
+    width: var(--poster-width);
+    min-width: var(--poster-min-width);
+    height: auto;
+    aspect-ratio: var(--poster-aspect-ratio);
+}
+p, li, td, th, dt, dd, cite, blockquote, label, legend {
+    font-size: inherit;
+    line-height: 1.38461538; 
+} */
