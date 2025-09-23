@@ -1,4 +1,6 @@
 .venv
+.venvbk
 env.py
+__pycache__
 misell
 tester
