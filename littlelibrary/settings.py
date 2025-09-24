@@ -15,8 +15,8 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-    # Build paths inside the project like this: BASE_DIR / 'subdir'.
-    BASE_DIR = Path(__file__).resolve().parent.parent
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,8 +29,8 @@ SECRET_KEY = (
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True = development mode, False = production mode
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
