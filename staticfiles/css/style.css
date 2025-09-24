@@ -1,0 +1,345 @@
+/*Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/*CSS Variables*/
+:root {
+  --primary-font: "EB Garamond", serif; /*headings*/
+  --secondary-font: "Lato", sans-serif; /*body text */
+  --accent-font: "Space Mono", monospace; /*accents for shelf labels, progrssbar, etc*/
+  --primary-color: #153526;
+  /*dark green*/
+  --secondary-color: #d2c09c;
+  /*pastel grey yellow*/
+  --highlight-color: #586146;
+  /*grey green*/
+  --light-highlight-color: #9a9d7f;
+  /*grey yellow green*/
+  --black: black;
+  --white: white;
+}
+
+body {
+  color: var(--highlight-color);
+  font-family: var(--primary-font);
+  padding-top: 50px; /*Added for nav bar space to not overlap as it is now fixed top*/
+  background-color: var(--white);
+  max-width: 2000px;
+  margin: 0px auto;
+}
+
+.bg-image {
+    background: url(../media/front-view-books-with-copy-space.jpg) no-repeat fixed;
+    background-size: contain;
+    height: 15rem;
+    width: auto;
+    box-shadow: inset 0 -6px 24px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-top: 42px;
+}
+
+h1 {
+  color: var(--highlight-color);
+  text-align: center;
+  font-family: var(--primary-font);
+}
+
+p {
+  font-family: var(--secondary-font);
+}
+
+hr {
+  color: transparent;
+}
+
+.accent {
+  font-family: var(--accent-font);
+}
+
+.black {
+  color: var(--black) !important;
+}
+
+.ul-blank {
+  list-style-type: none;
+}
+
+.no-decor {
+  text-decoration: none;
+}
+
+.main-color {
+  color: var(--highlight-color);
+}
+
+/* Base HTML */
+/* Nav bar */
+.navbar {
+  background-color: var(--primary-color) !important;
+  z-index: 1;
+}
+
+.navbar a {
+  color: var(--white);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.active,
+.nav-link:focus,
+.nav-link:hover,
+.navbar-brand:hover {
+  color: var(--secondary-color) !important;
+}
+
+.user-dropdown > .dropdown-menu {
+  left: -77px;
+}
+
+#main-search-bar {
+  padding-left: 10%;
+}
+
+.btn-outline-success {
+  color: var(--white);
+  --bs-btn-border-color: var(--primary-color);
+}
+
+/* Only affects search bar dropdown inside #mobile-search */
+#mobile-search + .dropdown-menu {
+  --bs-dropdown-padding-y: 0rem;
+}
+
+/* Footer */
+
+#footer {
+  background-color: var(--primary-color);
+  text-align: center;
+  font-size: 11px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  height: max-content;
+}
+
+.footer-social-media {
+  padding-top: 5px;
+  font-size: 17px;
+}
+
+.footer-social-media::before {
+  color: var(--secondary-color);
+  content: "Follow Us";
+  display: inline-block;
+  font-size: 15px;
+  line-height: 30px;
+  margin-right: 20px;
+  white-space: nowrap;
+}
+
+.footer-social-media > a {
+  color: var(--white);
+  -webkit-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-social-media > a:hover {
+  color: var(--light-highlight-color);
+}
+
+.footer-link-block,
+.footer-link-icon-block {
+  background-image: url(/media/footer-sns-border.png);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 720px 1px;
+  padding-top: 20px;
+}
+
+.footer-link-block > p > a {
+  color: var(--white);
+  text-decoration: none;
+  -webkit-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-link-block > p > a:hover {
+  color: var(--light-highlight-color);
+}
+
+.footer-link.home {
+  border-right: var(--highlight-color) 1px solid;
+  margin-right: 18px;
+  padding-right: 20px;
+}
+
+.di-ib {
+  display: inline-block !important;
+}
+
+.di-ib > a {
+  padding-right: 5px;
+}
+
+.footer-recommended::before {
+  color: var(--secondary-color);
+  content: "Recommended sites";
+  display: inline-block;
+  font-size: 11px;
+  line-height: 30px;
+  margin-right: 20px;
+  white-space: nowrap;
+}
+
+.icon-recommended:hover {
+  color: var(--light-highlight-color);
+}
+
+.icon-recommended.icon-waterstone {
+  background-image: url(../static/images/waterstones-logo-vector.png);
+  background-size: auto 20px;
+}
+
+.icon-recommended.icon-british-library {
+  background-image: url(../static/images/british-library-logo.png);
+  background-size: auto 20px;
+}
+
+.icon-recommended.icon-awesomebooks {
+  background-image: url(../static/images/awesomebooks-logo.jpg);
+  background-size: auto 20px;
+}
+
+.icon-recommended {
+  color: var(--white);
+  font-family: var(--secondary-font);
+  text-decoration: none;
+  -webkit-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 145px 29px;
+  cursor: pointer;
+  display: inline-flex;
+  height: 20px;
+  line-height: 1em;
+  opacity: 1;
+  padding: 4px 26px 0 25px;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+#copyright {
+  padding-top: 1.5rem;
+  color: var(--light-highlight-color);
+}
+
+/* Base HMTL End */
+
+/* Index HTML */
+
+.index-greeting {
+  font-size: 1.5rem;
+  color: var(--black);
+  padding-top: 1rem;
+}
+
+.shelves-link-text {
+  color: var(--black);
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--secondary-font);
+  -webkit-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.shelves-link-text:hover {
+  color: var(--light-highlight-color);
+  text-decoration: underline;
+}
+
+.display-books > img {
+  height: 13rem;
+  width: auto;
+  padding-right: 2rem;
+}
+
+.display-books {
+  color: var(--black);
+  text-decoration: none;
+  text-align: center;
+}
+
+.current-books-text {
+  padding-right: 32px;
+}
+
+.join-us {
+  width: 18rem;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin: 0.5rem;
+}
+
+.join-gold {
+  color: var(--highlight-color);
+}
+
+.join-green {
+  color: var(--primary-color);
+}
+
+.join-gold:hover {
+  color: var(--secondary-color);
+  background-color: var(--highlight-color);
+}
+
+.join-green:hover {
+  color: var(--black);
+  background-color: var(--light-highlight-color);
+}
+
+#promo {
+  color: var(--light-highlight-color);
+  font-size: 1.5rem;
+}
+
+.reviews {
+  border: transparent;
+}
+/* End Index HTML */
+
+/* Changes settings below 619 pix */
+@media screen and (max-width: 619px) {
+  .icon-recommended {
+    padding: 4px 18px 0 39px;
+  }
+}
+/* 
+
+.for-overlap-posters{
+ .poster-list-overlapped .posterlist>.posteritem:nth-child(4) {
+    z-index: 12;
+}
+.poster-list-overlapped .posterlist>.posteritem {
+    margin-inline-start: calc(-1 * var(--poster-overlap));
+    width: var(--poster-width);
+    min-width: var(--poster-min-width);
+    height: auto;
+    aspect-ratio: var(--poster-aspect-ratio);
+}
+p, li, td, th, dt, dd, cite, blockquote, label, legend {
+    font-size: inherit;
+    line-height: 1.38461538; 
+} */
