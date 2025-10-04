@@ -11,7 +11,7 @@ class Book(models.Model):
     Stand alone model to get book data from API or Database.
     """
     title = models.CharField(max_length=250)
-    id = models.CharField(max_length=250, unique=True)
+    book_id = models.CharField(max_length=250, unique=True)
     author = models.CharField(max_length=250)
     link = models.URLField(max_length=250, unique=True)
     cover_image = models.ImageField(
@@ -29,32 +29,12 @@ class Book(models.Model):
         return f"Book Title: {self.title}"
 
 
-class MyShelf(models.Model):
-    """
-    Stores a single custom shelf in relaion to :model:'auth.user:'.
-    """
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="shelves")
-    books = models.ManyToManyField("Book", related_name="shelves")
-    shelf_name = models.CharField(max_length=250)
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    shelf_desc = models.TextField(blank=True)
-    genres = models.ManyToManyField("Genre", related_name="shelves")
-
-    class Meta:
-        ordering = ["-updated_on"]  # most recently updated first
-
-    def __str__(self):
-        return self.shelf_name
-
-
 class Genre(models.Model):
     """
     Stand-alone class that stores a single
     category/genre from the API or database.
     """
-    name = models.CharField(max_length=250, unique=True)
+    name = models.CharField(max_length=50, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     # for tracking/debugging
     updated_on = models.DateTimeField(auto_now=True)
@@ -67,7 +47,7 @@ class Genre(models.Model):
         return self.name
 
 
-class Tracker_Status(models.IntegerChoices):
+class TrackerStatus(models.IntegerChoices):
     """
     Options for Tracker status in relaion to :model:'tracker.status:'.
     """
@@ -76,7 +56,7 @@ class Tracker_Status(models.IntegerChoices):
     PLAN_TO = 2, "Plan to read"
 
 
-class Tracker(models.Model):
+class TrackerList(models.Model):
     """
     Stores a single tracking shelf in relaion to :model:'auth.user:'.
     """
@@ -85,8 +65,8 @@ class Tracker(models.Model):
     book = models.ForeignKey(
         Book, on_delete=models.CASCADE, related_name="trackers")
     status = models.IntegerField(
-        choices=Tracker_Status.choices,
-        default=Tracker_Status.READING
+        choices=TrackerStatus.choices,
+        default=TrackerStatus.READING
     )
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

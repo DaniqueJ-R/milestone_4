@@ -23,70 +23,42 @@
   {% if request.user.is_authenticated %}
   <section class="books-row row-cols-auto py-3 text-center" id="bookshelves">
     <h2>Bookselves</h2>
-    <a href="" class="shelves-link-text p-3"><span class="accent">1</span> Reading</a>
-    <a href="" class="shelves-link-text p-3"><span class="accent">76</span> Read</a>
-    <a href="" class="shelves-link-text p-3"><span class="accent">12</span> Plan to Read</a>
+    <a href="#" class="shelves-link-text p-3">
+      <span class="accent">{{ reading_count }}</span> Reading
+    </a>
+    <a href="#" class="shelves-link-text p-3">
+      <span class="accent">{{ completed_count }}</span> Complete
+    </a>
+    <a href="#" class="shelves-link-text p-3">
+      <span class="accent">{{ plan_count }}</span> Plan to read
+    </a>
   </section>
   <!-- Current books user is reading -->
   <section class="books-row row-cols-auto" id="current-books">
     <a href="" class="no-decor main-color">
       <h2>In Progress</h2>
     </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../media/books/book-cover-1.jpg" class="" alt="...">                 
-      <div class="card-body">
+    {% for book in reading_books %}
+<a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="{{ book.book.title }}" data-bs-trigger="hover focus">
+    <img src="{{ book.book.cover_image.url }}" alt="{{ book.book.title }}">
+          <div class="card-body">
         <p class="card-text accent current-books-text progress-bar-animated">77% Complete
         </p>
       </div>
-    </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
-      <div class="card-body">
-        <p class="card-text accent current-books-text">77% Complete
-        </p>
-      </div>
-    </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
-      <div class="card-body">
-        <p class="card-text accent current-books-text">77% Complete
-        </p>
-      </div>
-    </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
-      <div class="card-body">
-        <p class="card-text accent current-books-text">77% Complete
-        </p>
-      </div>
-    </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
-      <div class="card-body">
-        <p class="card-text accent current-books-text">77% Complete
-        </p>
-      </div>
-    </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" >
-      <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">                 
-      <div class="card-body">
-        <p class="card-text accent current-books-text">77% Complete
-        </p>
-      </div>
-    </a>
+</a>
+{% endfor %}
   </section>
   <!-- Books to read this week carasol -->
-  <section class="books-row row-cols-auto pt-5" id="books-to-read">
+<section class="books-row row-cols-auto pt-5" id="books-to-read">
     <a href="" class="no-decor main-color">
       <h2>Books this week</h2>
     </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-  </section>
+    {% for book in featured_books %}
+<a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
+    <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+</a>
+{% endfor %}
+</section>
   <section class="row justify-content-center" id="reviews-area">
     <div class=" text-center py-4">
       <p>See your more recent reviews here:</p>
