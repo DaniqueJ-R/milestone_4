@@ -1,0 +1,282 @@
+[
+  {
+    "model": "book.book",
+    "pk": 1,
+    "fields": {
+      "id": "bk001",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "link": "https://openlibrary.org/works/OL27645W",
+      "cover_image": "https://covers.openlibrary.org/b/id/7222246-L.jpg",
+      "slug": "the-great-gatsby",
+      "description": "A tragic story of Jay Gatsby and his unrelenting love for Daisy Buchanan, set in the Jazz Age of 1920s America.",
+      "published": "1925-04-10"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 2,
+    "fields": {
+      "id": "bk002",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "link": "https://openlibrary.org/works/OL82563W",
+      "cover_image": "https://covers.openlibrary.org/b/id/9875834-L.jpg",
+      "slug": "to-kill-a-mockingbird",
+      "description": "A powerful exploration of racial injustice and moral growth in the Deep South through the eyes of young Scout Finch.",
+      "published": "1960-07-11"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 3,
+    "fields": {
+      "id": "bk003",
+      "title": "1984",
+      "author": "George Orwell",
+      "link": "https://openlibrary.org/works/OL73443W",
+      "cover_image": "https://covers.openlibrary.org/b/id/7222246-L.jpg",
+      "slug": "1984",
+      "description": "A chilling dystopian novel depicting a totalitarian regime under constant surveillance and manipulation.",
+      "published": "1949-06-08"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 4,
+    "fields": {
+      "id": "bk004",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "link": "https://openlibrary.org/works/OL14986712W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8091016-L.jpg",
+      "slug": "pride-and-prejudice",
+      "description": "A timeless romantic comedy exploring class, love, and social expectations in Regency-era England.",
+      "published": "1813-01-28"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 5,
+    "fields": {
+      "id": "bk005",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "link": "https://openlibrary.org/works/OL262758W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8225261-L.jpg",
+      "slug": "the-catcher-in-the-rye",
+      "description": "Holden Caulfield narrates his rebellion and alienation as a teenager in New York City.",
+      "published": "1951-07-16"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 6,
+    "fields": {
+      "id": "bk006",
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "link": "https://openlibrary.org/works/OL27448W",
+      "cover_image": "https://covers.openlibrary.org/b/id/6979861-L.jpg",
+      "slug": "the-hobbit",
+      "description": "Bilbo Baggins embarks on an unexpected journey filled with dwarves, dragons, and adventure.",
+      "published": "1937-09-21"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 7,
+    "fields": {
+      "id": "bk007",
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "link": "https://openlibrary.org/works/OL15626926W",
+      "cover_image": "https://covers.openlibrary.org/b/id/7222256-L.jpg",
+      "slug": "moby-dick",
+      "description": "Captain Ahab’s obsessive quest to hunt the great white whale leads to a tale of obsession and vengeance.",
+      "published": "1851-10-18"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 8,
+    "fields": {
+      "id": "bk008",
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "link": "https://openlibrary.org/works/OL27479W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8156194-L.jpg",
+      "slug": "the-lord-of-the-rings",
+      "description": "An epic high-fantasy trilogy chronicling the struggle to destroy the One Ring and defeat Sauron.",
+      "published": "1954-07-29"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 9,
+    "fields": {
+      "id": "bk009",
+      "title": "Jane Eyre",
+      "author": "Charlotte Brontë",
+      "link": "https://openlibrary.org/works/OL15172686W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8081530-L.jpg",
+      "slug": "jane-eyre",
+      "description": "An orphaned governess finds love and independence in a world filled with class and gender limitations.",
+      "published": "1847-10-16"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 10,
+    "fields": {
+      "id": "bk010",
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "link": "https://openlibrary.org/works/OL45883W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8775116-L.jpg",
+      "slug": "brave-new-world",
+      "description": "A futuristic dystopia where technology and conditioning have eliminated individuality and emotion.",
+      "published": "1932-08-31"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 11,
+    "fields": {
+      "id": "bk011",
+      "title": "Fahrenheit 451",
+      "author": "Ray Bradbury",
+      "link": "https://openlibrary.org/works/OL73450W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8225631-L.jpg",
+      "slug": "fahrenheit-451",
+      "description": "In a world where books are outlawed, fireman Guy Montag questions his role in burning them.",
+      "published": "1953-10-19"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 12,
+    "fields": {
+      "id": "bk012",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "link": "https://openlibrary.org/works/OL82586W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8101321-L.jpg",
+      "slug": "the-alchemist",
+      "description": "A fable about following your dreams, told through the journey of a young Andalusian shepherd named Santiago.",
+      "published": "1988-05-01"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 13,
+    "fields": {
+      "id": "bk013",
+      "title": "Animal Farm",
+      "author": "George Orwell",
+      "link": "https://openlibrary.org/works/OL73456W",
+      "cover_image": "https://covers.openlibrary.org/b/id/153541-L.jpg",
+      "slug": "animal-farm",
+      "description": "A political allegory about revolution and corruption, told through the story of farm animals overthrowing their human owner.",
+      "published": "1945-08-17"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 14,
+    "fields": {
+      "id": "bk014",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "link": "https://openlibrary.org/works/OL15376312W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8231996-L.jpg",
+      "slug": "crime-and-punishment",
+      "description": "A psychological exploration of guilt and redemption following a murder committed by a desperate student.",
+      "published": "1866-01-01"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 15,
+    "fields": {
+      "id": "bk015",
+      "title": "The Kite Runner",
+      "author": "Khaled Hosseini",
+      "link": "https://openlibrary.org/works/OL82585W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8755908-L.jpg",
+      "slug": "the-kite-runner",
+      "description": "A moving story of friendship, betrayal, and redemption set against the backdrop of a changing Afghanistan.",
+      "published": "2003-05-29"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 16,
+    "fields": {
+      "id": "bk016",
+      "title": "The Chronicles of Narnia",
+      "author": "C.S. Lewis",
+      "link": "https://openlibrary.org/works/OL26453W",
+      "cover_image": "https://covers.openlibrary.org/b/id/7222241-L.jpg",
+      "slug": "the-chronicles-of-narnia",
+      "description": "A fantasy series chronicling the adventures of children in the magical world of Narnia, ruled by the lion Aslan.",
+      "published": "1950-10-16"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 17,
+    "fields": {
+      "id": "bk017",
+      "title": "The Da Vinci Code",
+      "author": "Dan Brown",
+      "link": "https://openlibrary.org/works/OL82583W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8235081-L.jpg",
+      "slug": "the-da-vinci-code",
+      "description": "A gripping thriller blending art, religion, and conspiracy as a symbologist uncovers secrets within Leonardo da Vinci’s works.",
+      "published": "2003-03-18"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 18,
+    "fields": {
+      "id": "bk018",
+      "title": "Harry Potter and the Philosopher’s Stone",
+      "author": "J.K. Rowling",
+      "link": "https://openlibrary.org/works/OL82563W",
+      "cover_image": "https://covers.openlibrary.org/b/id/7984916-L.jpg",
+      "slug": "harry-potter-and-the-philosophers-stone",
+      "description": "The beginning of the beloved series following Harry’s discovery of magic, friendship, and destiny at Hogwarts.",
+      "published": "1997-06-26"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 19,
+    "fields": {
+      "id": "bk019",
+      "title": "The Hunger Games",
+      "author": "Suzanne Collins",
+      "link": "https://openlibrary.org/works/OL82580W",
+      "cover_image": "https://covers.openlibrary.org/b/id/6979871-L.jpg",
+      "slug": "the-hunger-games",
+      "description": "In a dystopian world, Katniss Everdeen fights for survival and freedom in the deadly Hunger Games.",
+      "published": "2008-09-14"
+    }
+  },
+  {
+    "model": "book.book",
+    "pk": 20,
+    "fields": {
+      "id": "bk020",
+      "title": "The Book Thief",
+      "author": "Markus Zusak",
+      "link": "https://openlibrary.org/works/OL82579W",
+      "cover_image": "https://covers.openlibrary.org/b/id/8231851-L.jpg",
+      "slug": "the-book-thief",
+      "description": "A young girl in Nazi Germany finds solace in stealing books and sharing them amid the horrors of war.",
+      "published": "2005-03-14"
+    }
+  }
+]
