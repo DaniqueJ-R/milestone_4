@@ -1,0 +1,10 @@
+[
+  {"model": "book.genre", "pk": 1, "fields": {"name": "Romance"}},
+  {"model": "book.genre", "pk": 2, "fields": {"name": "Mystery"}},
+  {"model": "book.genre", "pk": 3, "fields": {"name": "Fantasy and science fiction"}},
+  {"model": "book.genre", "pk": 4, "fields": {"name": "Thrillers and horror"}},
+  {"model": "book.genre", "pk": 5, "fields": {"name": "Young adult"}},
+  {"model": "book.genre", "pk": 6, "fields": {"name": "Children's fiction"}},
+  {"model": "book.genre", "pk": 7, "fields": {"name": "Inspirational, self-help, and religious books"}},
+  {"model": "book.genre", "pk": 8, "fields": {"name": "Biography, autobiography, and memoir"}}
+]

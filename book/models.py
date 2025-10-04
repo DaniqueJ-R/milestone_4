@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 from django.utils.timezone import now
 
 
@@ -17,9 +18,11 @@ class Book(models.Model):
     cover_image = models.ImageField(
         upload_to='book_covers/', null=True, blank=True
     )
+    cover_image_url = models.URLField(max_length=500, blank=True, null=True)
     slug = models.SlugField(max_length=250, unique=True)
     description = models.TextField()
     published = models.DateField()
+    genre = models.ManyToManyField("Genre", related_name="genre")
     created_on = models.DateTimeField(auto_now_add=True)
     # for tracking/debugging
     updated_on = models.DateTimeField(auto_now=True)
@@ -35,9 +38,9 @@ class Genre(models.Model):
     category/genre from the API or database.
     """
     name = models.CharField(max_length=50, unique=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(default=timezone.now)
     # for tracking/debugging
-    updated_on = models.DateTimeField(auto_now=True)
+    updated_on = models.DateTimeField(default=timezone.now)
     # for tracking/debugging
 
     class Meta:
