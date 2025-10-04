@@ -73,7 +73,6 @@ class TrackerList(models.Model):
     )
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    genres = models.ManyToManyField("Genre", related_name="shelves")
 
     class Meta:
         unique_together = ("user", "book")  # prevents duplicates

@@ -39,108 +39,61 @@
       <h2>In Progress</h2>
     </a>
     {% for book in reading_books %}
-<a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
-    <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
-          <div class="card-body">
+    <a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+      data-bs-placement="top" data-bs-content="{{ book.book.title }}" data-bs-trigger="hover focus">
+      <img src="{{ book.book.cover_image_url }}" alt="{{ book.book.title }}">
+      <div class="card-body">
         <p class="card-text accent current-books-text progress-bar-animated">77% Complete
         </p>
       </div>
-</a>
-{% endfor %}
+    </a>
+    {% endfor %}
   </section>
   <!-- Books to read this week carasol -->
-<section class="books-row row-cols-auto pt-5" id="books-to-read">
+  <section class="books-row row-cols-auto pt-5" id="books-to-read">
     <a href="" class="no-decor main-color">
       <h2>Books this week</h2>
     </a>
     {% for book in featured_books %}
-<a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
-    <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
-</a>
-{% endfor %}
-</section>
+    <a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+      data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
+      <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
+    </a>
+    {% endfor %}
+  </section>
   <section class="row justify-content-center" id="reviews-area">
     <div class=" text-center py-4">
       <p>See your more recent reviews here:</p>
     </div>
+  {% for review in review %}
     <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+          <img src="{{ review.book.cover_image_url }}" class="img-fluid rounded-start" alt="{{ review.book.title }}">
         </div>
         <div class="col-md-8 align-self-center">
           <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+            <h5 class="card-title">{{ review.review_title }}</h5>
+            <p class="card-text">{{ review.review_body }}</p>
+            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 stars</small></p>
           </div>
         </div>
       </div>
     </div>
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8 align-self-center">
-          <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8 align-self-center">
-          <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8 align-self-center">
-          <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  {% endfor %}
   </section>
   {% else %}
-  <!-- Books to read this week carasol -->
+    <!-- Books to read this week carasol -->
   <section class="books-row row-cols-auto pt-5" id="books-to-read">
     <a href="" class="no-decor main-color">
       <h2>Books this week</h2>
     </a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-  </section>
-  <!-- Books to read this week carasol -->
-  <section class="books-row row-cols-auto pt-5" id="books-to-read">
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
-    <a type="button" class="display-books col" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="The Dead Husband Cookbook" data-bs-trigger="hover focus" ><img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="..."></a>
+    {% for book in featured_books %}
+    <a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+      data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
+      <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
+    </a>
+    {% endfor %}
   </section>
   <!-- Why sign up -->
   <section class="row pt-5 justify-content-center">
@@ -186,66 +139,27 @@
       <p id="promo">Write and share reviews. Compile your own lists. Share your life through the pages.</p>
       <p>Below are some popular reviews and lists from this week.  <a href="{% url 'account_signup' %}" class="no-decor main-color accent">Sign up</a> to leave your own signature.</p>
     </div>
+      {% for review in recent_reviews %}
     <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
+          <img src="{{ review.book.cover_image_url }}" class="img-fluid rounded-start" alt="{{ review.title }}">
         </div>
         <div class="col-md-8 align-self-center">
           <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
+            <h5 class="card-title">{{ review.review_title }}</h5>
+            <p class="card-text">{{ review.review_body }}</p>
+            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 stars</small></p>
           </div>
         </div>
       </div>
     </div>
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="../media/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8 align-self-center">
-          <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8 align-self-center">
-          <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="../static/images/books/book-cover-1.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8 align-self-center">
-          <div class="card-body">
-            <h5 class="card-title">Best Book Ever!</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">4.5/5 stars</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  {% endfor %}
   </section>
   {% endif %}
 </main>
 {% endblock %}
+
 {% block postloadjs %}
 <!-- Bootstraps Javascript Link -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

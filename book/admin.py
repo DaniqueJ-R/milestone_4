@@ -14,10 +14,10 @@ class BookAdmin(admin.ModelAdmin):
     ordering = ('book_id',)
 
     search_fields = ['title', 'author']
-    # list_filter = ['genre']
+    list_filter = ['genre']
 
-class UserBookAdmin(admin.ModelAdmin):
-    list_display = ['user', 'book', 'status', 'date_added']
+class TrackerListAdmin(admin.ModelAdmin):
+    list_display = ['user', 'book', 'status', 'added_on']
     list_filter = ['status']
 
 class ReviewAdmin(admin.ModelAdmin):
@@ -27,4 +27,4 @@ class ReviewAdmin(admin.ModelAdmin):
 admin.site.register(Book, BookAdmin)
 admin.site.register(Review, ReviewAdmin)
 admin.site.register(Genre)
-admin.site.register(TrackerList)
+admin.site.register(TrackerList, TrackerListAdmin)
