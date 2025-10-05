@@ -60,17 +60,20 @@
               <li class="nav-item">
 
                  <!-- Search bar -->
-                <form class="d-flex" role="search">
-                  <button class="btn btn-outline-success" type="submit">
+                <form id="searchForm" class="d-flex position-relative" role="search">
+                  <button id="searchButton" class="btn btn-outline-success" type="button">
                     Search
                   </button>
                   <input
-                    class="form-control me-2"
+                    id="searchInput"
+                    class="form-control me-2 search-hidden"
                     type="search"
                     placeholder="Search for books here..."
                     aria-label="Search"
                   />
                 </form>
+
+
               </li>
             </ul>
           </div>

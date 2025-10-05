@@ -28,8 +28,8 @@ body {
 }
 
 .bg-image {
-  background: url(../images/front-view-books-with-copy-space.jpg) no-repeat 10% center
-    fixed;
+  background: url(../images/front-view-books-with-copy-space.jpg) no-repeat 10%
+    center fixed;
   /* background-size: contain; */
   background-size: cover; /* fills space and crops overflow */
   height: 15rem;
@@ -105,8 +105,23 @@ hr {
   left: -77px;
 }
 
-#main-search-bar {
-  padding-left: 10%;
+#searchInput {
+  width: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+#searchInput.search-visible {
+  width: 200px;
+  opacity: 1;
+  padding-left: 3%;
+  margin-left: 3%;
+}
+
+#searchInput.search-hidden {
+  width: 0;
+  opacity: 0;
 }
 
 .btn-outline-success {
