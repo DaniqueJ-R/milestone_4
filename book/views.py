@@ -4,11 +4,14 @@ from .models import Book, TrackerStatus, TrackerList
 from review.models import Review
 
 # Create your views here.
+
+
 def books_page(request):
     """ A view to render index page"""
 
     # Get some books for "Books this week"
-    featured_books = Book.objects.all()[:6]
+    featured_books_auth = Book.objects.all().order_by('?')[:6]
+    featured_books_unauth = Book.objects.all().order_by('?')[:12]
 
     # If user is logged in, get their tracked books
     if request.user.is_authenticated:
@@ -28,7 +31,8 @@ def books_page(request):
         recent_reviews = Review.objects.all().order_by('-created_on')[:4]
 
     context = {
-        'featured_books': featured_books,
+        'featured_books_auth': featured_books_auth,
+        'featured_books_unauth': featured_books_unauth,
         'reading_books': reading_books,
         'reading_count': reading_count,
         'completed_count': completed_count,
@@ -61,10 +65,15 @@ def book_details(request, slug):
     """ A view to show individual book details """
 
     queryset = Book.objects.all()
-    book = get_object_or_404(queryset, slug=slug)    
+    book = get_object_or_404(queryset, slug=slug)  
+    book_reviews = Review.objects.filter(book=book).order_by('-created_on')[:4]
+    other_books = Book.objects.order_by('?')[:3]
+
 
     context = {
         'book': book,
+        'book_reviews': book_reviews,
+        'other_books': other_books
     }
 
     return render(request, 'book/book-details.html', context)

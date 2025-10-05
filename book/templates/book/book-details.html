@@ -7,9 +7,9 @@
     <div class="row">
       <div class="col-3 space Sticky">
         <img 
-          src="{{ book.book.cover_image_url }}"
+          src="{{ book.cover_image_url }}"
           class="img-fluid"
-          alt="{{ book.book.title }}"
+          alt="{{ book.title }}"
           />
         <div class="btn-group">
           <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,28 +31,38 @@
       <!-- Books details -->
       <div class="space col-6 text-start">
         <div class="book-details">
-          <h1 class="text-start">{{ book.book.title }}</h1>
-          <p class="">{{ book.book.author }}</p>
+          <h1 class="text-start">{{ book.title }}</h1>
+          <p class="">{{ book.author }}</p>
+          {% if review in reviews %}
           <p>{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></p>
-          <p class=""></p>
+          {% else %}
+          <p>No rating</p>
+          {% endif %}
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <small>Genre: {{ book.book.genre }}</small>
-            <small>Published - {{ book.book.published }}</small>
+            <small>Genre:
+              {% for g in book.genre.all %}
+              {{ g.name }}{% if not forloop.last %}, {% endif %}
+              {% empty %}
+              None
+              {% endfor %}
+            </small>
+            <small>Published - {{ book.published }}</small>
           </div>
           <p>
-            {{ book.book.description }}
+            {{ book.description }}
           </p>
         </div>
-          {% if review in review %}
+          {% if book_reviews %}
         <div class="reviews">
+          {% for review in book_reviews %}
           <div class="card">
             <div class="card-body">
               <h6 class="card-title">{{ review.user.username }}</h6>
               <h6 class="card-subtitle mb-2 text-body-secondary">
-                {{ review.user.review_title }} <span class="accent">4/5 <i class="fa-solid fa-star"></i></span>
+                {{ review.review_title }} <span class="accent"> {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></span>
               </h6>
               <p class="card-text">
-                {{ review.user.review_title }}
+                {{ review.review_body }}
               </p>
               {% if request.user.is_authenticated %}
               <a href="#" class="card-link">Edit</a>
@@ -60,6 +70,7 @@
               {% endif %}
             </div>
           </div>
+          {% endfor %}
         </div>
         {% else %}
         <div id="reviews">
@@ -70,10 +81,10 @@
       </div>
       <div class="space col-3">
         <h2>Books this week</h2>
-            {% for book in featured_books %}
-    <a type="button" href="" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+      {% for book in other_books %}
+    <a type="button" href="" class="book-recs text-center col mt-3" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
-      <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
+      <img src="{{ book.cover_image_url }}" alt="{{ book.title }}" class="display-book-cover">
     </a>
     {% endfor %}
       </div>

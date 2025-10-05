@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block header %}
+    <header class="bg-image">
 <!-- Header with user info -->
        <div class="container">
         <div class="my-auto pt-4 text-center row justify-content-end">
@@ -16,6 +17,7 @@
       </div>
       </div>
       </div>
+      </header>
 {% endblock %}
 {% block content %}
 <main class="container text-center my-2">
@@ -38,8 +40,9 @@
     <a href="" class="no-decor main-color">
       <h2>In Progress</h2>
     </a>
+
     {% for book in reading_books %}
-    <a type="button" href="{% url 'book-details' book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+    <a type="button" href="{% url 'book-details' book.book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.book.cover_image_url }}" alt="{{ book.book.title }}">
     </a>
@@ -50,8 +53,8 @@
     <a href="" class="no-decor main-color">
       <h2>Books this week</h2>
     </a>
-    {% for book in featured_books %}
-    <a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+    {% for book in featured_books_auth %}
+    <a type="button" href="{% url 'book-details' book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
     </a>
@@ -84,8 +87,8 @@
     <a href="" class="no-decor main-color">
       <h2>Books this week</h2>
     </a>
-    {% for book in featured_books %}
-    <a type="button" href="{% url 'book-details' book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+    {% for book in featured_books_unauth %}
+    <a type="button" href="{% url 'book-details' book.slug %}" class="display-books unauth-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
     </a>
