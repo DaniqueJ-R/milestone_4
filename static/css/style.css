@@ -285,6 +285,10 @@ hr {
   text-align: center;
 }
 
+.featured-books {
+  min-width: 10em;
+}
+
 .unauth-books {
   padding-top: 1rem;
 }
