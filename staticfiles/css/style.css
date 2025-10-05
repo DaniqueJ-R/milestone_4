@@ -28,7 +28,7 @@ body {
 }
 
 .bg-image {
-    background: url(../media/front-view-books-with-copy-space.jpg) no-repeat fixed;
+    background: url(/media/front-view-books-with-copy-space.jpg) no-repeat fixed;
     background-size: contain;
     height: 15rem;
     width: auto;
@@ -71,11 +71,15 @@ hr {
   color: var(--highlight-color);
 }
 
+.display-book-cover{
+  margin: 0.4rem;
+}
+
 /* Base HTML */
 /* Nav bar */
 .navbar {
   background-color: var(--primary-color) !important;
-  z-index: 1;
+  z-index: 999;
 }
 
 .navbar a {
@@ -151,7 +155,7 @@ hr {
 
 .footer-link-block,
 .footer-link-icon-block {
-  background-image: url(/media/footer-sns-border.png);
+  background-image: url(../tester/images/footer-sns-border.png);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 720px 1px;
@@ -281,6 +285,14 @@ hr {
   text-align: center;
 }
 
+.featured-books {
+  min-width: 10em;
+}
+
+.unauth-books {
+  padding-top: 1rem;
+}
+
 .current-books-text {
   padding-right: 32px;
 }
@@ -320,6 +332,50 @@ hr {
 }
 /* End Index HTML */
 
+/* Book Details HTML */
+
+#book-cover{
+  height: 25rem;
+  width: auto;
+}
+
+.book-recs > img {
+  height: 13rem;
+  width: auto;
+  padding-right: 0.25rem;
+}
+
+.book-recs {
+  color: var(--black);
+  text-decoration: none;
+  text-align: center;
+}
+
+.Sticky {
+    z-index: 1;
+    position: sticky !important; 
+    top: 100px;
+  height: fit-content;
+}
+
+#reviews {
+  padding-top: 1.5rem;
+}
+
+#reviews > h5 > a {
+  color: var(--highlight-color);
+  -webkit-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+#reviews > h5 > a:hover {
+  color: var(--light-highlight-color);
+}
+
+/* End Book_details HTML */
+
 /* Changes settings below 619 pix */
 @media screen and (max-width: 619px) {
   .icon-recommended {
@@ -342,4 +398,10 @@ hr {
 p, li, td, th, dt, dd, cite, blockquote, label, legend {
     font-size: inherit;
     line-height: 1.38461538; 
+} */
+
+
+/* delete */
+/* .space{
+  border: solid 2px;
 } */
