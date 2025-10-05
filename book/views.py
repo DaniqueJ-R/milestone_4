@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Avg
 from django.http import HttpResponse
+
 from .models import Book, TrackerStatus, TrackerList
 from review.models import Review
 
@@ -43,6 +45,8 @@ def books_page(request):
     return render(request, 'book/index.html', context)
 
 
+
+
 def book_details(request, slug):
     """
     Display an individual :model:`blog.Post`.
@@ -67,16 +71,21 @@ def book_details(request, slug):
     queryset = Book.objects.all()
     book = get_object_or_404(queryset, slug=slug)  
     book_reviews = Review.objects.filter(book=book).order_by('-created_on')[:4]
-    other_books = Book.objects.order_by('?')[:3]
-
+    other_books = Book.objects.exclude(id=book.id).order_by('?')[:3]
+    avg_rating = book_reviews.aggregate(Avg('star_rating'))['star_rating__avg']
+    # This returns None if no reviews exist
 
     context = {
         'book': book,
         'book_reviews': book_reviews,
-        'other_books': other_books
+        'other_books': other_books,
+        'avg_rating': avg_rating,
+        'review_count': book_reviews.count(),
     }
 
     return render(request, 'book/book-details.html', context)
+
+
 
 # def post_detail(request, slug):
     
