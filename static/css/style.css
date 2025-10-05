@@ -353,9 +353,12 @@ hr {
 
 .Sticky {
     z-index: 1;
-    position: sticky !important; 
+    position: sticky; 
     top: 100px;
   height: fit-content;
+}
+.book-details, .other-books{
+  margin-top: 2rem;
 }
 
 #reviews {
@@ -376,12 +379,34 @@ hr {
 
 /* End Book_details HTML */
 
-/* Changes settings below 619 pix */
+/* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {
     padding: 4px 18px 0 39px;
   }
 }
+
+/* Changes settings below 768px (medium) */
+@media screen and (max-width: 768px) {
+
+  .Sticky {
+    z-index: 0;
+    position: static; 
+    top: 100px;
+  height: fit-content;
+  }
+}
+
+/* Changes settings below 992px (large) */
+@media screen and (max-width: 992px) {
+
+}
+
+/* Changes settings below 1200px (extra large) */
+@media screen and (max-width: 1200px) {
+
+}
+
 /* 
 
 .for-overlap-posters{
