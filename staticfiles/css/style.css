@@ -28,7 +28,7 @@ body {
 }
 
 .bg-image {
-    background: url(/media/front-view-books-with-copy-space.jpg) no-repeat fixed;
+    background: url(../images/front-view-books-with-copy-space.jpg) no-repeat fixed;
     background-size: contain;
     height: 15rem;
     width: auto;
@@ -155,7 +155,7 @@ hr {
 
 .footer-link-block,
 .footer-link-icon-block {
-  background-image: url(../tester/images/footer-sns-border.png);
+  background-image: url(../images/footer-sns-border.png);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 720px 1px;
@@ -203,17 +203,17 @@ hr {
 }
 
 .icon-recommended.icon-waterstone {
-  background-image: url(../static/images/waterstones-logo-vector.png);
+  background-image: url(../images/waterstones-logo-vector.png);
   background-size: auto 20px;
 }
 
 .icon-recommended.icon-british-library {
-  background-image: url(../static/images/british-library-logo.png);
+  background-image: url(../images/british-library-logo.png);
   background-size: auto 20px;
 }
 
 .icon-recommended.icon-awesomebooks {
-  background-image: url(../static/images/awesomebooks-logo.jpg);
+  background-image: url(../images/awesomebooks-logo.jpg);
   background-size: auto 20px;
 }
 

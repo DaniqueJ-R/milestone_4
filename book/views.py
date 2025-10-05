@@ -45,8 +45,6 @@ def books_page(request):
     return render(request, 'book/index.html', context)
 
 
-
-
 def book_details(request, slug):
     """
     Display an individual :model:`blog.Post`.
@@ -86,9 +84,7 @@ def book_details(request, slug):
     return render(request, 'book/book-details.html', context)
 
 
-
 # def post_detail(request, slug):
-    
 
 #     queryset = Post.objects.filter(status=1)
 #     post = get_object_or_404(queryset, slug=slug)

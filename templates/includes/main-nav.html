@@ -1,10 +1,10 @@
 {% load static %}
       <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand logo" href="#">
+          <a class="navbar-brand logo" href="{% url 'index' %}">
             <img
               class="logo"
-              src="{% static 'images\image05.jpg' %}"
+              src="{% static 'images/little-library-logo.jpg' %}"
               alt="Little Library"
             />
           </a>
@@ -97,7 +97,7 @@
                       >Logout</a
                     >
                   </li>
-                  <li><hr class="dropdown-divider" /></li>
+                  <li>
                   {% else %}
                   <li>
                     <a
@@ -105,7 +105,7 @@
                       class="dropdown-item black"
                       >Login</a
                     >
-                  </li>
+                  </li><hr class="dropdown-divider" /></li>
                   <li>
                     <a
                       href="{% url 'account_signup' %}"
