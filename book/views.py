@@ -38,13 +38,64 @@ def books_page(request):
 
     return render(request, 'book/index.html', context)
 
-def my_library(request, slug):
+
+def book_details(request, slug):
+    """
+    Display an individual :model:`blog.Post`.
+
+    **Context**
+
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comments``
+        All approved comments related to the post.
+    ``comment_count``
+        A count of approved comments related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`
+
+    **Template:**
+
+    :template:`blog/post_detail.html`
+    """
     """ A view to show individual book details """
 
-    book = get_object_or_404(Book, slug=slug)
+    queryset = Book.objects.all()
+    book = get_object_or_404(queryset, slug=slug)    
 
     context = {
         'book': book,
     }
 
-    return render(request, 'book/my_library.html', context)
+    return render(request, 'book/book-details.html', context)
+
+# def post_detail(request, slug):
+    
+
+#     queryset = Post.objects.filter(status=1)
+#     post = get_object_or_404(queryset, slug=slug)
+#     comments = post.comments.all().order_by("-created_on")
+#     comment_count = post.comments.filter(approved=True).count()
+#     if request.method == "POST":
+#         comment_form = CommentForm(data=request.POST)
+#         if comment_form.is_valid():
+#             comment = comment_form.save(commit=False)
+#             comment.author = request.user
+#             comment.post = post
+#             comment.save()
+#             messages.add_message(
+#                 request, messages.SUCCESS,
+#                 'Comment submitted and awaiting approval'
+#             )
+#     comment_form = CommentForm()
+
+#     return render(
+#         request,
+#         "blog/post_detail.html",
+#         {
+#             "post": post,
+#             "comments": comments,
+#             "comment_count": comment_count,
+#             "comment_form": comment_form,
+#         },
+#     )

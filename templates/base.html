@@ -41,11 +41,13 @@
 
   </head>
   <body>
-    <header class="bg-image">
+    {% block navbar %}
       {% include 'includes/main-nav.html' %}
       {% include 'includes/mobile-nav.html' %}
+      {% endblock %}
 
-      {% block extra_header %} 
+    <header class="bg-image">
+      {% block header %} 
       {% endblock %} 
     </header>
 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block header %}
+{% block extra_header %}
 <!-- Header with user info -->
        <div class="container">
         <div class="my-auto pt-4 text-center row justify-content-end">
@@ -39,9 +39,13 @@
       <h2>In Progress</h2>
     </a>
     {% for book in reading_books %}
-    <a type="button" href="{% url 'book-details' book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+    <a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.book.cover_image_url }}" alt="{{ book.book.title }}">
+      <div class="card-body">
+        <p class="card-text accent current-books-text progress-bar-animated">77% Complete
+        </p>
+      </div>
     </a>
     {% endfor %}
   </section>
@@ -71,7 +75,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ review.review_title }}</h5>
             <p class="card-text">{{ review.review_body }}</p>
-            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></small></p>
+            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 stars</small></p>
           </div>
         </div>
       </div>
@@ -85,7 +89,7 @@
       <h2>Books this week</h2>
     </a>
     {% for book in featured_books %}
-    <a type="button" href="{% url 'book-details' book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+    <a type="button" href="{% url 'index' %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
     </a>
@@ -145,7 +149,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ review.review_title }}</h5>
             <p class="card-text">{{ review.review_body }}</p>
-            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></small></p>
+            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 stars</small></p>
           </div>
         </div>
       </div>
