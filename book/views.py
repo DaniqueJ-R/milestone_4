@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import HttpResponse
 
 from .models import Book, TrackerStatus, TrackerList
@@ -82,17 +83,17 @@ def book_details(request, slug):
         'review_count': book_reviews.count(),
     }
 
-    return render(request, 'book/book-details.html', context)
+    return render(request, 'book/book_details.html', context)
 
 
 @login_required
 def my_library(request):
-    """Display the logged-in user's Complete, Plan to read, and Reading book lists."""
+    """Display the logged in user's Complete, Plan to read, and Reading book lists."""
 
     reading_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.READING).order_by('-added_on')
     completed_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.COMPLETE).order_by('-added_on')
     plan_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.PLAN_TO).order_by('-added_on')
-    all_books = TrackerList.objects.all()
+    all_books = TrackerList.objects.filter(user=request.user)
 
     context = {
         'reading_books': reading_books,
@@ -101,8 +102,30 @@ def my_library(request):
         'all_books': all_books,
     }
 
-    return render(request, 'book/my-library.html', context)
+    return render(request, 'book/my_library.html', context)
 
+
+@login_required
+def edit_tracker(request, tracker_id):
+    tracker = get_object_or_404(TrackerList, id=tracker_id, user=request.user)
+    if request.method == 'POST':
+        title = tracker.book.title
+        new_status = request.POST.get('status')
+        tracker.status = new_status
+        tracker.save()
+        messages.success(request, f"'{title}' was moved to {tracker.status} in your library.")
+    return redirect('my_library')
+
+
+
+@login_required
+def delete_tracker(request, tracker_id):
+    tracker = get_object_or_404(TrackerList, id=tracker_id, user=request.user)
+    if request.method == 'POST':
+        title = tracker.book.title
+        tracker.delete()
+        messages.success(request, f"'{title}' was deleted from your library.")
+    return redirect('my_library')
 
 # # Update a note
 # class NoteUpdateView(LoginRequiredMixin, UpdateView):

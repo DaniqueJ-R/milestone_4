@@ -88,7 +88,7 @@ Book Details | {{ book.title }}
       <div class="space col-12 col-lg-3 other-books">
         <h2>Books this week</h2>
       {% for book in other_books %}
-    <a type="button" href="{% url 'book-details' book.slug %}" class="book-recs text-center col mt-3" data-bs-container="body" data-bs-toggle="popover"
+    <a type="button" href="{% url 'book_details' book.slug %}" class="book-recs text-center col mt-3" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.cover_image_url }}" alt="{{ book.title }}" class="display-book-cover featured-books">
     </a>

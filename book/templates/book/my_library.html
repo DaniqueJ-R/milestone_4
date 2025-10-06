@@ -257,7 +257,7 @@ My Library
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="" style="display:inline;">
+                <form method="POST" action="{% url 'delete_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
@@ -279,7 +279,7 @@ My Library
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="" style="display:inline;">
+                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Move</button>
                 </form>
@@ -301,7 +301,7 @@ My Library
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="" style="display:inline;">
+                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Move</button>
                 </form>
@@ -323,7 +323,7 @@ My Library
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="" style="display:inline;">
+                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Move</button>
                 </form>
