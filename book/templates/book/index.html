@@ -30,13 +30,13 @@ Home
   {% if request.user.is_authenticated %}
   <section class="books-row row-cols-auto py-3 text-center" id="bookshelves">
     <h2>Bookselves</h2>
-    <a href="#" class="shelves-link-text p-3">
+    <a href="{% url 'my_library'#reading-header %}" class="shelves-link-text p-3">
       <span class="accent">{{ reading_count }}</span> Reading
     </a>
-    <a href="#" class="shelves-link-text p-3">
+    <a href="{% url 'my_library'#complete-header %}" class="shelves-link-text p-3">
       <span class="accent">{{ completed_count }}</span> Complete
     </a>
-    <a href="#" class="shelves-link-text p-3">
+    <a href="{% url 'my_library'#plan-to-read-header %}" class="shelves-link-text p-3">
       <span class="accent">{{ plan_count }}</span> Plan to read
     </a>
   </section>
