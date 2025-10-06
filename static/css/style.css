@@ -29,9 +29,8 @@ body {
 
 .bg-image {
   background: url(../images/front-view-books-with-copy-space.jpg) no-repeat 10%
-    center fixed;
-  /* background-size: contain; */
-  background-size: cover; /* fills space and crops overflow */
+    20% fixed;
+  background-size: cover;
   height: 15rem;
   width: auto;
   box-shadow: inset 0 -6px 24px 0 rgba(0, 0, 0, 0.2),
@@ -408,11 +407,20 @@ hr {
 
 /* Library HTML */
 
-.section-header{
- margin-top: 2rem;
+#my-library-header {
+height: 11.9rem;
+    padding-top: 52px;
+    margin-top: 41px;
 }
 
-.library-book-cover > div > .img-fluid{
+#bookTabs > li > a {
+  color: var(--primary-color);
+}
+.section-header {
+  margin-top: 2rem;
+}
+
+.library-book-cover > div > .img-fluid {
   max-width: 40%;
 }
 
@@ -420,7 +428,7 @@ hr {
   line-height: 0.6rem;
 }
 
-.list-books{
+.list-books {
   min-width: 5em;
   max-width: 5em;
 }

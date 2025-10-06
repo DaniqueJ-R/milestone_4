@@ -6,7 +6,7 @@ My Notes
 {% endblock%} 
 
 {% block header %}
-      <header class="space container text-center py-5">
+      <header class=" bg-image" id="my-library-header">
         <h1>My Library</h1>
         <p>The currently reading list</p>
 
@@ -43,10 +43,10 @@ My Notes
                     <h2 id="reading-header">Reading</h2>
                     <p>The currently reading list</p>
     
-                    <hr class="divider">
                 </div>
                 {% if reading_books %}
                 {% for book in reading_books %}
+                <hr class="divider">
                 <div class="library-body space row">
                     <!-- Book Cover -->
                     <div class="library-book-cover space col-3">
@@ -93,9 +93,10 @@ My Notes
                     </div>
                 </div>
             </div>
-            <hr class="divider">
+            
             {% endfor %}
             {% else %}
+            <hr class="divider">
             <p class="accent"> No books have been added yet. </p>
             <hr class="divider">
             {% endif %}
@@ -109,10 +110,10 @@ My Notes
                     <h2 id="plan-to-read-header">Plan to Read</h2>
                     <p>The currently Plan to Read list</p>
     
-                    <hr class="divider">
                 </div>
                 {% if plan_books %}
                 {% for book in plan_books %}
+                <hr class="divider">
                 <div class="library-body space row">
                     <!-- Book Cover -->
                     <div class="library-book-cover space col-3">
@@ -159,9 +160,9 @@ My Notes
                     </div>
                 </div>
             </div>
-            <hr class="divider">
             {% endfor %}
                         {% else %}
+                        <hr class="divider">
             <p class="accent"> No books have been added yet. </p>
             <hr class="divider">
             {% endif %}
@@ -176,10 +177,10 @@ My Notes
                     <h2 id="complete-header">Complete</h2>
                     <p>The currently complete list</p>
     
-                    <hr class="divider">
                 </div>
                 {% if completed_books %}
                 {% for book in completed_books %}
+                <hr class="divider">
                 <div class="library-body space row">
                     <!-- Book Cover -->
                     <div class="library-book-cover space col-3">
@@ -226,9 +227,9 @@ My Notes
                     </div>
                 </div>
             </div>
-            <hr class="divider">
             {% endfor %}
                         {% else %}
+                        <hr class="divider">
             <p class="accent"> No books have been added yet. </p>
             <hr class="divider">
             {% endif %}
