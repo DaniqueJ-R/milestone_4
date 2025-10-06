@@ -109,12 +109,16 @@ def my_library(request):
 def edit_tracker(request, tracker_id):
     tracker = get_object_or_404(TrackerList, id=tracker_id, user=request.user)
     if request.method == 'POST':
-        title = tracker.book.title
         new_status = request.POST.get('status')
+        if not new_status:
+            messages.error(request, "No status selected. Please try again.")
+            return redirect('my_library')
+
         tracker.status = new_status
         tracker.save()
-        messages.success(request, f"'{title}' was moved to {tracker.status} in your library.")
+        messages.success(request, f"'{tracker.book.title}' was moved to {tracker.status.title()} in your library.")
     return redirect('my_library')
+
 
 
 

@@ -281,6 +281,7 @@ My Library
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
+                    <input type="hidden" name="status" value="1">
                     <button type="submit" class="btn btn-danger">Move</button>
                 </form>
             </div>
@@ -303,6 +304,7 @@ My Library
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
+                    <input type="hidden" name="status" value="2">
                     <button type="submit" class="btn btn-danger">Move</button>
                 </form>
             </div>
@@ -325,6 +327,7 @@ My Library
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
+                    <input type="hidden" name="status" value="0">
                     <button type="submit" class="btn btn-danger">Move</button>
                 </form>
             </div>
