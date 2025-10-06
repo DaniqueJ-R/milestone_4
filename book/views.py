@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Avg
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 from .models import Book, TrackerStatus, TrackerList
@@ -84,9 +85,56 @@ def book_details(request, slug):
     return render(request, 'book/book-details.html', context)
 
 
+@login_required
 def my_library(request):
+    """Display the logged-in user's Complete, Plan to read, and Reading book lists."""
 
-    return render(request, 'book/my-library.html')
+    reading_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.READING).order_by('-added_on')
+    completed_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.COMPLETE).order_by('-added_on')
+    plan_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.PLAN_TO).order_by('-added_on')
+
+    context = {
+        'reading_books': reading_books,
+        'completed_books': completed_books,
+        'plan_books': plan_books,
+    }
+
+    return render(request, 'book/my-library.html', context)
+
+
+# # Update a note
+# class NoteUpdateView(LoginRequiredMixin, UpdateView):
+#     """Allow users to edit their own notes."""
+
+#     model = Note
+#     form_class = NoteForm
+#     template_name = "quote/edit-note.html"
+
+#     def get_queryset(self):
+#         """Prevent editing other people's notes."""
+#         return Note.objects.filter(author=self.request.user)
+
+#     def get_success_url(self):
+#         """Redirect to the user's notes page after update."""
+#         return reverse_lazy("my_notes")
+
+
+# # Delete a note
+# class NoteDeleteView(LoginRequiredMixin, DeleteView):
+#     """Allow users to delete their own notes."""
+
+#     model = Note
+#     template_name = "quote/delete-note.html"
+
+#     def get_queryset(self):
+#         """Prevent deleting other people's notes."""
+#         return Note.objects.filter(author=self.request.user)
+
+#     def get_success_url(self):
+#         """Redirect to the user's notes page after deletion."""
+#         return reverse_lazy("my_notes")
+    
+
 # def post_detail(request, slug):
 
 #     queryset = Post.objects.filter(status=1)

@@ -407,6 +407,11 @@ hr {
 /* End Book_details HTML */
 
 /* Library HTML */
+
+.section-header{
+ margin-top: 2rem;
+}
+
 .library-book-cover > div > .img-fluid{
   max-width: 40%;
 }
@@ -414,6 +419,17 @@ hr {
 .library-book-details > p {
   line-height: 0.6rem;
 }
+
+.list-books{
+  min-width: 5em;
+  max-width: 5em;
+}
+
+.library-book-details {
+  max-width: 34em;
+}
+
+/* End Library HTML */
 
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {

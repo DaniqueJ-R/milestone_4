@@ -1,22 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}
+My Notes
+{% endblock%} 
+
 {% block header %}
       <header class="space container text-center py-5">
         <h1>My Library</h1>
         <p>The currently reading list</p>
 
-                    <div>
-              <ul class="nav nav-tabs justify-content-center">
+            <div>
+              <ul class="nav nav-tabs justify-content-center" id="bookTabs">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a class="nav-link active" aria-current="page" href="#reading-header"
                     >Reading</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Plan to Read</a>
+                  <a class="nav-link" href="#plan-to-read-header">Plan to Read</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Complete</a>
+                  <a class="nav-link" href="#complete-header">Complete</a>
                 </li>
               </ul>
             </div>
@@ -40,20 +45,30 @@
     
                     <hr class="divider">
                 </div>
+                {% if reading_books %}
+                {% for book in reading_books %}
                 <div class="library-body space row">
                     <!-- Book Cover -->
                     <div class="library-book-cover space col-3">
                         <div class="">
-                            <img src="../media/books/book-cover-1.jpg" class="img-fluid" alt="..." />
+                            <img src="{{ book.book.cover_image_url }}"
+                                    class="img-fluid list-books"
+                                    alt="{{ book.book.title }}" />
                         </div>
                     </div>
     
                     <!-- Books details -->
                     <div class="library-book-details space col-6 text-start">
-                        <h3 class="text-start">The Dead Husband Cookbook</h3>
-                        <p class="">Author name</p>
-                        <p><small>Genre: Young Adult</small></p>
-                        <p><small>Published - (1993)</small></p>
+                        <h3 class="text-start">{{ book.book.title }}</h3>
+                        <p class="">{{ book.book.author }}</p>
+                        <p><small>Genre:
+              {% for g in book.genre.all %}
+              {{ g.name }}{% if not forloop.last %}, {% endif %}
+              {% empty %}
+              None
+              {% endfor %}
+            </small></p>
+                        <p><small>Published - {{ book.book.published }}</small></p>
                     </div>
     
                     <!-- Edit/Delete section -->
@@ -79,6 +94,11 @@
                 </div>
             </div>
             <hr class="divider">
+            {% endfor %}
+            {% else %}
+            <p class="accent"> No books have been added yet. </p>
+            <hr class="divider">
+            {% endif %}
         </section>
         <!-- Plan to read Section header -->
         <section>
@@ -91,20 +111,30 @@
     
                     <hr class="divider">
                 </div>
+                {% if plan_books %}
+                {% for book in plan_books %}
                 <div class="library-body space row">
                     <!-- Book Cover -->
                     <div class="library-book-cover space col-3">
                         <div class="">
-                            <img src="../media/books/book-cover-1.jpg" class="img-fluid" alt="..." />
+                            <img src="{{ book.book.cover_image_url }}"
+                                    class="img-fluid list-books"
+                                    alt="{{ book.book.title }}" />
                         </div>
                     </div>
     
                     <!-- Books details -->
                     <div class="library-book-details space col-6 text-start">
-                        <h3 class="text-start">The Dead Husband Cookbook</h3>
-                        <p class="">Author name</p>
-                        <p><small>Genre: Young Adult</small></p>
-                        <p><small>Published - (1993)</small></p>
+                        <h3 class="text-start">{{ book.book.title }}</h3>
+                        <p class="">{{ book.book.author }}</p>
+                        <p><small>Genre:
+              {% for g in book.genre.all %}
+              {{ g.name }}{% if not forloop.last %}, {% endif %}
+              {% empty %}
+              None
+              {% endfor %}
+            </small></p>
+                        <p><small>Published - {{ book.book.published }}</small></p>
                     </div>
     
                     <!-- Edit/Delete section -->
@@ -115,7 +145,7 @@
                                 Update list
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Reading</a></li>
+                                <li><a class="dropdown-item" href="#">Plan To Read</a></li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
@@ -130,6 +160,11 @@
                 </div>
             </div>
             <hr class="divider">
+            {% endfor %}
+                        {% else %}
+            <p class="accent"> No books have been added yet. </p>
+            <hr class="divider">
+            {% endif %}
         </section>
     
         <!-- Complete Section header -->
@@ -143,20 +178,30 @@
     
                     <hr class="divider">
                 </div>
+                {% if completed_books %}
+                {% for book in completed_books %}
                 <div class="library-body space row">
                     <!-- Book Cover -->
                     <div class="library-book-cover space col-3">
                         <div class="">
-                            <img src="../media/books/book-cover-1.jpg" class="img-fluid" alt="..." />
+                            <img src="{{ book.book.cover_image_url }}"
+                                    class="img-fluid list-books"
+                                    alt="{{ book.book.title }}" />
                         </div>
                     </div>
     
                     <!-- Books details -->
                     <div class="library-book-details space col-6 text-start">
-                        <h3 class="text-start">The Dead Husband Cookbook</h3>
-                        <p class="">Author name</p>
-                        <p><small>Genre: Young Adult</small></p>
-                        <p><small>Published - (1993)</small></p>
+                        <h3 class="text-start">{{ book.book.title }}</h3>
+                        <p class="">{{ book.book.author }}</p>
+                        <p><small>Genre:
+              {% for g in book.genre.all %}
+              {{ g.name }}{% if not forloop.last %}, {% endif %}
+              {% empty %}
+              None
+              {% endfor %}
+            </small></p>
+                        <p><small>Published - {{ book.book.published }}</small></p>
                     </div>
     
                     <!-- Edit/Delete section -->
@@ -167,11 +212,11 @@
                                 Update list
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Reading</a></li>
+                                <li><a class="dropdown-item" href="#">Plan To Read</a></li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
-                                <li><a class="dropdown-item" href="#">Plan to Read</a></li>
+                                <li><a class="dropdown-item" href="#">Complete</a></li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
@@ -182,6 +227,12 @@
                 </div>
             </div>
             <hr class="divider">
+            {% endfor %}
+                        {% else %}
+            <p class="accent"> No books have been added yet. </p>
+            <hr class="divider">
+            {% endif %}
         </section>
     </main>
+
 {% endblock %}

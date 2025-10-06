@@ -35,3 +35,19 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
       }
     });
   });
+
+
+  //changes active tab once selected
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll("#bookTabs .nav-link");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", function () {
+        // Remove 'active' from all tabs
+        tabs.forEach(t => t.classList.remove("active"));
+
+        // Add 'active' to the clicked one
+        this.classList.add("active");
+      });
+    });
+  });
