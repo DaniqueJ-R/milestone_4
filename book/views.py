@@ -84,6 +84,9 @@ def book_details(request, slug):
     return render(request, 'book/book-details.html', context)
 
 
+def my_library(request):
+
+    return render(request, 'book/my-library.html')
 # def post_detail(request, slug):
 
 #     queryset = Post.objects.filter(status=1)

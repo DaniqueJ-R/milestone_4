@@ -54,6 +54,12 @@ hr {
   color: transparent;
 }
 
+.divider {
+  border: none;
+  border-top: 1.5px solid rgba(0, 0, 0, 0.8); /* or any color */
+  margin: 1rem 0;
+}
+
 .accent {
   font-family: var(--accent-font);
 }
@@ -173,11 +179,12 @@ hr {
 
 .footer-link-block,
 .footer-link-icon-block {
-  background-image: url(../images/footer-sns-border.png);
+  background-image: url(../static/images/footer-sns-border.png);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 720px 1px;
   padding-top: 20px;
+  color: aqua;
 }
 
 .footer-link-block > p > a {
@@ -399,6 +406,15 @@ hr {
 
 /* End Book_details HTML */
 
+/* Library HTML */
+.library-book-cover > div > .img-fluid{
+  max-width: 40%;
+}
+
+.library-book-details > p {
+  line-height: 0.6rem;
+}
+
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {
@@ -444,24 +460,6 @@ hr {
 /* Changes settings below 1200px (extra large) */
 @media screen and (max-width: 1200px) {
 }
-
-/* 
-
-.for-overlap-posters{
- .poster-list-overlapped .posterlist>.posteritem:nth-child(4) {
-    z-index: 12;
-}
-.poster-list-overlapped .posterlist>.posteritem {
-    margin-inline-start: calc(-1 * var(--poster-overlap));
-    width: var(--poster-width);
-    min-width: var(--poster-min-width);
-    height: auto;
-    aspect-ratio: var(--poster-aspect-ratio);
-}
-p, li, td, th, dt, dd, cite, blockquote, label, legend {
-    font-size: inherit;
-    line-height: 1.38461538; 
-} */
 
 /* delete */
 /* .space{
