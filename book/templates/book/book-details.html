@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}
+Book Details | {{ book.title }}
+{% endblock%}
+
 {% block content %}
 <main class="container text-center">
   <!-- Books cover -->

@@ -92,11 +92,13 @@ def my_library(request):
     reading_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.READING).order_by('-added_on')
     completed_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.COMPLETE).order_by('-added_on')
     plan_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.PLAN_TO).order_by('-added_on')
+    all_books = TrackerList.objects.all()
 
     context = {
         'reading_books': reading_books,
         'completed_books': completed_books,
         'plan_books': plan_books,
+        'all_books': all_books,
     }
 
     return render(request, 'book/my-library.html', context)
