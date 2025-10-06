@@ -29,9 +29,8 @@ body {
 
 .bg-image {
   background: url(../images/front-view-books-with-copy-space.jpg) no-repeat 10%
-    center fixed;
-  /* background-size: contain; */
-  background-size: cover; /* fills space and crops overflow */
+    20% fixed;
+  background-size: cover;
   height: 15rem;
   width: auto;
   box-shadow: inset 0 -6px 24px 0 rgba(0, 0, 0, 0.2),
@@ -52,6 +51,12 @@ p {
 
 hr {
   color: transparent;
+}
+
+.divider {
+  border: none;
+  border-top: 1.5px solid rgba(0, 0, 0, 0.8); /* or any color */
+  margin: 1rem 0;
 }
 
 .accent {
@@ -173,11 +178,12 @@ hr {
 
 .footer-link-block,
 .footer-link-icon-block {
-  background-image: url(../images/footer-sns-border.png);
+  background-image: url(../static/images/footer-sns-border.png);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 720px 1px;
   padding-top: 20px;
+  color: aqua;
 }
 
 .footer-link-block > p > a {
@@ -399,6 +405,40 @@ hr {
 
 /* End Book_details HTML */
 
+/* Library HTML */
+
+#my-library-header {
+height: 11.9rem;
+    padding-top: 52px;
+    margin-top: 41px;
+}
+
+#bookTabs > li > a {
+  color: var(--primary-color);
+}
+.section-header {
+  margin-top: 2rem;
+}
+
+.library-book-cover > div > .img-fluid {
+  max-width: 40%;
+}
+
+.library-book-details > p {
+  line-height: 0.6rem;
+}
+
+.list-books {
+  min-width: 5em;
+  max-width: 5em;
+}
+
+.library-book-details {
+  max-width: 34em;
+}
+
+/* End Library HTML */
+
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {
@@ -444,24 +484,6 @@ hr {
 /* Changes settings below 1200px (extra large) */
 @media screen and (max-width: 1200px) {
 }
-
-/* 
-
-.for-overlap-posters{
- .poster-list-overlapped .posterlist>.posteritem:nth-child(4) {
-    z-index: 12;
-}
-.poster-list-overlapped .posterlist>.posteritem {
-    margin-inline-start: calc(-1 * var(--poster-overlap));
-    width: var(--poster-width);
-    min-width: var(--poster-min-width);
-    height: auto;
-    aspect-ratio: var(--poster-aspect-ratio);
-}
-p, li, td, th, dt, dd, cite, blockquote, label, legend {
-    font-size: inherit;
-    line-height: 1.38461538; 
-} */
 
 /* delete */
 /* .space{
