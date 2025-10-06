@@ -139,6 +139,12 @@ hr {
   --bs-dropdown-padding-y: 0rem;
 }
 
+#reading-header,
+#plan-to-read-header,
+#complete-header {
+  scroll-margin-top: 80px; /* height of your fixed navbar + a few px */
+}
+
 /* Footer */
 
 #footer {

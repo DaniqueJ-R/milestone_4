@@ -29,8 +29,8 @@ SECRET_KEY = (
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True = development mode, False = production mode
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -103,18 +103,6 @@ SITE_ID = 1
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-# ACCOUNT_LOGIN_METHODS = {'username', 'email'}
-# ACCOUNT_SIGNUP_FIELDS = [
-# 'email*', 'email2*', 'username*', 'password1*', 'password2*']
-
-# ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-# ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
-# ACCOUNT_USERNAME_MIN_LENGTH = 4
-# LOGIN_URL = '/accounts/login/'
-# LOGIN_REDIRECT_URL = '/'
-
 # Login method and signup fields
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
 ACCOUNT_SIGNUP_FIELDS = [
@@ -172,6 +160,13 @@ AUTH_PASSWORD_VALIDATORS = [
         ),
     },
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1",
+    "http://localhost",
+    "https://little-libraries.herokuapp.com",  # Replace with your Heroku app name if you deploy there
+]
+
 
 
 # Internationalization
