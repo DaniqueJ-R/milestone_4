@@ -125,7 +125,13 @@ def edit_tracker(request, tracker_id):
 
         tracker.status = new_status
         tracker.save()
-        messages.success(request, f"'{tracker.book.title}' was moved to {tracker.status.title()} in your library.")
+        messages.success(
+            request,
+            (
+                f"'{tracker.book.title}' was moved to "
+                f"{tracker.status.title()} in your library."
+            )
+        )
     return redirect('my_library')
 
 

@@ -443,6 +443,11 @@ height: 11.9rem;
     max-width: 34em;
 }
 
+.library-book-details > a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
 /* End Library HTML */
 
 /* Changes settings below 619 px (Small) */

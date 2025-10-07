@@ -49,14 +49,18 @@ My Library
                 <!-- Book Cover -->
                 <div class="library-book-cover space col-12 col-lg-3">
                     <div class="">
+                        <a href="{% url 'book_details' book.book.slug %}">
                         <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
                             alt="{{ book.book.title }}" />
+                        </a>
                     </div>
                 </div>
 
                 <!-- Books details -->
                 <div class="library-book-details space col-12 col-lg-6 text-start">
-                    <h3 class="text-start">{{ book.book.title }}</h3>
+                    <a href="{% url 'book_details' book.book.slug %}">
+                        <h3 class="text-start">{{ book.book.title }}</h3>
+                        </a>
                     <p class="">{{ book.book.author }}</p>
                     <p><small>Genre:
                             {% for g in book.genre.all %}
@@ -117,14 +121,18 @@ My Library
                 <!-- Book Cover -->
                 <div class="library-book-cover space col-12 col-lg-3">
                     <div class="">
+                        <a href="{% url 'book_details' book.book.slug %}">
                         <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
                             alt="{{ book.book.title }}" />
+                        </a>
                     </div>
                 </div>
 
                 <!-- Books details -->
                 <div class="library-book-details space col-12 col-lg-6 text-start">
-                    <h3 class="text-start">{{ book.book.title }}</h3>
+                    <a href="{% url 'book_details' book.book.slug %}">
+                        <h3 class="text-start">{{ book.book.title }}</h3>
+                        </a>
                     <p class="">{{ book.book.author }}</p>
                     <p><small>Genre:
                             {% for g in book.genre.all %}
@@ -186,14 +194,18 @@ My Library
                 <!-- Book Cover -->
                 <div class="library-book-cover space col-12 col-lg-3">
                     <div class="">
+                        <a href="{% url 'book_details' book.book.slug %}">
                         <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
                             alt="{{ book.book.title }}" />
+                        </a>
                     </div>
                 </div>
 
                 <!-- Books details -->
                 <div class="library-book-details space col-12 col-lg-6 text-start">
-                    <h3 class="text-start">{{ book.book.title }}</h3>
+                    <a href="{% url 'book_details' book.book.slug %}">
+                        <h3 class="text-start">{{ book.book.title }}</h3>
+                        </a>
                     <p class="">{{ book.book.author }}</p>
                     <p><small>Genre:
                             {% for g in book.genre.all %}
@@ -207,7 +219,7 @@ My Library
                     {% if book.user_review %}
                     <p class="text-success"><small>✓ Reviewed: {{ book.user_review.star_rating }}/5 ⭐</small></p>
                     {% else %}
-                    <p class="text-muted"><small>No review yet - <a href="{% url 'book_detail' book.book.slug %}">Add one?</a></small></p>
+                    <p class="text-muted"><small>No review yet - <a href="{% url 'book_details' book.book.slug %}" class="accent">Add one?</a></small></p>
                     {% endif %}
                     </div>
 
