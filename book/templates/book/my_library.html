@@ -259,3 +259,99 @@ My Library
 
 {% endblock %}
 
+
+{% block modals %}
+{% for book in all_books %}
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete {{ book.book.title }}?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to <strong>delete</strong> this book from your library?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{% url 'delete_tracker' book.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Move to Complete List Modal -->
+<div class="modal fade" id="completeModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Move {{ book.book.title }} to <strong>Completed</strong>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to move this book to <strong>Completed</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="1">
+                    <button type="submit" class="btn btn-danger">Move</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Move to Plan to Read List Modal -->
+<div class="modal fade" id="planModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Move {{ book.book.title }} to <strong>Plan to Read</strong>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to move this book to <strong>Plan to Read</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="2">
+                    <button type="submit" class="btn btn-danger">Move</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Move to Reading List Modal -->
+<div class="modal fade" id="readingModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Move {{ book.book.title }} to <strong>Reading</strong>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to move this book to <strong>Reading</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="0">
+                    <button type="submit" class="btn btn-danger">Move</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

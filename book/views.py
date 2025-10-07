@@ -86,9 +86,42 @@ def book_details(request, slug):
     return render(request, 'book/book_details.html', context)
 
 
+
+@login_required
+def add_tracker(request, book_id):
+    """Add a book to user's tracker (creates new TrackerList entry)"""
+
+    book = get_object_or_404(Book, id=book_id)
+
+    # Check if book already in user's library
+    existing = TrackerList.objects.filter(user=request.user, book=book).first()
+    if existing:
+        messages.info(request, f"'{book.title}' is already in your library.")
+        return redirect('my_library')
+
+    if request.method == 'POST':
+        status = request.POST.get('status')
+
+        # Create new tracker entry
+        TrackerList.objects.create(
+            user=request.user,
+            book=book,
+            status=status
+        )
+
+        messages.success(request, f"'{book.title}' added to your library!")
+        return redirect('my_library')
+
+    # If GET request, should not reach here
+    return redirect('book_details', slug=book.slug)
+
+
 @login_required
 def my_library(request):
-    """Display the logged in user's Complete, Plan to read, and Reading book lists."""
+    """
+    Display the logged in user's Complete, 
+    Plan to read, and Reading book lists.
+    """
 
     all_books = TrackerList.objects.filter(
         user=request.user)
@@ -145,6 +178,8 @@ def delete_tracker(request, tracker_id):
         tracker.delete()
         messages.success(request, f"'{title}' was deleted from your library.")
     return redirect('my_library')
+
+
 
 # # Update a note
 # class NoteUpdateView(LoginRequiredMixin, UpdateView):

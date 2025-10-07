@@ -17,8 +17,9 @@ Book Details | {{ book.title }}
           alt="{{ book.title }}"
           />
           <br>
+          
         <div class="btn-group">
-          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"aria-expanded="false">
           Add to list
           </button>
                                   <ul class="dropdown-menu">
@@ -100,4 +101,77 @@ Book Details | {{ book.title }}
     </div>
   </div>
 </main>
+{% endblock %}
+
+
+{% block modals %}
+<!-- Move to Complete List Modal -->
+<div class="modal fade" id="completeModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add {{ book.book.title }} to <strong>Completed</strong>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to add this book to <strong>Completed</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="1">
+                    <button type="submit" class="btn btn-danger">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Move to Plan to Read List Modal -->
+<div class="modal fade" id="planModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add {{ book.book.title }} to <strong>Plan to Read</strong>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to add this book to <strong>Plan to Read</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="2">
+                    <button type="submit" class="btn btn-danger">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Move to Reading List Modal -->
+<div class="modal fade" id="readingModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add {{ book.book.title }} to <strong>Reading</strong>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to add this book to <strong>Reading</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="0">
+                    <button type="submit" class="btn btn-danger">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
