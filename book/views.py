@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import HttpResponse
 
 from .models import Book, TrackerStatus, TrackerList
 from review.models import Review
@@ -86,33 +85,32 @@ def book_details(request, slug):
     return render(request, 'book/book_details.html', context)
 
 
-
 @login_required
-def add_tracker(request, book_id):
-    """Add a book to user's tracker (creates new TrackerList entry)"""
+def add_or_update_tracker(request, book_id):
+    """Add book to tracker OR update status if already exists"""
 
     book = get_object_or_404(Book, id=book_id)
-
-    # Check if book already in user's library
-    existing = TrackerList.objects.filter(user=request.user, book=book).first()
-    if existing:
-        messages.info(request, f"'{book.title}' is already in your library.")
-        return redirect('my_library')
 
     if request.method == 'POST':
         status = request.POST.get('status')
 
-        # Create new tracker entry
-        TrackerList.objects.create(
+        # Try to get existing tracker
+        tracker, created = TrackerList.objects.get_or_create(
             user=request.user,
             book=book,
-            status=status
+            defaults={'status': status}
         )
 
-        messages.success(request, f"'{book.title}' added to your library!")
-        return redirect('my_library')
+        if created:
+            messages.success(request, f"'{book.title}' added to your library!")
+        else:
+            # Already exists, update the status
+            tracker.status = status
+            tracker.save()
+            messages.success(request, f"'{book.title}' moved to {dict(TrackerStatus.choices)[int(status)]}!")
 
-    # If GET request, should not reach here
+        return redirect('book_details', slug=book.slug)
+
     return redirect('book_details', slug=book.slug)
 
 
