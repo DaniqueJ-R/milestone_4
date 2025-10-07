@@ -21,17 +21,20 @@ Book Details | {{ book.title }}
           <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Add to list
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Plan To Read</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Reading</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Complete</a></li>
-          </ul>
+                                  <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#planModal{{ book.id }}">Plan To Read</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#completeModal{{ book.id }}">Complete</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#readingModal{{ book.id }}">Reading</a></li>
+                        </ul>
         </div>
       </div>
       <!-- Books details -->
@@ -41,7 +44,7 @@ Book Details | {{ book.title }}
           <p class="">{{ book.author }}</p>
           {% if avg_rating %}
             <p>{{ avg_rating|floatformat:1 }}/5 <i class="fa-solid fa-star"></i> ({{ review_count }} reviews)</p>
-          {% else %}
+          {% else %
             <p>No rating yet</p>
           {% endif %}
           <div style="display: flex; justify-content: space-between; align-items: center;">

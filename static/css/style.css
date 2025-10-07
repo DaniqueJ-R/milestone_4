@@ -440,7 +440,7 @@ height: 11.9rem;
 }
 
 .library-book-details {
-  max-width: 34em;
+    max-width: 34em;
 }
 
 /* End Library HTML */
@@ -464,6 +464,16 @@ height: 11.9rem;
   #books-to-read {
     margin-left: 1rem;
   }
+
+  .library-book-details {
+    margin-top: 2rem;
+    margin-left: 29%;
+    max-width: 16em;
+}
+
+  .library-book-cover{
+    margin-top: 2rem;
+  }
 }
 
 /* Changes settings below 768px (medium) */
@@ -481,6 +491,20 @@ height: 11.9rem;
     background-size: cover; /* fills space and crops overflow */
     height: fit-content;
   }
+
+  .library-book-details {
+    margin-top: 2rem;
+    margin-left: 34%;
+    max-width: 16em;
+  }
+
+  .library-book-cover {
+    margin-top: 2rem;
+  }
+
+  .library-book-cover > div > .img-fluid {
+    max-width: 30%;
+}
 }
 
 /* Changes settings below 992px (large) */
