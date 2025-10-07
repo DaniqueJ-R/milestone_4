@@ -15,7 +15,7 @@ Home
         <p>Your hub for the world of books</p>
         <!-- User name greeting -->
         {% if request.user.is_authenticated %}
-        <p class="index-greeting">Welcome back <a href="" class="no-decor main-color accent">Username</a>, Let's catch up on your progress!</p>
+        <p class="index-greeting">Welcome back <a href="" class="no-decor main-color accent">{{ user.username }}</a>, Let's catch up on your progress!</p>
         {% else %}
         <p class="index-greeting">Welcome! You can <a href="{% url 'account_login' %}" class="no-decor main-color accent">log in</a> or <a href="{% url 'account_signup' %}" class="no-decor main-color accent">register</a> so you can log your progress.</p>
         {% endif %}

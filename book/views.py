@@ -90,10 +90,19 @@ def book_details(request, slug):
 def my_library(request):
     """Display the logged in user's Complete, Plan to read, and Reading book lists."""
 
-    reading_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.READING).order_by('-added_on')
-    completed_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.COMPLETE).order_by('-added_on')
-    plan_books = TrackerList.objects.filter(user=request.user, status=TrackerStatus.PLAN_TO).order_by('-added_on')
-    all_books = TrackerList.objects.filter(user=request.user)
+    all_books = TrackerList.objects.filter(
+        user=request.user)
+    reading_books = TrackerList.objects.filter(
+        user=request.user, status=TrackerStatus.READING).order_by('-added_on')
+    plan_books = TrackerList.objects.filter(
+        user=request.user, status=TrackerStatus.PLAN_TO).order_by('-added_on')
+    completed_books = TrackerList.objects.filter(
+        user=request.user, 
+        status=TrackerStatus.COMPLETE
+    ).select_related('book').prefetch_related('book__reviews').order_by('-added_on')
+
+    for book in completed_books:
+        book.user_review = book.book.reviews.filter(user=request.user).first()
 
     context = {
         'reading_books': reading_books,

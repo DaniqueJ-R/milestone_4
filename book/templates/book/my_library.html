@@ -203,7 +203,13 @@ My Library
                             {% endfor %}
                         </small></p>
                     <p><small>Published - {{ book.book.published }}</small></p>
-                </div>
+                    
+                    {% if book.user_review %}
+                    <p class="text-success"><small>✓ Reviewed: {{ book.user_review.star_rating }}/5 ⭐</small></p>
+                    {% else %}
+                    <p class="text-muted"><small>No review yet - <a href="{% url 'book_detail' book.book.slug %}">Add one?</a></small></p>
+                    {% endif %}
+                    </div>
 
                 <!-- Edit/Delete section -->
                 <div class="library-book-edit col-12 col-lg-3 space row align-items-center">
