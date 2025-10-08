@@ -10,9 +10,9 @@ Login
 
 {% block content %}
 
-<section class="login-section">
+<section class="login-section text-center">
   <div class="container">
-    <h2>Login</h2>
+    <h2 class="text-center">Login</h2>
     <form method="post" action="{% url 'account_login' %}">
       {% csrf_token %} 
       
@@ -20,8 +20,8 @@ Login
     {% csrf_token %}
     
     <div class="form-group login-form">
-        {{ form.login.label_tag }}
-        <div style="min-width: 10rem;">
+        {{ form.login.label_tag }} <br>
+        <div>
           {{ form.login }}
         </div>
         
@@ -32,7 +32,10 @@ Login
     
     <div class="form-group login-form">
         {{ form.password.label_tag }}<br>
+        <div>
         {{ form.password }}
+        </div>
+
         {% if form.password.errors %}
             <div class="text-danger">{{ form.password.errors }}</div>
         {% endif %}
@@ -55,20 +58,23 @@ Login
     {% endif %}
     <p><a href="">Don't have an account?<br> Sign up here.</a></p>
     <p><a href="">Forgot your password?</a></p>
-  </div>
 
-  {% load socialaccount %}
+      {% load socialaccount %}
 
-<div class="container">
+<div class="container my-2">
   <h2>
             Or use a third-party
         </h2>
-        <div class="social"></div>
+        <div class="social mt-3">
   <a href="{% provider_login_url 'google' %}" class="social-login-btn-content social-login">
-    <img height="16px" width="16px" src="{% static 'images/google_logo.28d9eb28faa.svg' %}" alt="Google">
-    Continue with Google
+    <img src="{% static 'images/google_logo.28d9eb28faa.svg' %}" alt="Google">
+    Login with Google
   </a>
 </div>
+</div>
+  </div>
+
+
 
 </section>
 

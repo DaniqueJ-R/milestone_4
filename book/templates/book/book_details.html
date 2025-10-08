@@ -195,19 +195,19 @@ Book Details | {{ book.title }}
       <!-- Review area -->
       <div class="modal-body my-1">
         <div id="leave-a-review" >
-        <form method="POST" action="">
+        <form method="POST" action="{% url 'add_review' book.id %}">
           {% csrf_token %}
 
           <!-- Review Title -->
           <div class="review-title my-2">
-            <label for="name">Review Title:</label>
-            <input type="text" name="name" id="name" placeholder="Required..">
+            <label for="review_title">Review Title:</label>
+            <input type="text" name="review_title" name="review_title" id="review_title" placeholder="Required..">
           </div>
 
           <!-- Review rate -->
-          <div class="review-rate my-3">
-            <label for="star-rating">Star Rating:</label>
-            <select name="star-rating" id="star-rating">
+          <div class="star_rating my-3">
+            <label for="star_rating">Star Rating:</label>
+            <select name="star_rating" id="star_rating">
               <option value="" disabled selected>Select a rating <i class="fa-solid fa-star"></i></option>
               <option value="0">(0) Appauling</option>
               <option value="1">(1) Very Bad</option>
@@ -219,9 +219,9 @@ Book Details | {{ book.title }}
           </div>
 
           <!-- Review textarea -->
-          <div class="review-textarea my-3">
-            <label for="content" class="visually-hidden">Review</label>
-            <textarea name="content" id="content" required placeholder="Write a review here..."></textarea>
+          <div class="review_body my-3">
+            <label for="review_body" class="visually-hidden">Review</label>
+            <textarea name="review_body" id="review_body" required placeholder="Write a review here..."></textarea>
           </div>
 
 
