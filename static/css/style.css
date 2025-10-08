@@ -409,6 +409,19 @@ hr {
   color: var(--light-highlight-color);
 }
 
+#leave-a-review {
+  margin-left: 2rem;
+}
+
+#leave-a-review textarea {
+  width: 85%;
+  padding: 1rem;
+  font-size: 1rem;
+  box-sizing: content-box;
+  height: 115px;
+  border-radius: 35px;
+}
+
 /* End Book_details HTML */
 
 /* Library HTML */

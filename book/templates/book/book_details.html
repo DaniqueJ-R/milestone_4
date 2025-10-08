@@ -37,6 +37,11 @@ Book Details | {{ book.title }}
                                     data-bs-target="#readingModal{{ book.id }}">Reading</a></li>
                         </ul>
         </div>
+        <br>
+
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#leaveAReview">
+  Leave a review
+</button>
       </div>
       <!-- Books details -->
       <div class="space col-12 col-lg-6 text-start">
@@ -45,7 +50,7 @@ Book Details | {{ book.title }}
           <p class="">{{ book.author }}</p>
           {% if avg_rating %}
             <p>{{ avg_rating|floatformat:1 }}/5 <i class="fa-solid fa-star"></i> ({{ review_count }} reviews)</p>
-          {% else %
+          {% else %}
             <p>No rating yet</p>
           {% endif %}
           <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -84,7 +89,7 @@ Book Details | {{ book.title }}
         </div>
         {% else %}
         <div id="reviews">
-          <h5 class="text-center">There are no reviews for this book. <a href="{% url 'account_login' %}">Be the first!</a></h5>
+          <h5 class="text-center">There are no reviews for this book. <a href="{% url 'account_login' %}" data-bs-toggle="modal" data-bs-target="#leaveAReview">Be the first!</a></h5>
         </div>
         {% endif %}
 
@@ -128,6 +133,7 @@ Book Details | {{ book.title }}
         </div>
     </div>
 </div>
+
 <!-- Move to Plan to Read List Modal -->
 <div class="modal fade" id="planModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -151,6 +157,7 @@ Book Details | {{ book.title }}
         </div>
     </div>
 </div>
+
 <!-- Move to Reading List Modal -->
 <div class="modal fade" id="readingModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -172,6 +179,66 @@ Book Details | {{ book.title }}
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Review Modal -->
+<div class="modal fade" id="leaveAReview" tabindex="-1" aria-labelledby="leaveAReview" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="leaveAReview">Leave a review</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Review area -->
+      <div class="modal-body my-1">
+        <div id="leave-a-review" >
+        <form method="POST" action="">
+          {% csrf_token %}
+
+          <!-- Review Title -->
+          <div class="review-title my-2">
+            <label for="name">Review Title:</label>
+            <input type="text" name="name" id="name" placeholder="Required..">
+          </div>
+
+          <!-- Review rate -->
+          <div class="review-rate my-3">
+            <label for="star-rating">Star Rating:</label>
+            <select name="star-rating" id="star-rating">
+              <option value="" disabled selected>Select a rating <i class="fa-solid fa-star"></i></option>
+              <option value="0">(0) Appauling</option>
+              <option value="1">(1) Very Bad</option>
+              <option value="2">(2) Bad</option>
+              <option value="3">(3) Average</option>
+              <option value="4">(4) Very Good</option>
+              <option value="5">(5) Amazing</option>
+            </select>
+          </div>
+
+          <!-- Review textarea -->
+          <div class="review-textarea my-3">
+            <label for="content" class="visually-hidden">Review</label>
+            <textarea name="content" id="content" required placeholder="Write a review here..."></textarea>
+          </div>
+
+
+          <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </div>
+        </form>
+          
+
+
+
+
+        </div>
+      </div>
+      </div>
     </div>
 </div>
 {% endblock %}
