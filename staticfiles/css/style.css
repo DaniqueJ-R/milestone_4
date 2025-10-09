@@ -139,6 +139,12 @@ hr {
   --bs-dropdown-padding-y: 0rem;
 }
 
+#reading-header,
+#plan-to-read-header,
+#complete-header {
+  scroll-margin-top: 80px; /* height of your fixed navbar + a few px */
+}
+
 /* Footer */
 
 #footer {
@@ -274,6 +280,63 @@ hr {
 
 /* Base HMTL End */
 
+/* Log in HTML */
+
+.login-section {
+  margin: 2rem 35%;
+}
+
+.login-form {
+  margin-bottom: 1rem;
+  min-width: 5rem;
+}
+
+#login {
+  color: var(--primary-color);
+}
+
+#login:hover {
+  color: var(--white);
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-login-btn-content {
+  color: var(--highlight-color) !important;
+  fill: var(--black) !important;
+  font-family: var(--accent-font) !important;
+  height: 52px;
+  border: 1px solid #bcbdbe;
+  border-radius: 32px;
+  text-decoration: none;
+}
+
+.social-login-btn-content:hover {
+  background-color: #e7e7e7;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  color: var(--black) !important;
+}
+
+.social-login-btn-content > img {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+}
+
+.social-login > ul > li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Log in END */
+
 /* Index HTML */
 
 .index-greeting {
@@ -387,6 +450,14 @@ hr {
   margin-top: 2rem;
 }
 
+.card-link{
+  cursor: pointer;
+}
+
+.star_rating select {
+  width: 12.2rem;
+}
+
 #reviews {
   padding-top: 1.5rem;
 }
@@ -403,19 +474,33 @@ hr {
   color: var(--light-highlight-color);
 }
 
+#leave-a-review {
+  margin-left: 2rem;
+}
+
+#leave-a-review textarea {
+  width: 85%;
+  padding: 1rem;
+  font-size: 1rem;
+  box-sizing: content-box;
+  height: 115px;
+  border-radius: 35px;
+}
+
 /* End Book_details HTML */
 
 /* Library HTML */
 
 #my-library-header {
-height: 11.9rem;
-    padding-top: 52px;
-    margin-top: 41px;
+  height: 11.9rem;
+  padding-top: 52px;
+  margin-top: 41px;
 }
 
 #bookTabs > li > a {
   color: var(--primary-color);
 }
+
 .section-header {
   margin-top: 2rem;
 }
@@ -437,10 +522,16 @@ height: 11.9rem;
   max-width: 34em;
 }
 
+.library-book-details > a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
 /* End Library HTML */
 
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
+
   .icon-recommended {
     padding: 4px 18px 0 39px;
   }
@@ -458,6 +549,20 @@ height: 11.9rem;
   #books-to-read {
     margin-left: 1rem;
   }
+
+  .library-book-details {
+    margin-top: 2rem;
+    margin-left: 29%;
+    max-width: 16em;
+  }
+
+  .library-book-cover {
+    margin-top: 2rem;
+  }
+
+    .login-section {
+    margin: 2rem 18% !important;
+  }
 }
 
 /* Changes settings below 768px (medium) */
@@ -474,6 +579,24 @@ height: 11.9rem;
       20% center fixed;
     background-size: cover; /* fills space and crops overflow */
     height: fit-content;
+  }
+
+  .library-book-details {
+    margin-top: 2rem;
+    margin-left: 34%;
+    max-width: 16em;
+  }
+
+  .library-book-cover {
+    margin-top: 2rem;
+  }
+
+  .library-book-cover > div > .img-fluid {
+    max-width: 30%;
+  }
+
+  .login-section {
+    margin: 2rem 30%;
   }
 }
 
