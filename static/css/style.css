@@ -450,6 +450,10 @@ hr {
   margin-top: 2rem;
 }
 
+.card-link{
+  cursor: pointer;
+}
+
 .star_rating select {
   width: 12.2rem;
 }

@@ -27,6 +27,7 @@ class Review(models.Model):
     star_rating = models.IntegerField(choices=STAR_RATING, default=1)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+    review_id = models.AutoField(primary_key=True, null=False)
 
     def __str__(self):
         return f"Review of {self.book.title} by {self.user.username}"

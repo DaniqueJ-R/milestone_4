@@ -47,24 +47,6 @@ def books_page(request):
 
 
 def book_details(request, slug):
-    """
-    Display an individual :model:`blog.Post`.
-
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-    ``comments``
-        All approved comments related to the post.
-    ``comment_count``
-        A count of approved comments related to the post.
-    ``comment_form``
-        An instance of :form:`blog.CommentForm`
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
-    """
     """ A view to show individual book details """
 
     queryset = Book.objects.all()
@@ -73,6 +55,9 @@ def book_details(request, slug):
     other_books = Book.objects.exclude(id=book.id).order_by('?')[:3]
     avg_rating = book_reviews.aggregate(Avg('star_rating'))['star_rating__avg']
     # This returns None if no reviews exist
+    user_review = None
+    if request.user.is_authenticated:
+        user_review = Review.objects.filter(user=request.user, book=book).first()
 
     context = {
         'book': book,
@@ -80,6 +65,7 @@ def book_details(request, slug):
         'other_books': other_books,
         'avg_rating': avg_rating,
         'review_count': book_reviews.count(),
+        'user_review': user_review,
     }
 
     return render(request, 'book/book_details.html', context)
@@ -166,8 +152,6 @@ def edit_tracker(request, tracker_id):
     return redirect('my_library')
 
 
-
-
 @login_required
 def delete_tracker(request, tracker_id):
     tracker = get_object_or_404(TrackerList, id=tracker_id, user=request.user)
@@ -176,68 +160,3 @@ def delete_tracker(request, tracker_id):
         tracker.delete()
         messages.success(request, f"'{title}' was deleted from your library.")
     return redirect('my_library')
-
-
-
-# # Update a note
-# class NoteUpdateView(LoginRequiredMixin, UpdateView):
-#     """Allow users to edit their own notes."""
-
-#     model = Note
-#     form_class = NoteForm
-#     template_name = "quote/edit-note.html"
-
-#     def get_queryset(self):
-#         """Prevent editing other people's notes."""
-#         return Note.objects.filter(author=self.request.user)
-
-#     def get_success_url(self):
-#         """Redirect to the user's notes page after update."""
-#         return reverse_lazy("my_notes")
-
-
-# # Delete a note
-# class NoteDeleteView(LoginRequiredMixin, DeleteView):
-#     """Allow users to delete their own notes."""
-
-#     model = Note
-#     template_name = "quote/delete-note.html"
-
-#     def get_queryset(self):
-#         """Prevent deleting other people's notes."""
-#         return Note.objects.filter(author=self.request.user)
-
-#     def get_success_url(self):
-#         """Redirect to the user's notes page after deletion."""
-#         return reverse_lazy("my_notes")
-    
-
-# def post_detail(request, slug):
-
-#     queryset = Post.objects.filter(status=1)
-#     post = get_object_or_404(queryset, slug=slug)
-#     comments = post.comments.all().order_by("-created_on")
-#     comment_count = post.comments.filter(approved=True).count()
-#     if request.method == "POST":
-#         comment_form = CommentForm(data=request.POST)
-#         if comment_form.is_valid():
-#             comment = comment_form.save(commit=False)
-#             comment.author = request.user
-#             comment.post = post
-#             comment.save()
-#             messages.add_message(
-#                 request, messages.SUCCESS,
-#                 'Comment submitted and awaiting approval'
-#             )
-#     comment_form = CommentForm()
-
-#     return render(
-#         request,
-#         "blog/post_detail.html",
-#         {
-#             "post": post,
-#             "comments": comments,
-#             "comment_count": comment_count,
-#             "comment_form": comment_form,
-#         },
-#     )

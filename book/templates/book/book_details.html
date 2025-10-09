@@ -67,31 +67,59 @@ Book Details | {{ book.title }}
             {{ book.description }}
           </p>
         </div>
-          {% if book_reviews %}
-        <div class="reviews">
-          {% for review in book_reviews %}
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">{{ review.user.username }}</h6>
-              <h6 class="card-subtitle mb-2 text-body-secondary">
-                {{ review.review_title }} <span class="accent"> {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></span>
-              </h6>
-              <p class="card-text">
-                {{ review.review_body }}
-              </p>
-              {% if request.user.is_authenticated %}
-              <a href="#" class="card-link">Edit</a>
-              <a href="#" class="card-link">Delete</a>
-              {% endif %}
+{% if book_reviews %}
+  <div class="reviews">
+    {% for review in book_reviews %}
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">{{ review.user.username }}</h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            {{ review.review_title }} 
+            <span class="accent"> {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></span>
+          </h6>
+          <p class="card-text">
+            {{ review.review_body }}
+          </p>
+          {% if request.user == review.user %}  
+            <a data-bs-toggle="modal" data-bs-target="#leaveAReview" class="card-link">Edit</a>
+            <a data-bs-toggle="modal" data-bs-target="#deleteAReview{{ review.review_id }}" class="card-link">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Delete Review Modal -->
+      <div class="modal fade" id="deleteAReview{{ review.review_id }}" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete your review?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete your review for <strong>{{ book.title }}</strong>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <form method="POST" action="{% url 'delete_review' review.review_id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
             </div>
           </div>
-          {% endfor %}
         </div>
-        {% else %}
-        <div id="reviews">
-          <h5 class="text-center">There are no reviews for this book. <a href="{% url 'account_login' %}" data-bs-toggle="modal" data-bs-target="#leaveAReview">Be the first!</a></h5>
-        </div>
-        {% endif %}
+      </div>
+
+    {% endfor %}
+  </div>
+{% else %}
+  <div id="reviews">
+    <h5 class="text-center">
+      There are no reviews for this book. 
+      <a href="{% url 'account_login' %}" data-bs-toggle="modal" data-bs-target="#leaveAReview">Be the first!</a>
+    </h5>
+  </div>
+{% endif %}
+
 
       </div>
       <div class="space col-12 col-lg-3 other-books">
@@ -111,6 +139,7 @@ Book Details | {{ book.title }}
 
 {% block modals %}
 <!-- Move to Complete List Modal -->
+ {% if request.user.is_authenticated %}
 <div class="modal fade" id="completeModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -188,7 +217,7 @@ Book Details | {{ book.title }}
     <div class="modal-content">
       <!-- Header -->
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="leaveAReview">Leave a review</h1>
+        <h1 class="modal-title fs-5" id="leaveAReview">{% if user_review %}Edit Your Review{% else %}Leave a Review{% endif %}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -201,7 +230,7 @@ Book Details | {{ book.title }}
           <!-- Review Title -->
           <div class="review-title my-2">
             <label for="review_title">Review Title:</label>
-            <input type="text" name="review_title" name="review_title" id="review_title" placeholder="Required..">
+            <input type="text" name="review_title" name="review_title" id="review_title" value="{{ user_review.review_title|default:'' }}" required placeholder="Required..">
           </div>
 
           <!-- Review rate -->
@@ -209,26 +238,26 @@ Book Details | {{ book.title }}
             <label for="star_rating">Star Rating:</label>
             <select name="star_rating" id="star_rating">
               <option value="" disabled selected>Select a rating <i class="fa-solid fa-star"></i></option>
-              <option value="0">(0) Appauling</option>
-              <option value="1">(1) Very Bad</option>
-              <option value="2">(2) Bad</option>
-              <option value="3">(3) Average</option>
-              <option value="4">(4) Very Good</option>
-              <option value="5">(5) Amazing</option>
+              <option value="0" {% if user_review.star_rating == 0 %}selected{% endif %}>(0) Appauling</option>
+              <option value="1" {% if user_review.star_rating == 1 %}selected{% endif %}>(1) Very Bad</option>
+              <option value="2" {% if user_review.star_rating == 2 %}selected{% endif %}>(2) Bad</option>
+              <option value="3" {% if user_review.star_rating == 3 %}selected{% endif %}>(3) Average</option>
+              <option value="4" {% if user_review.star_rating == 4 %}selected{% endif %}>(4) Very Good</option>
+              <option value="5" {% if user_review.star_rating == 5 %}selected{% endif %}>(5) Amazing</option>
             </select>
           </div>
 
           <!-- Review textarea -->
           <div class="review_body my-3">
             <label for="review_body" class="visually-hidden">Review</label>
-            <textarea name="review_body" id="review_body" required placeholder="Write a review here..."></textarea>
+            <textarea name="review_body" id="review_body" placeholder="Write a review here..." required>{{ user_review.review_body|default:'' }}</textarea>
           </div>
 
 
           <!-- Footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit Review</button>
+        <button type="submit" class="btn btn-primary">{% if user_review %}Update Review{% else %}Submit Review{% endif %}</button>
       </div>
         </form>
           
@@ -241,4 +270,9 @@ Book Details | {{ book.title }}
       </div>
     </div>
 </div>
+
+
+
+{% endif %}
+
 {% endblock %}
