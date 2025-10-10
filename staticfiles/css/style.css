@@ -83,6 +83,33 @@ hr {
   margin: 0.4rem;
 }
 
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-success{
+  color: #0f4e31;
+}
+
+.toast-warning{
+  color: #dc3545;
+}
+
+.toast-error{
+  color: #fd7e14;
+}
+
+.toast-info{
+  color: #0d6efd;
+}
+
 /* Base HTML */
 /* Nav bar */
 .navbar {
