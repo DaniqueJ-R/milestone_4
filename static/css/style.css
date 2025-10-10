@@ -526,6 +526,16 @@ hr {
   height: 11.9rem;
   padding-top: 52px;
   margin-top: 41px;
+  background-position-x: 14%;
+}
+
+.overlay {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  height: 0%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.23);
 }
 
 #bookTabs > li > a {
@@ -534,6 +544,11 @@ hr {
 
 .section-header {
   margin-top: 2rem;
+}
+
+.my-library-tab > .active,
+.nav-link:hover {
+  color: var(--highlight-color) !important;
 }
 
 .library-book-cover > div > .img-fluid {
@@ -568,8 +583,21 @@ hr {
 
   .bg-image {
     background: url(../images/front-view-books-with-copy-space.jpg) no-repeat
-      25% center fixed;
+      22% center fixed;
     background-size: cover; /* fills space and crops overflow */
+    height: fit-content;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    height: 22%;
+    width: 100%;
+    background: rgba(163, 163, 163, 0.1);
+  }
+
+  #my-library-header {
     height: fit-content;
   }
 
@@ -613,8 +641,9 @@ hr {
 
   .library-book-details {
     margin-top: 2rem;
-    margin-left: 34%;
-    max-width: 16em;
+    margin-left: 14%;
+    margin-right: auto;
+    min-width: 16em;
   }
 
   .library-book-cover {

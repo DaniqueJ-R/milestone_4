@@ -7,18 +7,19 @@ My Library
 
 {% block header %}
 <header class=" bg-image" id="my-library-header">
+    <div class="overlay"></div>
     <h1>My Library</h1>
     <p>The currently reading list</p>
 
     <div>
         <ul class="nav nav-tabs justify-content-center" id="bookTabs">
-            <li class="nav-item">
+            <li class="nav-item my-library-tab">
                 <a class="nav-link active" aria-current="page" href="#reading-header">Reading</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item my-library-tab">
                 <a class="nav-link" href="#plan-to-read-header">Plan to Read</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item my-library-tab">
                 <a class="nav-link" href="#complete-header">Complete</a>
             </li>
         </ul>
@@ -47,7 +48,7 @@ My Library
             <hr class="divider">
             <div class="library-body space row">
                 <!-- Book Cover -->
-                <div class="library-book-cover space col-12 col-lg-3">
+                <div class="library-book-cover space col-12 col-md-3">
                     <div class="">
                         <a href="{% url 'book_details' book.book.slug %}">
                         <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
@@ -57,7 +58,7 @@ My Library
                 </div>
 
                 <!-- Books details -->
-                <div class="library-book-details space col-12 col-lg-6 text-start">
+                <div class="library-book-details space col-12 col-md-4 col-lg-6 text-start">
                     <a href="{% url 'book_details' book.book.slug %}">
                         <h3 class="text-start">{{ book.book.title }}</h3>
                         </a>
@@ -73,7 +74,7 @@ My Library
                 </div>
 
                 <!-- Edit/Delete section -->
-                <div class="library-book-edit col-12 col-lg-3 space row align-items-center">
+                <div class="library-book-edit col-12 col-md-3 space row align-items-center">
                     <div class="btn-group align-items-center">
                         <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -119,7 +120,7 @@ My Library
             <hr class="divider">
             <div class="library-body space row">
                 <!-- Book Cover -->
-                <div class="library-book-cover space col-12 col-lg-3">
+                <div class="library-book-cover space col-12 col-md-3">
                     <div class="">
                         <a href="{% url 'book_details' book.book.slug %}">
                         <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
@@ -129,7 +130,7 @@ My Library
                 </div>
 
                 <!-- Books details -->
-                <div class="library-book-details space col-12 col-lg-6 text-start">
+                <div class="library-book-details space col-12 col-md-4 col-lg-6 text-start">
                     <a href="{% url 'book_details' book.book.slug %}">
                         <h3 class="text-start">{{ book.book.title }}</h3>
                         </a>
@@ -145,7 +146,7 @@ My Library
                 </div>
 
                 <!-- Edit/Delete section -->
-                <div class="library-book-edit col-12 col-lg-3 space row align-items-center">
+                <div class="library-book-edit col-12 col-md-3 space row align-items-center">
                     <div class="btn-group align-items-center">
                         <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -192,7 +193,7 @@ My Library
             <hr class="divider">
             <div class="library-body space row">
                 <!-- Book Cover -->
-                <div class="library-book-cover space col-12 col-lg-3">
+                <div class="library-book-cover space col-12 col-md-3">
                     <div class="">
                         <a href="{% url 'book_details' book.book.slug %}">
                         <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
@@ -202,7 +203,7 @@ My Library
                 </div>
 
                 <!-- Books details -->
-                <div class="library-book-details space col-12 col-lg-6 text-start">
+                <div class="library-book-details space col-12 col-md-4 col-lg-6 text-start">
                     <a href="{% url 'book_details' book.book.slug %}">
                         <h3 class="text-start">{{ book.book.title }}</h3>
                         </a>
@@ -224,7 +225,7 @@ My Library
                     </div>
 
                 <!-- Edit/Delete section -->
-                <div class="library-book-edit col-12 col-lg-3 space row align-items-center">
+                <div class="library-book-edit col-12 col-md-3 space row align-items-center">
                     <div class="btn-group align-items-center">
                         <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
