@@ -54,10 +54,17 @@ def book_details(request, slug):
     book_reviews = Review.objects.filter(book=book).order_by('-created_on')[:4]
     other_books = Book.objects.exclude(id=book.id).order_by('?')[:3]
     avg_rating = book_reviews.aggregate(Avg('star_rating'))['star_rating__avg']
-    # This returns None if no reviews exist
+    
     user_review = None
+    user_completed = False 
+    
     if request.user.is_authenticated:
         user_review = Review.objects.filter(user=request.user, book=book).first()
+        user_completed = TrackerList.objects.filter(
+            user=request.user, 
+            book=book, 
+            status=TrackerStatus.COMPLETE
+        ).exists()
 
     context = {
         'book': book,
@@ -66,10 +73,10 @@ def book_details(request, slug):
         'avg_rating': avg_rating,
         'review_count': book_reviews.count(),
         'user_review': user_review,
+        'user_completed': user_completed,
     }
 
     return render(request, 'book/book_details.html', context)
-
 
 @login_required
 def add_or_update_tracker(request, book_id):

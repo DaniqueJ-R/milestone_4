@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
-from book.models import Book
+from book.models import Book, TrackerList, TrackerStatus
 from .models import Review
 
 # Create your views here.
@@ -20,6 +20,16 @@ def add_review(request, book_id):
         user=request.user,
         book=book,
     ).first()
+
+    user_completed = TrackerList.objects.filter(
+        user=request.user,
+        book=book,
+        status=TrackerStatus.COMPLETE
+    ).exists()
+    
+    if not user_completed:
+        messages.error(request, "You must complete this book before leaving a review.")
+        return redirect('book_details', slug=book.slug)
 
     if request.method == 'POST':
         review_title = request.POST.get('review_title')
