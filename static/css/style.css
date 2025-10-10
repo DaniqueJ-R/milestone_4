@@ -84,29 +84,29 @@ hr {
 }
 
 .message-container {
-    position: fixed;
-    top: 72px;
-    right: 15px;
-    z-index: 99999999999;
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 99999999999;
 }
 
 .custom-toast {
-    overflow: visible;
+  overflow: visible;
 }
 
-.toast-success{
+.toast-success {
   color: #0f4e31;
 }
 
-.toast-warning{
+.toast-warning {
   color: #dc3545;
 }
 
-.toast-error{
+.toast-error {
   color: #fd7e14;
 }
 
-.toast-info{
+.toast-info {
   color: #0d6efd;
 }
 
@@ -115,6 +115,10 @@ hr {
 .navbar {
   background-color: var(--primary-color) !important;
   z-index: 999;
+}
+
+.navbar-toggler {
+  border-color: white;
 }
 
 .navbar a {
@@ -477,7 +481,7 @@ hr {
   margin-top: 2rem;
 }
 
-.card-link{
+.card-link {
   cursor: pointer;
 }
 
@@ -558,7 +562,6 @@ hr {
 
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
-
   .icon-recommended {
     padding: 4px 18px 0 39px;
   }
@@ -587,7 +590,7 @@ hr {
     margin-top: 2rem;
   }
 
-    .login-section {
+  .login-section {
     margin: 2rem 18% !important;
   }
 }
