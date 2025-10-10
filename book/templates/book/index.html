@@ -82,7 +82,19 @@ Home
         <div class="col-md-8 align-self-center">
           <div class="card-body">
             <h5 class="card-title">{{ review.review_title }}</h5>
-            <p class="card-text">{{ review.review_body }}</p>
+            <!-- In your review card -->
+<p class="card-text review-body short-review" id="review-{{ review.review_id }}">
+  {{ review.review_body|truncatewords:50 }}
+  {% if review.review_body|wordcount > 50 %}
+    <a href="#" class="show-more-link" data-review-id="{{ review.review_id }}">Show more</a>
+  {% endif %}
+</p>
+
+<p class="card-text review-body full-review" id="full-review-{{ review.review_id }}" style="display:none;">
+  {{ review.review_body }}
+  <a href="#" class="show-less-link" data-review-id="{{ review.review_id }}">Show less</a>
+</p>
+
             <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></small></p>
           </div>
         </div>
@@ -163,7 +175,17 @@ Home
         <div class="col-md-8 align-self-center">
           <div class="card-body">
             <h5 class="card-title">{{ review.review_title }}</h5>
-            <p class="card-text">{{ review.review_body }}</p>
+            <p class="card-text review-body short-review" id="review-{{ review.review_id }}">
+  {{ review.review_body|truncatewords:50 }}
+  {% if review.review_body|wordcount > 50 %}
+    <a href="#" class="show-more-link" data-review-id="{{ review.review_id }}">Show more</a>
+  {% endif %}
+</p>
+
+<p class="card-text review-body full-review" id="full-review-{{ review.review_id }}" style="display:none;">
+  {{ review.review_body }}
+  <a href="#" class="show-less-link" data-review-id="{{ review.review_id }}">Show less</a>
+</p>
             <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></small></p>
           </div>
         </div>

@@ -39,7 +39,7 @@ Book Details | {{ book.title }}
         </div>
         <br>
 
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#leaveAReview">
+                  <button id="login" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#leaveAReview">
   Leave a review
 </button>
       </div>
@@ -77,9 +77,17 @@ Book Details | {{ book.title }}
             {{ review.review_title }} 
             <span class="accent"> {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></span>
           </h6>
-          <p class="card-text">
-            {{ review.review_body }}
-          </p>
+          <p class="card-text review-body short-review" id="review-{{ review.review_id }}">
+  {{ review.review_body|truncatewords:50 }}
+  {% if review.review_body|wordcount > 50 %}
+    <a href="#" class="show-more-link" data-review-id="{{ review.review_id }}">Show more</a>
+  {% endif %}
+</p>
+
+<p class="card-text review-body full-review" id="full-review-{{ review.review_id }}" style="display:none;">
+  {{ review.review_body }}
+  <a href="#" class="show-less-link" data-review-id="{{ review.review_id }}">Show less</a>
+</p>
           {% if request.user == review.user %}  
             <a data-bs-toggle="modal" data-bs-target="#leaveAReview" class="card-link">Edit</a>
             <a data-bs-toggle="modal" data-bs-target="#deleteAReview{{ review.review_id }}" class="card-link">Delete</a>
@@ -217,7 +225,7 @@ Book Details | {{ book.title }}
     <div class="modal-content">
       <!-- Header -->
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="leaveAReview">{% if user_review %}Edit Your Review{% else %}Leave a Review{% endif %}</h1>
+        <h1 class="modal-title fs-5 " id="leaveAReview">{% if user_review %}Edit Your Review{% else %}Leave a Review{% endif %}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -257,7 +265,7 @@ Book Details | {{ book.title }}
           <!-- Footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">{% if user_review %}Update Review{% else %}Submit Review{% endif %}</button>
+        <button type="submit" class="btn btn-outline-success">{% if user_review %}Update Review{% else %}Submit Review{% endif %}</button>
       </div>
         </form>
           

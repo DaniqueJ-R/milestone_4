@@ -154,6 +154,10 @@ hr {
   overflow: hidden;
 }
 
+#searchButton {
+  color: var(--white);
+}
+
 #searchInput.search-visible {
   width: 200px;
   opacity: 1;
@@ -167,7 +171,7 @@ hr {
 }
 
 .btn-outline-success {
-  color: var(--white);
+  color: var(--primary-color);
   --bs-btn-border-color: var(--primary-color);
 }
 
@@ -338,10 +342,6 @@ hr {
 .login-form {
   margin-bottom: 1rem;
   min-width: 5rem;
-}
-
-#login {
-  color: var(--primary-color);
 }
 
 #login:hover {

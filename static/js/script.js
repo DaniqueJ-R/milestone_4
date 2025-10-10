@@ -63,3 +63,26 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Show more
+  document.querySelectorAll('.show-more-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const reviewId = this.getAttribute('data-review-id');
+      document.getElementById('review-' + reviewId).style.display = 'none';
+      document.getElementById('full-review-' + reviewId).style.display = 'block';
+    });
+  });
+
+  // Show less
+  document.querySelectorAll('.show-less-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const reviewId = this.getAttribute('data-review-id');
+      document.getElementById('full-review-' + reviewId).style.display = 'none';
+      document.getElementById('review-' + reviewId).style.display = 'block';
+    });
+  });
+});
