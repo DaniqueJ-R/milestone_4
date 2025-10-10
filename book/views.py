@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Avg
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Book, TrackerStatus, TrackerList
 from review.models import Review

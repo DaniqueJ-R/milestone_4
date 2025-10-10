@@ -4,7 +4,16 @@ console.log("Test script file loaded")
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
-// hides and shows search bar in main nav
+// Calls Toast when modal triggered
+document.addEventListener('DOMContentLoaded', () => {
+  const toastElements = document.querySelectorAll('.toast');
+  toastElements.forEach((toastEl) => {
+    const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+    toast.show();
+  });
+});
+
+// Hides and shows search bar in main nav
   document.addEventListener("DOMContentLoaded", () => {
     const searchButton = document.getElementById("searchButton");
     const searchInput = document.getElementById("searchInput");
@@ -36,8 +45,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
     });
   });
 
-
-  //changes active tab once selected
+  //Changes active tab once selected
   document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll("#bookTabs .nav-link");
 

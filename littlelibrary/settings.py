@@ -29,8 +29,8 @@ SECRET_KEY = (
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True = development mode, False = production mode
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -100,7 +100,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Login method and signup fields
