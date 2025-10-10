@@ -29,8 +29,8 @@ SECRET_KEY = (
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True = development mode, False = production mode
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -106,14 +106,14 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Login method and signup fields
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
 ACCOUNT_SIGNUP_FIELDS = [
-    'email*', 'email2*', 'username*', 'password1*', 'password2*']
+    'email*', 'username*', 'password1*', 'password2*']
 
 # Keep the other relevant settings
-ACCOUNT_EMAIL_VERIFICATION = 'none' # for development
-ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # for development
+ACCOUNT_USERNAME_MIN_LENGTH = 12
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-
+ACCOUNT_LOGOUT_ON_GET = True
 
 WSGI_APPLICATION = 'littlelibrary.wsgi.application'
 
