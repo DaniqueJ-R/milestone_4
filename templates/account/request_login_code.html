@@ -5,6 +5,7 @@
     {% translate "Sign In" %}
 {% endblock head_title %}
 {% block content %}
+ <div class="password-reset-done-section text-center">
     {% element h1 %}
         {% translate "Send me a sign-in code" %}
     {% endelement %}
@@ -29,4 +30,5 @@
     {% element button href=login_url tags="link" %}
         {% translate "Other sign-in options" %}
     {% endelement %}
+</div>
 {% endblock content %}

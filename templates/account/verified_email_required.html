@@ -5,6 +5,7 @@
     {% trans "Verify Your Email Address" %}
 {% endblock head_title %}
 {% block content %}
+ <div class="password-reset-done-section text-center">
     {% element h1 %}
         {% trans "Verify Your Email Address" %}
     {% endelement %}
@@ -22,4 +23,5 @@ contact us if you do not receive it within a few minutes.{% endblocktrans %}
     {% element p %}
         {% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your email address</a>.{% endblocktrans %}
     {% endelement %}
+</div>
 {% endblock content %}

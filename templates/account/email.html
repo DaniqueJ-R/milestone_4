@@ -4,6 +4,7 @@
     {% trans "Email Addresses" %}
 {% endblock head_title %}
 {% block content %}
+ <div class="password-reset-done-section text-center">
     {% element h1 %}
         {% trans "Email Addresses" %}
     {% endelement %}
@@ -72,6 +73,7 @@
             {% endslot %}
         {% endelement %}
     {% endif %}
+</div>
 {% endblock content %}
 {% block extra_body %}
     <script src="{% static 'account/js/account.js' %}"></script>

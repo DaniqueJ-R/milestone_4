@@ -2,6 +2,7 @@
 {% load allauth %}
 {% load i18n %}
 {% block reauthenticate_content %}
+ <div class="password-reset-done-section text-center">
     {% element p %}
         {% blocktranslate %}Enter your password:{% endblocktranslate %}
     {% endelement %}
@@ -19,4 +20,5 @@
             {% endelement %}
         {% endslot %}
     {% endelement %}
+</div>
 {% endblock %}

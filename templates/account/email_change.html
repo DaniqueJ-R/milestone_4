@@ -5,6 +5,7 @@
     {% trans "Email Address" %}
 {% endblock head_title %}
 {% block content %}
+ <div class="password-reset-done-section text-center">
     {% element h1 %}
         {% trans "Email Address" %}
     {% endelement %}
@@ -65,4 +66,5 @@
             <input type="hidden" name="email" value="{{ new_emailaddress.email }}">
         </form>
     {% endif %}
+</div>
 {% endblock content %}

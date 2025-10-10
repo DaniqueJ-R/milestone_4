@@ -331,6 +331,10 @@ hr {
     margin: 3.83rem 28%;
 }
 
+.password-reset-done-section {
+    margin: 7.4rem 28%;
+}
+
 .login-form {
   margin-bottom: 1rem;
   min-width: 5rem;

@@ -4,6 +4,7 @@
     {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
+ <div class="password-reset-done-section text-center">
     {% element h1 %}
         {% trans "Passkey Sign Up" %}
     {% endelement %}
@@ -35,4 +36,5 @@
     {% element button href=signup_url tags="prominent,signup,outline,primary" %}
         {% trans "Other options" %}
     {% endelement %}
+</div>
 {% endblock content %}
