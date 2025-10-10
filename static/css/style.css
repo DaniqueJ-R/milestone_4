@@ -141,6 +141,12 @@ hr {
   left: -77px;
 }
 
+.dropdown-menu {
+    --bs-dropdown-bg: white;
+    --bs-dropdown-border-color: var(--light-highlight-color);
+    --bs-dropdown-divider-bg: rgba(0, 0, 0, 0.175);
+  }
+
 #searchInput {
   width: 0;
   opacity: 0;
@@ -547,7 +553,7 @@ hr {
 }
 
 .my-library-tab > .active,
-.nav-link:hover {
+.my-library-tab > .nav-link:hover {
   color: var(--highlight-color) !important;
 }
 
