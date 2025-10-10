@@ -110,7 +110,7 @@ ACCOUNT_SIGNUP_FIELDS = [
 
 # Keep the other relevant settings
 ACCOUNT_EMAIL_VERIFICATION = 'none'  # for development
-ACCOUNT_USERNAME_MIN_LENGTH = 12
+ACCOUNT_USERNAME_MIN_LENGTH = 8
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True

@@ -1,45 +1,117 @@
-{% extends "account/base_entrance.html" %}
-{% load allauth i18n %}
-{% block head_title %}
-    {% trans "Signup" %}
-{% endblock head_title %}
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load allauth account %}
+
+{% block title %}
+Create Account
+{% endblock%}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-        </a>
-    {% endsetvar %}
-    {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-    {% endelement %}
-    {% if not SOCIALACCOUNT_ONLY %}
-        {% url 'account_signup' as action_url %}
-        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-            {% slot body %}
-                {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button tags="prominent,signup" type="submit" %}
-                    {% trans "Sign Up" %}
-                {% endelement %}
-            {% endslot %}
-        {% endelement %}
-    {% endif %}
-    {% if PASSKEY_SIGNUP_ENABLED %}
-        {% element hr %}
-        {% endelement %}
-        {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
-            {% trans "Sign up using a passkey" %}
-        {% endelement %}
-    {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
-{% endblock content %}
+
+<section class="signup-section text-center">
+    <div class="container">
+        <h2 class="text-center">Sign Up</h2>
+        <form method="post" action="{% url 'account_signup' %}" class="form-wrapper">
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+            {% endif %} {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %} {% csrf_token %}
+
+            <div class="form-group login-form">
+                {{ form.username.label_tag }} <br>
+                <div>
+                    {{ form.username }}
+                </div>
+                {% if form.username.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.username.errors }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group login-form">
+                {{ form.email.label_tag }} <br>
+                <div>
+                    {{ form.email }}
+                </div>
+                {% if form.email.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.email.errors }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group login-form">
+                {{ form.password1.label_tag }} <br>
+                <div>
+                    {{ form.password1 }}
+                </div>
+                {% if form.password1.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.password1.errors }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group login-form">
+                {{ form.password2.label_tag }} <br>
+                <div>
+                    {{ form.password2 }}
+                </div>
+                {% if form.password2.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.password2.errors }}
+                </div>
+                {% endif %}
+            </div>
+
+            <ul class="text-start">
+                <li>Minimum of 8 characters.</li>
+                <li>Includes both uppercase and lowercase letters.</li>
+                <li>Contains at least one number.</li>
+                <li>Contains at least one special character (e.g., !, @, #, $).</li>
+            </ul>
+
+            <button id="login" type="submit" class="btn btn-outline-success">Sign Up</button>
+        </form>
+        <br>
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <p class="text-center">
+            <a href="{% url 'account_login' %}">Already have an account? Login here.</a>
+        </p>
+    </div>
+
+    {% load socialaccount %}
+
+    <div class="container my-2">
+        <h2>
+            Or use a third-party
+        </h2>
+        <div class="social mt-3">
+            <a href="{% provider_login_url 'google' %}" class="social-login-btn-content social-login">
+                <img src="{% static 'images/google_logo.28d9eb28faa.svg' %}" alt="Google">
+                Login with Google
+            </a>
+        </div>
+    </div>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_body %}
+{{ block.super }}
+{% if PASSKEY_LOGIN_ENABLED %}
+{% include "mfa/webauthn/snippets/login_script.html" with button_id="passkey_login" %}
+{% endif %}
+{% endblock %}

@@ -317,10 +317,14 @@ hr {
 
 /* Base HMTL End */
 
-/* Log in HTML */
+/* Login/ Signup HTML */
 
-.login-section {
+.login-section{
   margin: 2rem 35%;
+}
+
+.signup-section {
+    margin: 2rem 31%;
 }
 
 .login-form {
@@ -624,7 +628,7 @@ hr {
     margin-top: 2rem;
   }
 
-  .login-section {
+ .login-section, .signup-section  {
     margin: 2rem 18% !important;
   }
 }
@@ -645,6 +649,10 @@ hr {
     height: fit-content;
   }
 
+  #my-library-header {
+    height: fit-content;
+}
+
   .library-book-details {
     margin-top: 2rem;
     margin-left: 14%;
@@ -660,7 +668,7 @@ hr {
     max-width: 30%;
   }
 
-  .login-section {
+  .login-section, .signup-section {
     margin: 2rem 30%;
   }
 }
