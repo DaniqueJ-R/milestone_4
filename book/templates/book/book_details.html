@@ -11,37 +11,34 @@ Book Details | {{ book.title }}
   <div class="text-center pt-5 space">
     <div class="row">
       <div class="col-12 col-lg-3 space Sticky">
-        <img 
-          src="{{ book.cover_image_url }}"
-          class="img-fluid"
-          alt="{{ book.title }}"
-          />
-          <br>
-          
+        <img src="{{ book.cover_image_url }}" class="img-fluid" alt="{{ book.title }}" />
+        <br>
+  
         <div class="btn-group">
-          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"aria-expanded="false">
-          Add to list
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Add to list
           </button>
-                                  <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#planModal{{ book.id }}">Plan To Read</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#completeModal{{ book.id }}">Complete</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#readingModal{{ book.id }}">Reading</a></li>
-                        </ul>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#planModal{{ book.id }}">Plan To Read</a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#completeModal{{ book.id }}">Complete</a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#readingModal{{ book.id }}">Reading</a>
+            </li>
+          </ul>
         </div>
         <br>
-
-                  <button id="login" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#leaveAReview">
-  Leave a review
-</button>
+  
+        <button id="login" type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+          data-bs-target="#leaveAReview">
+          Leave a review
+        </button>
       </div>
       <!-- Books details -->
       <div class="space col-12 col-lg-6 text-start">
@@ -265,7 +262,7 @@ Book Details | {{ book.title }}
           <!-- Footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-outline-success">{% if user_review %}Update Review{% else %}Submit Review{% endif %}</button>
+        <button type="submit" class="btn btn-success">{% if user_review %}Update Review{% else %}Submit Review{% endif %}</button>
       </div>
         </form>
           

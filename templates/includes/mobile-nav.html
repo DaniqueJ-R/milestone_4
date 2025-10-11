@@ -69,7 +69,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   {% if request.user.is_authenticated %}
-                  <li><a href="{% url 'index' %}" class="dropdown-item black">My Profile</a></li>
+                  <li><a href="{% url 'my_library' %}#reading-header" class="dropdown-item black">My Profile</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
                     <a
@@ -78,7 +78,6 @@
                       >Logout</a
                     >
                   </li>
-                  <li><hr class="dropdown-divider" /></li>
                   {% else %}
                   <li>
                     <a

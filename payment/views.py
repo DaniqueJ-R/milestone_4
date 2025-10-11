@@ -6,11 +6,17 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 # import stripe
 # import json
 
+ # Create your views here.
+
+
+def make_payment(request):
+    return render(request, 'payment/donations.html')
+
 
 def payment_sucess(request):
     return render(request, 'payment/success.html')
 
-# # Create your views here.
+
 
 
 # @require_POST

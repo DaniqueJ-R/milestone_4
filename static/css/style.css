@@ -83,6 +83,17 @@ hr {
   margin: 0.4rem;
 }
 
+.btn-outline-success {
+  color: var(--white);
+  --bs-btn-border-color: var(--primary-color);
+}
+
+.btn-success {
+    --bs-btn-color: var(--white);
+    --bs-btn-bg: var(--primary-color);
+    --bs-btn-border-color: var(--primary-color);
+}
+
 .message-container {
   position: fixed;
   top: 72px;
@@ -164,11 +175,6 @@ hr {
 #searchInput.search-hidden {
   width: 0;
   opacity: 0;
-}
-
-.btn-outline-success {
-  color: var(--white);
-  --bs-btn-border-color: var(--primary-color);
 }
 
 /* Only affects search bar dropdown inside #mobile-search */

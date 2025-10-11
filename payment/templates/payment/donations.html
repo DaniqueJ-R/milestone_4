@@ -1,8 +1,96 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
+
 {% block header %}
-
+Make a Donation
 {% endblock %}
-{% block content %}
 
+{% block content %}
+    <main class="container text-center">
+    <div class="container">
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg rounded-4 p-4">
+        <h2 class="text-center mb-4 text-success">Make a Donation</h2>
+        <p class="text-center text-muted">
+          Thank you for supporting us! Please fill in your details and select a donation amount.
+        </p>
+
+        <form method="post" id="donation-form">
+          {% csrf_token %}
+          {{ form.full_name|as_crispy_field }}
+          {{ form.email|as_crispy_field }}
+          {{ form.phone|as_crispy_field }}
+
+          <!-- Donation amount section -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Select Donation Amount (£)</label>
+            <div class="btn-group w-100 mb-3" role="group" aria-label="Donation amount">
+              <input type="radio" class="btn-check" name="amount" id="amount5" value="5" autocomplete="off" checked>
+              <label class="btn btn-outline-success" for="amount5">£5</label>
+
+              <input type="radio" class="btn-check" name="amount" id="amount10" value="10" autocomplete="off">
+              <label class="btn btn-outline-success" for="amount10">£10</label>
+
+              <input type="radio" class="btn-check" name="amount" id="amount20" value="20" autocomplete="off">
+              <label class="btn btn-outline-success" for="amount20">£20</label>
+
+              <input type="radio" class="btn-check" name="amount" id="customAmount" value="custom" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="customAmount">Custom</label>
+            </div>
+
+            <div id="customAmountInput" class="mt-2" style="display:none;">
+              <input type="number" step="1" min="1" class="form-control" name="custom_amount" placeholder="Enter custom amount (£)">
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success px-5 py-2">
+              Donate Now
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // Toggle custom amount input visibility
+  document.addEventListener('DOMContentLoaded', function() {
+    const customRadio = document.getElementById('customAmount');
+    const customInput = document.getElementById('customAmountInput');
+    const radios = document.querySelectorAll('input[name="amount"]');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (customRadio.checked) {
+          customInput.style.display = 'block';
+        } else {
+          customInput.style.display = 'none';
+          customInput.querySelector('input').value = '';
+        }
+      });
+    });
+  });
+</script>
+    </div>
+    <div id="loading-overlay">
+        <h1 class="text-light logo-font loading-spinner">
+            <span class="icon">
+                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            </span>
+        </h1>
+    </div>
+    </main>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
