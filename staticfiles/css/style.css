@@ -83,6 +83,17 @@ hr {
   margin: 0.4rem;
 }
 
+.btn-outline-success {
+  color: var(--white);
+  --bs-btn-border-color: var(--primary-color);
+}
+
+.btn-success {
+    --bs-btn-color: var(--white);
+    --bs-btn-bg: var(--primary-color);
+    --bs-btn-border-color: var(--primary-color);
+}
+
 .message-container {
   position: fixed;
   top: 72px;
@@ -141,6 +152,12 @@ hr {
   left: -77px;
 }
 
+.dropdown-menu {
+    --bs-dropdown-bg: white;
+    --bs-dropdown-border-color: var(--light-highlight-color);
+    --bs-dropdown-divider-bg: rgba(0, 0, 0, 0.175);
+  }
+
 #searchInput {
   width: 0;
   opacity: 0;
@@ -158,11 +175,6 @@ hr {
 #searchInput.search-hidden {
   width: 0;
   opacity: 0;
-}
-
-.btn-outline-success {
-  color: var(--white);
-  --bs-btn-border-color: var(--primary-color);
 }
 
 /* Only affects search bar dropdown inside #mobile-search */
@@ -311,10 +323,22 @@ hr {
 
 /* Base HMTL End */
 
-/* Log in HTML */
+/* Login/ Signup HTML */
 
-.login-section {
+.login-section{
   margin: 2rem 35%;
+}
+
+.signup-section {
+    margin: 2rem 31%;
+}
+
+.reset-password-section {
+    margin: 3.83rem 28%;
+}
+
+.password-reset-done-section {
+    margin: 7.4rem 28%;
 }
 
 .login-form {
@@ -547,7 +571,7 @@ hr {
 }
 
 .my-library-tab > .active,
-.nav-link:hover {
+.my-library-tab > .nav-link:hover {
   color: var(--highlight-color) !important;
 }
 
@@ -575,6 +599,11 @@ hr {
 
 /* End Library HTML */
 
+/* Donation pages HTML */
+#success {
+  padding: 4%;
+}
+/* Donation Pages END */
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {
@@ -618,7 +647,7 @@ hr {
     margin-top: 2rem;
   }
 
-  .login-section {
+ .login-section, .signup-section  {
     margin: 2rem 18% !important;
   }
 }
@@ -639,6 +668,10 @@ hr {
     height: fit-content;
   }
 
+  #my-library-header {
+    height: fit-content;
+}
+
   .library-book-details {
     margin-top: 2rem;
     margin-left: 14%;
@@ -654,7 +687,7 @@ hr {
     max-width: 30%;
   }
 
-  .login-section {
+  .login-section, .signup-section {
     margin: 2rem 30%;
   }
 }

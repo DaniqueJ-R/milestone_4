@@ -86,3 +86,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+  // Toggle custom amount input visibility
+  document.addEventListener('DOMContentLoaded', function() {
+    const customRadio = document.getElementById('customAmount');
+    const customInput = document.getElementById('customAmountInput');
+    const radios = document.querySelectorAll('input[name="amount"]');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (customRadio.checked) {
+          customInput.style.display = 'block';
+        } else {
+          customInput.style.display = 'none';
+          customInput.querySelector('input').value = '';
+        }
+      });
+    });
+  });
