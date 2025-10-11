@@ -154,10 +154,6 @@ hr {
   overflow: hidden;
 }
 
-#searchButton {
-  color: var(--white);
-}
-
 #searchInput.search-visible {
   width: 200px;
   opacity: 1;
@@ -171,7 +167,7 @@ hr {
 }
 
 .btn-outline-success {
-  color: var(--primary-color);
+  color: var(--white);
   --bs-btn-border-color: var(--primary-color);
 }
 
@@ -342,6 +338,10 @@ hr {
 .login-form {
   margin-bottom: 1rem;
   min-width: 5rem;
+}
+
+#login {
+  color: var(--primary-color);
 }
 
 #login:hover {
@@ -593,6 +593,11 @@ hr {
 
 /* End Library HTML */
 
+/* Donation pages HTML */
+#success {
+  padding: 4%;
+}
+/* Donation Pages END */
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {

@@ -1,3 +1,13 @@
+
+
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('success/', views.payment_sucess, name="success"),
+]    
+
 # path('stripe/webhook/', stripe_webhook, name='stripe_webhook'),
 
 

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Payment Success
+{% endblock %}
+
+{% block content %}
+    <main class="container text-center">
+      <section id="success" class="container section">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1 class="display-3 mb-4">Thank you!</h1>
+            <p>
+              Your donation of <strong>{{ donation.payment_amout }}</strong> has successfully been
+              applied!
+            </p>
+            <p>
+              <em
+                >A Confirmation email will be sent to: <strong>{{ user.email }}</strong>.</em>
+            </p>
+            <p>Please see recipt details below:</p>
+
+              <div class="container col-12 col-lg-7 text-center">
+                <div class="row justify-content-center">
+                  <div class="p-2 border">
+                    <div class="row">
+                      <div class="col">
+                        <small class="text-muted">Payment Info:</small>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <p class="mb-0 text-black font-weight-bold">
+                          Payment Number
+                        </p>
+                      </div>
+                      <div class="col-12 col-md-8 text-md-right">
+                        <p class="mb-0">{{ donation.payment_number }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <p class="mb-0 text-black font-weight-bold">
+                          Payment Date
+                        </p>
+                      </div>
+                      <div class="col-12 col-md-8 text-md-right">
+                        <p class="mb-0">{{ donation.date }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <small class="text-muted">Delivering To:</small>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <p class="mb-0 text-black font-weight-bold">
+                          Full Name
+                        </p>
+                      </div>
+                      <div class="col-12 col-md-8 text-md-right">
+                        <p class="mb-0">{{ donation.full_name }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <p class="mb-0 text-black font-weight-bold">
+                          Email address:
+                        </p>
+                      </div>
+                      <div class="col-12 col-md-8 text-md-right">
+                        <p class="mb-0">{{ donation.email }}</p>
+                      </div>
+                    </div>
+ 
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <p class="mb-0 text-black font-weight-bold">
+                          Phone Number
+                        </p>
+                      </div>
+                      <div class="col-12 col-md-8 text-md-right">
+                        <p class="mb-0">{{ donation.phone_number }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <small class="text-muted">Billing Info:</small>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <p class="mb-0 text-black font-weight-bold">
+                          Order Total
+                        </p>
+                      </div>
+                      <div class="col-12 col-md-8 text-md-right">
+                        <p class="mb-0">{{ donation.amount }}</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="{% url 'index' %}" 
+              ><button type="button" class="btn btn-success mt-3">Return to Home Page</button></a>
+          </div>
+        </div>
+      </section>
+    </main>
+{% endblock %}
