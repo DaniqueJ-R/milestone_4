@@ -44,3 +44,37 @@ document.addEventListener("DOMContentLoaded", () => {
     displayError.textContent = event.error ? event.error.message : "";
   });
 
+// Handle form submit
+const form = document.getElementById('payment-form');
+
+form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    card.update({ 'disabled': true});
+    $('#submit-button').attr('disabled', true);
+    $('#payment-form').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
+    }).then((result) => {
+        let errorDiv, html;
+        if (result.error) {
+            errorDiv = document.getElementById('card-errors');
+            html = `
+                <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>`;
+            $(errorDiv).html(html);
+            $('#payment-form').fadeToggle(100);
+            $('#loading-overlay').fadeToggle(100);
+            card.update({ 'disabled': false});
+            $('#submit-button').attr('disabled', false);
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
+});

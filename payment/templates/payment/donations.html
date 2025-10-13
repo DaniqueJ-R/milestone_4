@@ -29,12 +29,12 @@ Make a Donation
 
         <form action="{% url 'donations' %}" method="post" id="donation-form">
           {% csrf_token %}
-                              <fieldset class="px-3 mb-5">
-                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-          {{ donation_form.full_name|as_crispy_field }}
-          {{ donation_form.email|as_crispy_field }}
-          {{ donation_form.phone_number|as_crispy_field }}
-                    </fieldset>
+          <fieldset class="px-3 mb-5">
+            <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+              {{ donation_form.full_name|as_crispy_field }}
+              {{ donation_form.email|as_crispy_field }}
+              {{ donation_form.phone_number|as_crispy_field }}
+            </fieldset>
 
 
           <!-- Donation amount section -->
@@ -74,6 +74,7 @@ Make a Donation
             </button>
           </div>
         </form>
+        
       </div>
     </div>
   </div>

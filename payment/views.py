@@ -5,16 +5,31 @@ from django.conf import settings
 
 from .forms import DonationForm
 
-# import stripe
-# import json
+import stripe
+import json
 
- # Create your views here.
+# Create your views here.
 
 
 def make_payment(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    amount = request.POST.get('amount')
+    amount_int = int(amount)
+    print(amount)
+    stripe_total = amount_int * 100
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+    )
+
+    print(intent)
+
     context = {
-        'stripe_public_key': 'pk_test_123456789',
-        'client_secret': 'test_client_secret_123',
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret,
         'donation_form': DonationForm(),
     }
     return render(request, 'payment/donations.html', context)
