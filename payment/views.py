@@ -12,8 +12,12 @@ from .forms import DonationForm
 
 
 def make_payment(request):
-    donation_form = DonationForm()
-    return render(request, 'payment/donations.html', {'donation_form': donation_form})
+    context = {
+        'stripe_public_key': 'pk_test_123456789',
+        'client_secret': 'test_client_secret_123',
+        'donation_form': DonationForm(),
+    }
+    return render(request, 'payment/donations.html', context)
 
 
 def payment_sucess(request):

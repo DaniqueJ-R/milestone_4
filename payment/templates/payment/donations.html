@@ -29,9 +29,13 @@ Make a Donation
 
         <form action="{% url 'donations' %}" method="post" id="donation-form">
           {% csrf_token %}
+                              <fieldset class="px-3 mb-5">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
           {{ donation_form.full_name|as_crispy_field }}
           {{ donation_form.email|as_crispy_field }}
           {{ donation_form.phone_number|as_crispy_field }}
+                    </fieldset>
+
 
           <!-- Donation amount section -->
           <div class="mb-4">
@@ -58,10 +62,10 @@ Make a Donation
           <fieldset class="px-3">
             <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
             <!-- A Stripe card element will go here -->
-            <span class="mb-3" id="card-element"></span>
+            <div class="mb-3" id="card-element"></div>
           
             <!-- Used to display form errors -->
-            <span class="mb-3 text-danger" id="card-errors" role="alert"></span>
+            <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
           </fieldset>
           
           <div class="text-center">
