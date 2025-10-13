@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
-# from django.views.decorators.http import require_POST
-# from django.contrib import messages
-# from django.conf import settings
+from django.views.decorators.http import require_POST
+from django.contrib import messages
+from django.conf import settings
+
+from .forms import DonationForm
 
 # import stripe
 # import json
@@ -10,7 +12,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 
 
 def make_payment(request):
-    return render(request, 'payment/donations.html')
+    donation_form = DonationForm()
+    return render(request, 'payment/donations.html', {'donation_form': donation_form})
 
 
 def payment_sucess(request):
