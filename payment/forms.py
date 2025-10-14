@@ -5,7 +5,7 @@ from .models import Donation
 class DonationForm(forms.ModelForm):
     class Meta:
         model = Donation
-        fields = ('full_name', 'email', 'phone_number',)
+        fields = ('full_name', 'email', 'phone_number', 'amount')
 
     def __init__(self, *args, **kwargs):
         """
@@ -17,6 +17,7 @@ class DonationForm(forms.ModelForm):
             'full_name': 'Full Name',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
+            'amount': 'Amount',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
