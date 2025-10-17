@@ -13,18 +13,20 @@ Book Details | {{ book.title }}
       <div class="col-12 col-lg-3 space Sticky">
         <img src="{{ book.cover_image_url }}" class="img-fluid" alt="{{ book.title }}" />
         <br>
-  
+
         <div class="btn-group">
           <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Add to list
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#planModal{{ book.id }}">Plan To Read</a>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#planModal{{ book.id }}">Plan To
+                Read</a>
             </li>
             <li>
               <hr class="dropdown-divider" />
             </li>
-            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#completeModal{{ book.id }}">Complete</a>
+            <li><a class="dropdown-item" data-bs-toggle="modal"
+                data-bs-target="#completeModal{{ book.id }}">Complete</a>
             </li>
             <li>
               <hr class="dropdown-divider" />
@@ -34,7 +36,7 @@ Book Details | {{ book.title }}
           </ul>
         </div>
         <br>
-  
+
         <button id="login" type="button" class="btn btn-outline-success" data-bs-toggle="modal"
           data-bs-target="#leaveAReview">
           Leave a review
@@ -46,9 +48,9 @@ Book Details | {{ book.title }}
           <h1 class="text-start">{{ book.title }}</h1>
           <p class="">{{ book.author }}</p>
           {% if avg_rating %}
-            <p>{{ avg_rating|floatformat:1 }}/5 <i class="fa-solid fa-star"></i> ({{ review_count }} reviews)</p>
+          <p>{{ avg_rating|floatformat:1 }}/5 <i class="fa-solid fa-star"></i> ({{ review_count }} reviews)</p>
           {% else %}
-            <p>No rating yet</p>
+          <p>No rating yet</p>
           {% endif %}
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <small>Genre:
@@ -64,77 +66,79 @@ Book Details | {{ book.title }}
             {{ book.description }}
           </p>
         </div>
-{% if book_reviews %}
-  <div class="reviews">
-    {% for review in book_reviews %}
-      <div class="card">
-        <div class="card-body">
-          <h6 class="card-title">{{ review.user.username }}</h6>
-          <h6 class="card-subtitle mb-2 text-body-secondary">
-            {{ review.review_title }} 
-            <span class="accent"> {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></span>
-          </h6>
-          <p class="card-text review-body short-review" id="review-{{ review.review_id }}">
-  {{ review.review_body|truncatewords:50 }}
-  {% if review.review_body|wordcount > 50 %}
-    <a href="#" class="show-more-link" data-review-id="{{ review.review_id }}">Show more</a>
-  {% endif %}
-</p>
+        {% if book_reviews %}
+        <div class="reviews">
+          {% for review in book_reviews %}
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title">{{ review.user.username }}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                {{ review.review_title }}
+                <span class="accent"> {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></span>
+              </h6>
+              <p class="card-text review-body short-review" id="review-{{ review.id }}">
+                {{ review.review_body|truncatewords:50 }}
+                {% if review.review_body|wordcount > 50 %}
+                <a href="#" class="show-more-link" data-review-id="{{ review.id }}">Show more</a>
+                {% endif %}
+              </p>
 
-<p class="card-text review-body full-review" id="full-review-{{ review.review_id }}" style="display:none;">
-  {{ review.review_body }}
-  <a href="#" class="show-less-link" data-review-id="{{ review.review_id }}">Show less</a>
-</p>
-          {% if request.user == review.user %}  
-            <a data-bs-toggle="modal" data-bs-target="#leaveAReview" class="card-link">Edit</a>
-            <a data-bs-toggle="modal" data-bs-target="#deleteAReview{{ review.review_id }}" class="card-link">Delete</a>
-          {% endif %}
-        </div>
-      </div>
-
-      <!-- Delete Review Modal -->
-      <div class="modal fade" id="deleteAReview{{ review.review_id }}" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Delete your review?</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              Are you sure you want to delete your review for <strong>{{ book.title }}</strong>?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <form method="POST" action="{% url 'delete_review' review.review_id %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete</button>
-              </form>
+              <p class="card-text review-body full-review" id="full-review-{{ review.id }}" style="display:none;">
+                {{ review.review_body }}
+                <a href="#" class="show-less-link" data-review-id="{{ review.id }}">Show less</a>
+              </p>
+              {% if request.user == review.user %}
+              <a data-bs-toggle="modal" data-bs-target="#leaveAReview" class="card-link">Edit</a>
+              <a data-bs-toggle="modal" data-bs-target="#deleteAReview{{ review.id }}" class="card-link">Delete</a>
+              {% endif %}
             </div>
           </div>
-        </div>
-      </div>
 
-    {% endfor %}
-  </div>
-{% else %}
-  <div id="reviews">
-    <h5 class="text-center">
-      There are no reviews for this book. 
-      <a href="{% url 'account_login' %}" data-bs-toggle="modal" data-bs-target="#leaveAReview">Be the first!</a>
-    </h5>
-  </div>
-{% endif %}
+          <!-- Delete Review Modal -->
+          <div class="modal fade" id="deleteAReview{{ review.id }}" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Delete your review?</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                  Are you sure you want to delete your review for <strong>{{ book.title }}</strong>?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <form method="POST" action="{% url 'delete_review' review.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+
+        {% else %}
+        <div id="reviews">
+          <h5 class="text-center">
+            There are no reviews for this book.
+            <a href="{% url 'account_login' %}" data-bs-toggle="modal" data-bs-target="#leaveAReview">Be the first!</a>
+          </h5>
+        </div>
+        {% endif %}
 
 
       </div>
       <div class="space col-12 col-lg-3 other-books">
         <h2>Books this week</h2>
-      {% for book in other_books %}
-    <a type="button" href="{% url 'book_details' book.slug %}" class="book-recs text-center col mt-3" data-bs-container="body" data-bs-toggle="popover"
-      data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
-      <img src="{{ book.cover_image_url }}" alt="{{ book.title }}" class="display-book-cover featured-books">
-    </a>
-    {% endfor %}
+        {% for book in other_books %}
+        <a type="button" href="{% url 'book_details' book.slug %}" class="book-recs text-center col mt-3"
+          data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="{{ book.title }}"
+          data-bs-trigger="hover focus">
+          <img src="{{ book.cover_image_url }}" alt="{{ book.title }}" class="display-book-cover featured-books">
+        </a>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -144,76 +148,76 @@ Book Details | {{ book.title }}
 
 {% block modals %}
 <!-- Move to Complete List Modal -->
- {% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
 <div class="modal fade" id="completeModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add {{ book.book.title }} to <strong>Completed</strong>?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to add this book to <strong>Completed</strong>?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="status" value="1">
-                    <button type="submit" class="btn btn-danger">Add</button>
-                </form>
-            </div>
-        </div>
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add {{ book.book.title }} to <strong>Completed</strong>?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to add this book to <strong>Completed</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
+          {% csrf_token %}
+          <input type="hidden" name="status" value="1">
+          <button type="submit" class="btn btn-danger">Add</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Move to Plan to Read List Modal -->
 <div class="modal fade" id="planModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add {{ book.book.title }} to <strong>Plan to Read</strong>?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to add this book to <strong>Plan to Read</strong>?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="status" value="2">
-                    <button type="submit" class="btn btn-danger">Add</button>
-                </form>
-            </div>
-        </div>
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add {{ book.book.title }} to <strong>Plan to Read</strong>?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to add this book to <strong>Plan to Read</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
+          {% csrf_token %}
+          <input type="hidden" name="status" value="2">
+          <button type="submit" class="btn btn-danger">Add</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Move to Reading List Modal -->
 <div class="modal fade" id="readingModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add {{ book.book.title }} to <strong>Reading</strong>?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to add this book to <strong>Reading</strong>?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="status" value="0">
-                    <button type="submit" class="btn btn-danger">Add</button>
-                </form>
-            </div>
-        </div>
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add {{ book.book.title }} to <strong>Reading</strong>?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to add this book to <strong>Reading</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
+          {% csrf_token %}
+          <input type="hidden" name="status" value="0">
+          <button type="submit" class="btn btn-danger">Add</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Review Modal -->
@@ -222,58 +226,57 @@ Book Details | {{ book.title }}
     <div class="modal-content">
       <!-- Header -->
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="leaveAReview">{% if user_review %}Edit Your Review{% else %}Leave a Review{% endif %}</h1>
+        <h1 class="modal-title fs-5 " id="leaveAReview">{% if user_review %}Edit Your Review{% else %}Leave a Review
+          {% endif %}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <!-- Review area -->
       <div class="modal-body my-1">
-        <div id="leave-a-review" >
-        <form method="POST" action="{% url 'add_review' book.id %}">
-          {% csrf_token %}
+        <div id="leave-a-review">
+          <form method="POST" action="{% url 'add_review' book.id %}">
+            {% csrf_token %}
 
-          <!-- Review Title -->
-          <div class="review-title my-2">
-            <label for="review_title">Review Title:</label>
-            <input type="text" name="review_title" name="review_title" id="review_title" value="{{ user_review.review_title|default:'' }}" required placeholder="Required..">
-          </div>
+            <!-- Review Title -->
+            <div class="review-title my-2">
+              <label for="review_title">Review Title:</label>
+              <input type="text" name="review_title" name="review_title" id="review_title"
+                value="{{ user_review.review_title|default:'' }}" required placeholder="Required..">
+            </div>
 
-          <!-- Review rate -->
-          <div class="star_rating my-3">
-            <label for="star_rating">Star Rating:</label>
-            <select name="star_rating" id="star_rating">
-              <option value="" disabled selected>Select a rating <i class="fa-solid fa-star"></i></option>
-              <option value="0" {% if user_review.star_rating == 0 %}selected{% endif %}>(0) Appauling</option>
-              <option value="1" {% if user_review.star_rating == 1 %}selected{% endif %}>(1) Very Bad</option>
-              <option value="2" {% if user_review.star_rating == 2 %}selected{% endif %}>(2) Bad</option>
-              <option value="3" {% if user_review.star_rating == 3 %}selected{% endif %}>(3) Average</option>
-              <option value="4" {% if user_review.star_rating == 4 %}selected{% endif %}>(4) Very Good</option>
-              <option value="5" {% if user_review.star_rating == 5 %}selected{% endif %}>(5) Amazing</option>
-            </select>
-          </div>
+            <!-- Review rate -->
+            <div class="star_rating my-3">
+              <label for="star_rating">Star Rating:</label>
+              <select name="star_rating" id="star_rating">
+                <option value="" disabled selected>Select a rating <i class="fa-solid fa-star"></i></option>
+                <option value="0" {% if user_review.star_rating==0 %}selected{% endif %}>(0) Appauling</option>
+                <option value="1" {% if user_review.star_rating==1 %}selected{% endif %}>(1) Very Bad</option>
+                <option value="2" {% if user_review.star_rating==2 %}selected{% endif %}>(2) Bad</option>
+                <option value="3" {% if user_review.star_rating==3 %}selected{% endif %}>(3) Average</option>
+                <option value="4" {% if user_review.star_rating==4 %}selected{% endif %}>(4) Very Good</option>
+                <option value="5" {% if user_review.star_rating==5 %}selected{% endif %}>(5) Amazing</option>
+              </select>
+            </div>
 
-          <!-- Review textarea -->
-          <div class="review_body my-3">
-            <label for="review_body" class="visually-hidden">Review</label>
-            <textarea name="review_body" id="review_body" placeholder="Write a review here..." required>{{ user_review.review_body|default:'' }}</textarea>
-          </div>
-
-
-          <!-- Footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">{% if user_review %}Update Review{% else %}Submit Review{% endif %}</button>
-      </div>
-        </form>
-          
+            <!-- Review textarea -->
+            <div class="review_body my-3">
+              <label for="review_body" class="visually-hidden">Review</label>
+              <textarea name="review_body" id="review_body" placeholder="Write a review here..."
+                required>{{ user_review.review_body|default:'' }}</textarea>
+            </div>
 
 
-
+            <!-- Footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">{% if user_review %}Update Review{% else %}Submit Review{% endif %}</button>
+            </div>
+          </form>
 
         </div>
       </div>
-      </div>
     </div>
+  </div>
 </div>
 
 

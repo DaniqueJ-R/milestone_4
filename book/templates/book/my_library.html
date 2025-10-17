@@ -263,6 +263,7 @@ My Library
 
 {% block modals %}
 {% for book in all_books %}
+
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -285,6 +286,7 @@ My Library
         </div>
     </div>
 </div>
+
 <!-- Move to Complete List Modal -->
 <div class="modal fade" id="completeModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -308,6 +310,7 @@ My Library
         </div>
     </div>
 </div>
+
 <!-- Move to Plan to Read List Modal -->
 <div class="modal fade" id="planModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -331,6 +334,7 @@ My Library
         </div>
     </div>
 </div>
+
 <!-- Move to Reading List Modal -->
 <div class="modal fade" id="readingModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -354,5 +358,6 @@ My Library
         </div>
     </div>
 </div>
+
 {% endfor %}
 {% endblock %}

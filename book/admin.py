@@ -20,7 +20,7 @@ class TrackerListAdmin(admin.ModelAdmin):
     list_filter = ['status']
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ['review_id','book', 'user', 'star_rating', 'created_on']
+    list_display = ['id','book', 'user', 'star_rating', 'created_on']
     list_filter = ['star_rating']
 
 admin.site.register(Book, BookAdmin)

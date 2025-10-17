@@ -59,14 +59,14 @@ def add_review(request, book_id):
 
 
 @login_required
-def delete_review(request, review_id):
+def delete_review(request, id):
     """
     Deletes a single review.
     """
 
     # Fetch the review, 404 if not found
     try:
-        existing_review = Review.objects.get(review_id=review_id)
+        existing_review = Review.objects.get(id=id)
     except Review.DoesNotExist:
         messages.error(request, "This review has already been removed.")
         # You can redirect to any fallback page if the review is gone
