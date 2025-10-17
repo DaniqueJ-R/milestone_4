@@ -98,9 +98,9 @@ def add_or_update_tracker(request, book_id):
             messages.success(request, f"'{book.title}' added to your library!")
         else:
             # Already exists, update the status
-            tracker.status = status
+            tracker.status = int(status)
             tracker.save()
-            messages.success(request, f"'{book.title}' moved to {dict(TrackerStatus.choices)[int(status)]}!")
+            messages.success(request, f"'{book.title}' moved to {tracker.get_status_display()} list!")
 
         return redirect('book_details', slug=book.slug)
 
