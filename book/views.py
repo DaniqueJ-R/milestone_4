@@ -91,7 +91,7 @@ def add_or_update_tracker(request, book_id):
         tracker, created = TrackerList.objects.get_or_create(
             user=request.user,
             book=book,
-            defaults={'status': status}
+            defaults={'status': status} if status else {} #prevents server error
         )
 
         if created:

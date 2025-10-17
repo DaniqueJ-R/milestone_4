@@ -8,7 +8,6 @@ from .forms import DonationForm
 from .models import Donation
 
 import stripe
-import json
 
 
 # Create your views here.

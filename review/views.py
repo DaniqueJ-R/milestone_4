@@ -15,12 +15,7 @@ def add_review(request, book_id):
 
     book = get_object_or_404(Book, id=book_id)
 
-    # Check if user already reviewed this book
-    existing_review = Review.objects.filter(
-        user=request.user,
-        book=book,
-    ).first()
-
+    
     user_completed = TrackerList.objects.filter(
         user=request.user,
         book=book,
@@ -30,6 +25,12 @@ def add_review(request, book_id):
     if not user_completed:
         messages.error(request, "You must complete this book before leaving a review.")
         return redirect('book_details', slug=book.slug)
+
+    # Check if user already reviewed this book
+    existing_review = Review.objects.filter(
+        user=request.user,
+        book=book,
+    ).first()
 
     if request.method == 'POST':
         review_title = request.POST.get('review_title')
