@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Book, TrackerStatus, TrackerList
 from review.models import Review
+from review.forms import ReviewForm
 
 # Create your views here.
 
@@ -49,15 +50,11 @@ def books_page(request):
 def book_details(request, slug):
     """ A view to show individual book details """
 
-    queryset = Book.objects.all()
-    book = get_object_or_404(queryset, slug=slug)  
+    book = get_object_or_404(Book, slug=slug)  
     book_reviews = Review.objects.filter(book=book).order_by('-created_on')[:4]
     other_books = Book.objects.exclude(id=book.id).order_by('?')[:3]
     avg_rating = book_reviews.aggregate(Avg('star_rating'))['star_rating__avg']
-    
-    user_review = None
-    user_completed = False 
-    
+
     if request.user.is_authenticated:
         user_review = Review.objects.filter(user=request.user, book=book).first()
         user_completed = TrackerList.objects.filter(
@@ -65,6 +62,19 @@ def book_details(request, slug):
             book=book, 
             status=TrackerStatus.COMPLETE
         ).exists()
+
+    # Get existing review if user is authenticated
+    user_review = None
+    user_completed = False
+
+    if request.user.is_authenticated:
+        user_review = Review.objects.filter(
+            user=request.user,
+            book=book
+        ).first()
+
+    # Initialize form with existing review data
+    review_form = ReviewForm(instance=user_review)
 
     context = {
         'book': book,
@@ -74,6 +84,7 @@ def book_details(request, slug):
         'review_count': book_reviews.count(),
         'user_review': user_review,
         'user_completed': user_completed,
+        'review_form': review_form,
     }
 
     return render(request, 'book/book_details.html', context)
