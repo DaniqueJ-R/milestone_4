@@ -12,17 +12,15 @@ def add_review(request, book_id):
     Add or update a review for a book
     """
     book = get_object_or_404(Book, id=book_id)
-    
+
     # Check if user has completed the book
     user_completed = TrackerList.objects.filter(
-        user=request.user,
-        book=book,
-        status=TrackerStatus.COMPLETE
+        user=request.user, book=book, status=TrackerStatus.COMPLETE
     ).exists()
-    
+
     if not user_completed:
         messages.error(request, "You must complete this book before leaving a review.")
-        return redirect('book_details', slug=book.slug)
+        return redirect("book_details", slug=book.slug)
 
     # Check if user already reviewed this book
     existing_review = Review.objects.filter(
@@ -30,31 +28,29 @@ def add_review(request, book_id):
         book=book,
     ).first()
 
-    if request.method == 'POST':
+    if request.method == "POST":
         # Initialize form with POST data and existing review if updating
         form = ReviewForm(request.POST, instance=existing_review)
-        
+
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
             review.book = book
             review.save()
-            
+
             if existing_review:
                 messages.success(request, "Review updated!")
             else:
                 messages.success(request, "Review added!")
-            
-            return redirect('book_details', slug=book.slug)
+
+            return redirect("book_details", slug=book.slug)
         else:
-            # Form has validation errors - they'll be displayed in the template
-            messages.error(request, "Please correct the errors in your review.")
-            # You might want to render the page with errors instead of just redirecting
-            # For now, we'll redirect but in a real scenario you'd pass the form to template
-            return redirect('book_details', slug=book.slug)
-    
+            message = "Please correct the errors in your review."
+            messages.error(request, message)
+            return redirect("book_details", slug=book.slug)
+
     # GET request - shouldn't normally reach here since form is in modal
-    return redirect('book_details', slug=book.slug)
+    return redirect("book_details", slug=book.slug)
 
 
 @login_required
@@ -67,14 +63,16 @@ def delete_review(request, id):
 
     # Only allow the review owner to delete it
     if review.user != request.user:
-        messages.error(request, "You do not have permission to delete this review.")
-        return redirect('book_details', slug=book.slug)
+        message = "You do not have permission to delete this review."
+        messages.error(request, message)
+        return redirect("book_details", slug=book.slug)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         review_title = review.review_title
         review.delete()
-        messages.success(request, f"'{review_title}' was deleted from your account.")
-        return redirect('book_details', slug=book.slug)
+        message = f"'{review_title}' was deleted from your account."
+        messages.success(request, message)
+        return redirect("book_details", slug=book.slug)
 
     # If not a POST request, redirect back
-    return redirect('book_details', slug=book.slug)
+    return redirect("book_details", slug=book.slug)

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-import uuid
+import shortuuid
 
 # Create your models here.
 
@@ -17,12 +17,11 @@ class Donation(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name='donations')
 
-
     def _generate_payment_number(self):
         """
         Generate a random, unique payment number using UUID
         """
-        return uuid.uuid4().hex.upper()
+        return shortuuid.ShortUUID().random(length=8)
 
     def save(self, *args, **kwargs):
         """
