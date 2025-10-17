@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %} Bad Request (400) {% endblock %} 
+{% block content %}
+
+<section
+  class="password-reset-done-section text-center"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-3 offset-md-2">
+        <h1 id="errors">Bad Request (400)</h1>
+        <p>The request could not be understood by the server.</p>
+        <a href="{% url 'index' %}" class="btn btn-success btn-theme">Return to homepage</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

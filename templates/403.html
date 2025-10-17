@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %} Forbidden (403) {% endblock %} 
+{% block content %}
+
+<section
+  class="password-reset-done-section text-center"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-3 offset-md-2">
+        <h1 id="errors">Forbidden (403)</h1>
+        <p>Sorry, you don’t have permission to view this page.</p>
+        <a href="{% url 'index' %}" class="btn btn-success btn-theme">Return to homepage</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

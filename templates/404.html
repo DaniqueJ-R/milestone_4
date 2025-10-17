@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %} Page not found (404) {% endblock %} 
+{% block content %}
+
+<section
+  class="password-reset-done-section text-center"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-3 offset-md-2">
+        <h1 id="errors">Page not found (404)</h1>
+        <p>Sorry, the page you were looking for doesn’t exist.</p>
+        <a href="{% url 'index' %}" class="btn btn-success btn-theme">Return to homepage</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
