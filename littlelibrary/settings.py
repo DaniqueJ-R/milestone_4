@@ -23,9 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    'django-insecure-s#k84f!am22jodt16$zk-kj$w82dw1wh%c+vkne3b3dqiowzgy'
-)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True = development mode, False = production mode
@@ -73,6 +70,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'littlelibrary.urls'
 
+# Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
@@ -133,13 +131,6 @@ WSGI_APPLICATION = 'littlelibrary.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
@@ -176,7 +167,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1",
     "http://localhost",
-    "https://little-libraries.herokuapp.com",  # Replace with your Heroku app name if you deploy there
+    "https://little-libraries.herokuapp.com",
 ]
 
 
@@ -200,7 +191,6 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
