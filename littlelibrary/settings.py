@@ -171,8 +171,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://little-libraries.herokuapp.com",
 ]
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
