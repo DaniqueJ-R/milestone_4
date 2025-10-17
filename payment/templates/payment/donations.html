@@ -36,22 +36,21 @@ Make a Donation
               {{ donation_form.phone_number|as_crispy_field }}
             </fieldset>
 
-
           <!-- Donation amount section -->
           <div class="mb-4">
             <label class="form-label fw-semibold">Select Donation Amount (£)</label>
             <div class="btn-group w-100 mb-3" role="group" aria-label="Donation amount">
               <input type="radio" class="btn-check" name="amount" id="amount5" value="5" autocomplete="off" checked>
-              <label class="btn btn-outline-success" for="amount5">£5</label>
+              <label class="btn btn-success" for="amount5">£5</label>
 
               <input type="radio" class="btn-check" name="amount" id="amount10" value="10" autocomplete="off">
-              <label class="btn btn-outline-success" for="amount10">£10</label>
+              <label class="btn btn-success" for="amount10">£10</label>
 
               <input type="radio" class="btn-check" name="amount" id="amount20" value="20" autocomplete="off">
-              <label class="btn btn-outline-success" for="amount20">£20</label>
+              <label class="btn btn-success" for="amount20">£20</label>
 
               <input type="radio" class="btn-check" name="amount" id="customAmount" value="custom" autocomplete="off">
-              <label class="btn btn-outline-secondary" for="customAmount">Custom</label>
+              <label class="btn btn-secondary" for="customAmount">Custom</label>
             </div>
 
             <div id="customAmountInput" class="mt-2" style="display:none;">
@@ -69,9 +68,9 @@ Make a Donation
           </fieldset>
           
           <div class="text-center">
-<button type="submit" class="btn btn-success px-5 py-2" id="submit-button">
-  Donate Now
-</button>
+            <button type="submit" class="btn btn-success px-5 py-2" id="submit-button">
+              Donate Now
+            </button>
           </div>
         </form>
         
