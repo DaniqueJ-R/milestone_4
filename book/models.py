@@ -81,3 +81,4 @@ class TrackerList(models.Model):
     def last_updates(self):
         how_many = now() - self.updated_on
         return f"{how_many.days} days ago"
+    

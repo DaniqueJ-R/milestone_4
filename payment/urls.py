@@ -7,4 +7,3 @@ urlpatterns = [
     path('wh/', webhook, name='webhook'),
     path('success/<str:payment_number>/', views.payment_success, name="success"),
 ]
-

@@ -147,13 +147,13 @@ def edit_tracker(request, tracker_id):
             messages.error(request, "No status selected. Please try again.")
             return redirect('my_library')
 
-        tracker.status = new_status
+        tracker.status = int(new_status)
         tracker.save()
         messages.success(
             request,
             (
                 f"'{tracker.book.title}' was moved to "
-                f"{tracker.status.title()} in your library."
+                f"{tracker.get_status_display()} in your library."
             )
         )
     return redirect('my_library')
