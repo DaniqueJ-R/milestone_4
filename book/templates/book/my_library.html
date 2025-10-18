@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 My Library
@@ -9,7 +10,7 @@ My Library
 <header class=" bg-image" id="my-library-header">
     <div class="overlay"></div>
     <h1>My Library</h1>
-    <p>The currently reading list</p>
+    <p>All your Tracking Lists</p>
 
     <div>
         <ul class="nav nav-tabs justify-content-center" id="bookTabs">
@@ -40,8 +41,8 @@ My Library
             <!-- Reading Section header -->
             <div class="section-header space">
                 <h2 id="reading-header">Reading</h2>
-                <p>The currently reading list</p>
-
+                <p>Books you’re currently reading.
+                <br><small>Last updated {{ reading_last_updated|naturaltime }}</small></p>
             </div>
             {% if reading_books %}
             {% for book in reading_books %}
@@ -112,7 +113,8 @@ My Library
             <!-- Reading Section header -->
             <div class="section-header space">
                 <h2 id="plan-to-read-header">Plan to Read</h2>
-                <p>The currently Plan to Read list</p>
+                <p>Books you plan to read next.
+                <br><small>Last updated {{ plan_last_updated|naturaltime }}</small></p>
 
             </div>
             {% if plan_books %}
@@ -185,7 +187,8 @@ My Library
             <!-- Reading Section header -->
             <div class="section-header space">
                 <h2 id="complete-header">Complete</h2>
-                <p>The currently complete list</p>
+                <p>Books you’ve finished reading.
+                <br><small>Last updated {{ completed_last_updated|naturaltime }}</small></p>
 
             </div>
             {% if completed_books %}

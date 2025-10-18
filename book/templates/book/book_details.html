@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 Book Details | {{ book.title }}
@@ -71,10 +72,11 @@ Book Details | {{ book.title }}
           {% for review in book_reviews %}
           <div class="card">
             <div class="card-body">
-              <h6 class="card-title">{{ review.user.username }}</h6>
+              <h6 class="card-title">By {{ review.user.username }}</h6>
+              <p class="my-2"><small class="text-muted"> reviewed {{ review.updated_on|naturaltime }}</small></p>
               <h6 class="card-subtitle mb-2 text-body-secondary">
-                {{ review.review_title }}
-                <span class="accent"> {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></span>
+                {{ review.review_title }} 
+                <span class="accent">( {{ review.star_rating }}/5 <i class="fa-solid fa-star"></i>)</span>
               </h6>
               <p class="card-text review-body short-review" id="review-{{ review.id }}">
                 {{ review.review_body|truncatewords:50 }}
@@ -87,6 +89,7 @@ Book Details | {{ book.title }}
                 {{ review.review_body }}
                 <a href="#" class="show-less-link" data-review-id="{{ review.id }}">Show less</a>
               </p>
+
               {% if request.user == review.user %}
               <a data-bs-toggle="modal" data-bs-target="#leaveAReview" class="card-link">Edit</a>
               <a data-bs-toggle="modal" data-bs-target="#deleteAReview{{ review.id }}" class="card-link">Delete</a>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 Home
@@ -67,8 +68,8 @@ Home
     </a>
     {% endfor %}
   </section>
-  <section class="row justify-content-center" id="reviews-area">
-    <div class=" text-center py-4">
+  <section class="row justify-content-center pt-5 pb-4" id="reviews-area">
+    <div class=" text-center">
       <p>See your more recent reviews here:</p>
     </div>
   {% if recent_reviews %}
@@ -82,12 +83,12 @@ Home
           </a>
         </div>
         <div class="col-md-8 align-self-center">
-          <div class="card-body">
+          <div class="card-body pt-0">
             <h5 class="card-title">{{ review.review_title }}</h5>
             <!-- In your review card -->
 <p class="card-text review-body short-review" id="review-{{ review.id }}">
-  {{ review.review_body|truncatewords:50 }}
-  {% if review.review_body|wordcount > 50 %}
+  {{ review.review_body|truncatewords:45 }}
+  {% if review.review_body|wordcount > 45 %}
     <a href="#" class="show-more-link" data-review-id="{{ review.id }}">Show more</a>
   {% endif %}
 </p>
@@ -97,7 +98,8 @@ Home
   <a href="#" class="show-less-link" data-review-id="{{ review.id }}">Show less</a>
 </p>
 
-            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></small></p>
+            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i> <br>
+            Reviewed {{ review.updated_on|naturaltime }}</small></p>
           </div>
         </div>
       </div>
@@ -169,17 +171,18 @@ Home
     <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-                    <a type="button" href="{% url 'book_details' review.book.slug %}" data-bs-container="body" data-bs-toggle="popover"
+          <a type="button" href="{% url 'book_details' review.book.slug %}" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ review.book.title }}" data-bs-trigger="hover focus">
           <img src="{{ review.book.cover_image_url }}" class="img-fluid rounded-start" alt="{{ review.book.title }}">
           </a>
         </div>
         <div class="col-md-8 align-self-center">
-          <div class="card-body">
+          <div class="card-body pt-0">
             <h5 class="card-title">{{ review.review_title }}</h5>
-            <p class="card-text review-body short-review" id="review-{{ review.id }}">
-  {{ review.review_body|truncatewords:50 }}
-  {% if review.review_body|wordcount > 50 %}
+            <!-- In your review card -->
+<p class="card-text review-body short-review" id="review-{{ review.id }}">
+  {{ review.review_body|truncatewords:45 }}
+  {% if review.review_body|wordcount > 45 %}
     <a href="#" class="show-more-link" data-review-id="{{ review.id }}">Show more</a>
   {% endif %}
 </p>
@@ -188,7 +191,9 @@ Home
   {{ review.review_body }}
   <a href="#" class="show-less-link" data-review-id="{{ review.id }}">Show less</a>
 </p>
-            <p class="card-text"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i></small></p>
+
+            <p class="card-text mt-0 py=t-0"><small class="text-body-secondary">{{ review.star_rating }}/5 <i class="fa-solid fa-star"></i> <br>
+            Reviewed {{ review.updated_on|naturaltime }}</small></p>
           </div>
         </div>
       </div>

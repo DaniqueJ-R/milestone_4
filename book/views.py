@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Avg
+from django.db.models import Avg, Max
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Book, TrackerStatus, TrackerList
@@ -121,7 +121,7 @@ def add_or_update_tracker(request, book_id):
 @login_required
 def my_library(request):
     """
-    Display the logged in user's Complete, 
+    Display the logged in user's Complete,
     Plan to read, and Reading book lists.
     """
 
@@ -139,11 +139,20 @@ def my_library(request):
     for book in completed_books:
         book.user_review = book.book.reviews.filter(user=request.user).first()
 
+    # Get last updated time for the reading list
+    reading_last_updated = reading_books.aggregate(last=Max('updated_on'))['last']
+    plan_last_updated = plan_books.aggregate(last=Max('updated_on'))['last']
+    completed_last_updated = completed_books.aggregate(last=Max('updated_on'))['last']
+
+
     context = {
         'reading_books': reading_books,
         'completed_books': completed_books,
         'plan_books': plan_books,
         'all_books': all_books,
+        'reading_last_updated': reading_last_updated,
+        'plan_last_updated': plan_last_updated,
+        'completed_last_updated': completed_last_updated
     }
 
     return render(request, 'book/my_library.html', context)
