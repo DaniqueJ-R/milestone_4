@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Avg, Max
-from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Avg, Max, Q
+from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 
 from .models import Book, TrackerStatus, TrackerList
 from review.models import Review
 from review.forms import ReviewForm
+
 
 # Create your views here.
 
@@ -88,6 +90,56 @@ def book_details(request, slug):
     }
 
     return render(request, 'book/book_details.html', context)
+
+
+def book_search(request):
+    """
+    View to handle search queries and return matching books.
+    """
+
+    books = Book.objects.all()
+    search_term = None
+
+    if "q" in request.GET:
+        search_term = request.GET["q"].strip()
+        if not search_term:
+            messages.error(request, "Please enter a search term.")
+            return redirect(reverse("index"))
+
+        queries = Q(title__icontains=search_term) | Q(description__icontains=search_term)
+        books = books.filter(queries)
+
+        if not books.exists():
+            messages.warning(request, f'No results found for "{search_term}".')
+
+    context = {
+        "books": books,
+        "search_term": search_term,
+    }
+
+    return render(request, "book/index.html", context)
+
+
+def ajax_book_search(request):
+    """Return JSON response of matching books for live search."""
+    search_term = request.GET.get("q", "").strip()
+    results = []
+
+    if search_term:
+        books = Book.objects.filter(
+            Q(title__icontains=search_term) | Q(description__icontains=search_term)
+        )[:5]  # Limit to top 5 results
+
+        for book in books:
+            results.append({
+                "title": book.title,
+                "slug": book.slug,
+                "cover": book.cover_image_url,  # optional: only if you have this field
+            })
+
+    return JsonResponse({"results": results})
+
+
 
 @login_required
 def add_or_update_tracker(request, book_id):

@@ -47,7 +47,7 @@
 
               <!-- Search bar -->
             <li class="nav-item">
-                <form id="searchForm" class="d-flex position-relative" role="search">
+                <form id="searchForm" class="d-flex position-relative" role="search" autocomplete="off">
                   <button id="searchButton" class="btn btn-outline-success" type="button">
                     Search
                   </button>
@@ -58,6 +58,8 @@
                     placeholder="Search for books here..."
                     aria-label="Search"
                   />
+                  <div id="searchResults" class="list-group position-absolute w-100" 
+                  style=""></div>
                 </form>
 
 

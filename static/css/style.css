@@ -177,6 +177,20 @@ hr {
   opacity: 0;
 }
 
+#searchResults {
+  overflow-y: visible;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  top: 2.5rem;
+  left: 4.5rem;
+  z-index: 1000; 
+  display: none;
+}
+
+#searchResults > a > div {
+  color: var(--black);
+}
+
 /* Only affects search bar dropdown inside #mobile-search */
 #mobile-search + .dropdown-menu {
   --bs-dropdown-padding-y: 0rem;

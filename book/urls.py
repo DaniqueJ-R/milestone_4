@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.books_page, name="index"),
+    path("ajax/search/", views.ajax_book_search, name="ajax_book_search"),
     path('book-details/<slug:slug>/', views.book_details, name="book_details"),
     path('my-library/', views.my_library, name="my_library"),
     path("tracker/add/<int:book_id>/", views.add_or_update_tracker, name="add_tracker"),
