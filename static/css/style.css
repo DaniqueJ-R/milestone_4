@@ -618,6 +618,8 @@ hr {
   padding: 4%;
 }
 /* Donation Pages END */
+
+/* Media query */
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {
@@ -639,6 +641,10 @@ hr {
     width: 100%;
     background: rgba(163, 163, 163, 0.1);
   }
+
+  .review-image{
+  height: 17rem;
+}
 
   #my-library-header {
     height: fit-content;
@@ -724,7 +730,3 @@ hr {
   }
 }
 
-/* delete */
-/* .space{
-  border: solid 2px;
-} */

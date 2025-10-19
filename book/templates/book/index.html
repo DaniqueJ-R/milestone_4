@@ -49,7 +49,7 @@ Home
     </a>
 
     {% for book in reading_books %}
-    <a type="button" href="{% url 'book_details' book.book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+    <a type="button" href="{% url 'book_details' book.book.slug %}" class="display-books unauth-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.book.cover_image_url }}" alt="{{ book.book.title }}">
     </a>
@@ -62,7 +62,7 @@ Home
       <h2>Books this week</h2>
     </a>
     {% for book in featured_books_auth %}
-    <a type="button" href="{% url 'book_details' book.slug %}" class="display-books col" data-bs-container="body" data-bs-toggle="popover"
+    <a type="button" href="{% url 'book_details' book.slug %}" class="display-books unauth-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
       <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
     </a>
@@ -79,12 +79,12 @@ Home
         <div class="col-md-4">
           <a type="button" href="{% url 'book_details' review.book.slug %}" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ review.book.title }}" data-bs-trigger="hover focus">
-          <img src="{{ review.book.cover_image_url }}" class="img-fluid rounded-start" alt="{{ review.book.title }}">
+          <img src="{{ review.book.cover_image_url }}" class="img-fluid rounded-start review-image" alt="{{ review.book.title }}">
           </a>
         </div>
         <div class="col-md-8 align-self-center">
           <div class="card-body pt-0">
-            <h5 class="card-title">{{ review.review_title }}</h5>
+            <h5 class="card-title pt-4">{{ review.review_title }}</h5>
             <!-- In your review card -->
 <p class="card-text review-body short-review" id="review-{{ review.id }}">
   {{ review.review_body|truncatewords:45 }}
