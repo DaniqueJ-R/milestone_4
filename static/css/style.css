@@ -241,7 +241,7 @@ hr {
 
 .footer-link-block,
 .footer-link-icon-block {
-  background-image: url(../static/images/footer-sns-border.png);
+  background-image: url(../images/footer-sns-border.png);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 720px 1px;
