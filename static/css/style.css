@@ -475,8 +475,8 @@ hr {
 }
 
 .join-green:hover {
-  color: var(--black);
-  background-color: var(--light-highlight-color);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 #promo {
