@@ -1,5 +1,5 @@
 {% load static %}      
-      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top d-block d-lg-none" data-bs-theme=dark>
+      <nav id="mobileNav" class="navbar navbar-expand-lg bg-body-tertiary fixed-top d-block d-lg-none" data-bs-theme=dark>
         <div class="container-fluid">
           <a class="navbar-brand logo" href="{% url 'index' %}">
             <img
@@ -99,40 +99,30 @@
               
               <!-- Mobile Search -->
               <li class="nav-item">
-                <a
-                  class="nav-link d-block d-lg-none"
-                  href="#"
-                  id="mobile-search"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Search
-                </a>
-                <div
-                  class="dropdown-menu border-0 w-100 rounded-0 my-0 dropdown-item.special"
-                  aria-labelledby="mobile-search"
-                >
-                  <form class="form" method="GET" action="">
-                    <div class="input-group w-100">
-                      <input
-                        class="form-control border border-black rounded-0 dropdown-item.special"
-                        type="text"
-                        name="q"
-                        placeholder="Search our site"
-                      />
-                      <div class="input-group-append">
-                        <button
-                          class="form-control form-control btn btn-black border border-black rounded-0"
-                          type="submit"
-                        >
-                          <span class="icon">
-                            <i class="fas fa-search"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+<a
+    class="nav-link"
+    href="#"
+    id="mobile-search"
+    data-bs-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <i class="fas fa-search"></i> Search
+  </a>
+  <div
+    class="dropdown-menu border-0 w-100 rounded-0 my-0 p-3"
+    aria-labelledby="mobile-search"
+  >
+    <form id="mobileSearchForm" class="position-relative" role="search" autocomplete="off">
+      <input
+        id="mobileSearchInput"
+        class="form-control border border-black rounded-0 mb-2"
+        type="text"
+        placeholder="Search for books..."
+      />
+      <div id="mobileSearchResults" class="list-group position-absolute w-100"></div>
+    </form>
+  </div>
                 </div>
               </li>
 

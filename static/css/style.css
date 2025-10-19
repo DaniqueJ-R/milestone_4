@@ -704,14 +704,24 @@ hr {
   .login-section, .signup-section {
     margin: 2rem 30%;
   }
+
+  #desktopNav {
+    display: none;
+  }
 }
 
 /* Changes settings below 992px (large) */
 @media screen and (max-width: 992px) {
+    #mobileNav {
+    display: none;
+  }
 }
 
 /* Changes settings below 1200px (extra large) */
 @media screen and (max-width: 1200px) {
+  #mobileNav {
+    display: none;
+  }
 }
 
 /* delete */
