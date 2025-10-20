@@ -89,9 +89,9 @@ hr {
 }
 
 .btn-success {
-    --bs-btn-color: var(--white);
-    --bs-btn-bg: var(--primary-color);
-    --bs-btn-border-color: var(--primary-color);
+  --bs-btn-color: var(--white);
+  --bs-btn-bg: var(--primary-color);
+  --bs-btn-border-color: var(--primary-color);
 }
 
 .message-container {
@@ -153,10 +153,34 @@ hr {
 }
 
 .dropdown-menu {
-    --bs-dropdown-bg: white;
-    --bs-dropdown-border-color: var(--light-highlight-color);
-    --bs-dropdown-divider-bg: rgba(0, 0, 0, 0.175);
-  }
+  --bs-dropdown-bg: white;
+  --bs-dropdown-border-color: var(--light-highlight-color);
+  --bs-dropdown-divider-bg: rgba(0, 0, 0, 0.175);
+  --bs-dropdown-link-hover-bg: #e5e5e6;
+}
+
+.form-control {
+  color: var(--black);
+  background-color: var(--white);
+}
+
+.form-control:focus {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.list-group {
+  --bs-list-group-color: var(--black);
+  --bs-list-group-bg: var(--white);
+  --bs-list-group-action-hover-color: var(--black);
+  --bs-list-group-action-hover-bg: #e5e5e6;
+  --bs-list-group-action-active-color: var(--black);
+  --bs-list-group-action-active-bg: #e5e5e6;
+}
+
+.search-item {
+  color: var(--black);
+}
 
 #searchInput {
   width: 0;
@@ -178,17 +202,21 @@ hr {
 }
 
 #searchResults {
-  overflow-y: visible;
+  max-height: 300px;
+  overflow-y: auto;
   border: 1px solid #ddd;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   top: 2.5rem;
   left: 4.5rem;
-  z-index: 1000; 
+  z-index: 1000;
   display: none;
 }
 
-#searchResults > a > div {
-  color: var(--black);
+#mobileSearchResults {
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0rem;
+  display: none;
 }
 
 /* Only affects search bar dropdown inside #mobile-search */
@@ -241,7 +269,7 @@ hr {
 
 .footer-link-block,
 .footer-link-icon-block {
-  background-image: url(../static/images/footer-sns-border.png);
+  background-image: url(../images/footer-sns-border.png);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 720px 1px;
@@ -339,20 +367,20 @@ hr {
 
 /* Login/ Signup HTML */
 
-.login-section{
+.login-section {
   margin: 2rem 35%;
 }
 
 .signup-section {
-    margin: 2rem 31%;
+  margin: 2rem 31%;
 }
 
 .reset-password-section {
-    margin: 3.83rem 28%;
+  margin: 3.83rem 28%;
 }
 
 .password-reset-done-section {
-    margin: 7.4rem 28%;
+  margin: 7.4rem 28%;
 }
 
 .login-form {
@@ -475,8 +503,8 @@ hr {
 }
 
 .join-green:hover {
-  color: var(--black);
-  background-color: var(--light-highlight-color);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 #promo {
@@ -618,6 +646,8 @@ hr {
   padding: 4%;
 }
 /* Donation Pages END */
+
+/* Media query */
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {
@@ -638,6 +668,10 @@ hr {
     height: 22%;
     width: 100%;
     background: rgba(163, 163, 163, 0.1);
+  }
+
+  .review-image {
+    height: 17rem;
   }
 
   #my-library-header {
@@ -661,7 +695,8 @@ hr {
     margin-top: 2rem;
   }
 
- .login-section, .signup-section  {
+  .login-section,
+  .signup-section {
     margin: 2rem 18% !important;
   }
 }
@@ -684,7 +719,7 @@ hr {
 
   #my-library-header {
     height: fit-content;
-}
+  }
 
   .library-book-details {
     margin-top: 2rem;
@@ -701,7 +736,8 @@ hr {
     max-width: 30%;
   }
 
-  .login-section, .signup-section {
+  .login-section,
+  .signup-section {
     margin: 2rem 30%;
   }
 
@@ -712,7 +748,7 @@ hr {
 
 /* Changes settings below 992px (large) */
 @media screen and (max-width: 992px) {
-    #mobileNav {
+  #mobileNav {
     display: none;
   }
 }
@@ -723,8 +759,3 @@ hr {
     display: none;
   }
 }
-
-/* delete */
-/* .space{
-  border: solid 2px;
-} */
