@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       searchInput.classList.remove("search-visible");
       searchInput.classList.add("search-hidden");
-      searchInput.value = ""; // optional: clear input when closed
+      searchInput.value = ""; // Clear input when closed
     }
   });
 });
@@ -79,7 +79,7 @@ function setupSearch(inputId, resultsId) {
           item.innerHTML = `
             <div class="d-flex align-items-center">
               ${book.cover ? `<img src="${book.cover}" alt="${book.title}" class="me-2" style="width:40px;height:60px;object-fit:cover;">` : ''}
-              <span>${book.title}</span>
+              <span class="search-item">${book.title}</span>
             </div>
           `;
           resultsBox.appendChild(item);
