@@ -288,7 +288,7 @@ hr {
   background-repeat: no-repeat;
   background-size: 720px 1px;
   padding-top: 20px;
-  color: aqua;
+  color: var(--white);
 }
 
 .footer-link-block > p > a {

@@ -85,35 +85,57 @@
           </div>
           <!-- Contact info -->
           <div class="col-12 col-md-6 col-xl-4">
+            <!-- Social Media info -->
             <div class="footer-social-media">
-              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Facebook" aria-label="Visit us on Facebook.(Opens in new tab)" href="https://www.facebook.com/" rel="noreferrer"><i class="fa-brands fa-fw fa-facebook-square"></i></a>
-              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Twitter" aria-label="Visit us on Twitter.(Opens in new tab)" href="https://twitter.com/" rel="noreferrer"><i class="fa-brands fa-fw fa-square-x-twitter"></i></a>
-              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Instagram" aria-label="Visit us on Instagram.(Opens in new tab)" href="https://www.instagram.com/" rel="noreferrer"><i class="fa-brands fa-fw fa-instagram-square"></i></a>
-              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Blue Sky" aria-label="Visit us on Blue Sky.(Opens in new tab)" href="https://bsky.app/" rel="noreferrer"><i class="fa-brands fa-fw fa-square-bluesky"></i></a>
-              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Threads" aria-label="Visit us on Threads.(Opens in new tab)" href="https://www.threads.com/" rel="noreferrer"><i class="fa-brands fa-fw fa-square-threads"></i></a>
-              <a target="_blank" class="icon-footer-sns" title="Join Discord Chat" aria-label="Visit us on Discord.(Opens in new tab)" href="https://discord.gg/" rel="noreferrer"><i class="fa-brands fa-fw fa-discord"></i></a>
+              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Facebook"
+                aria-label="Visit us on Facebook.(Opens in new tab)" href="https://www.facebook.com/" rel="noreferrer"><i
+                  class="fa-brands fa-fw fa-facebook-square"></i></a>
+              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Twitter"
+                aria-label="Visit us on Twitter.(Opens in new tab)" href="https://twitter.com/" rel="noreferrer"><i
+                  class="fa-brands fa-fw fa-square-x-twitter"></i></a>
+              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Instagram"
+                aria-label="Visit us on Instagram.(Opens in new tab)" href="https://www.instagram.com/" rel="noreferrer"><i
+                  class="fa-brands fa-fw fa-instagram-square"></i></a>
+              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Blue Sky"
+                aria-label="Visit us on Blue Sky.(Opens in new tab)" href="https://bsky.app/" rel="noreferrer"><i
+                  class="fa-brands fa-fw fa-square-bluesky"></i></a>
+              <a target="_blank" class="icon-footer-sns" title="Follow @littlelibrary on Threads"
+                aria-label="Visit us on Threads.(Opens in new tab)" href="https://www.threads.com/" rel="noreferrer"><i
+                  class="fa-brands fa-fw fa-square-threads"></i></a>
+              <a target="_blank" class="icon-footer-sns" title="Join Discord Chat"
+                aria-label="Visit us on Discord.(Opens in new tab)" href="https://discord.gg/" rel="noreferrer"><i
+                  class="fa-brands fa-fw fa-discord"></i></a>
             </div>
           </div>
-            <div class="footer-link-block row-cols-auto">
-      <p class="footer-link home di-ib">
-        <a href="{% url 'index' %}">Home</a>
-      </p>
-      <p class="footer-link di-ib">
-        <a href="{% url 'my_library' %}">Reading List</a> <!-- about us page -->
-        <a href="{% url 'donations' %}">Donate</a>  <!-- donation page -->
-        <a href="{% url 'account_change_password' %}">Change Password</a>  <!-- Contact us page -->
-      </p>
+          <div class="footer-link-block row-cols-auto">
+            <p class="footer-link di-ib">
+              Contact us for 
+              <a href="mailto:suggestions@littlelibrary.co.uk">Book Suggestions</a> or <a href="mailto:admin@littlelibrary.co.uk" class="ps-1 ms-1"> Account inqueries</a>
+            </p>
+          </div>
+          <div class="footer-link-block row-cols-auto">
+            <p class="footer-link home di-ib">
+              <a href="{% url 'index' %}">Home</a>
+            </p>
+            <p class="footer-link di-ib">
+              <a href="{% url 'my_library' %}">Reading List</a>
+              <a href="{% url 'donations' %}">Donate</a>
+              <a href="{% url 'account_change_password' %}">Change Password</a>
+            </p>
           </div>
           <div class="footer-link-icon-block">
             <div class="footer-recommended ac row-cols-auto">
-        <a target="_blank" class="col icon-recommended icon-waterstone" href="https://www.waterstones.com/" rel="noopener">Waterstones</a>
-        <a target="_blank" class="col icon-recommended icon-british-library" href="https://www.bl.uk/" rel="noopener">British Library</a>
-        <a target="_blank" class="col icon-recommended icon-awesomebooks" href="https://www.awesomebooks.com/">Awesome Books</a>
-      </div>
-    </div>
-    <div id="copyright">
-      LittleLibrary.com is a property of LittleLibrary Co., Ltd. ©2025 All Rights Reserved.
-    </div>
+              <a target="_blank" class="col icon-recommended icon-waterstone" href="https://www.waterstones.com/"
+                rel="noopener">Waterstones</a>
+              <a target="_blank" class="col icon-recommended icon-british-library" href="https://www.bl.uk/"
+                rel="noopener">British Library</a>
+              <a target="_blank" class="col icon-recommended icon-awesomebooks" href="https://www.awesomebooks.com/">Awesome
+                Books</a>
+            </div>
+          </div>
+          <div id="copyright">
+            LittleLibrary.com is a property of LittleLibrary Co., Ltd. ©2025 All Rights Reserved.
+          </div>
         </div>
       </div>
     </footer>
