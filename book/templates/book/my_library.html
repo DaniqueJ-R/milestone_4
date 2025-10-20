@@ -1,372 +1,539 @@
 {% extends "base.html" %}
-{% load static %}
-{% load humanize %}
+{% load static %} 
+{% load humanize %} 
 
-{% block title %}
-My Library
-{% endblock%}
+{% block title %} My Library {% endblock%} 
 
 {% block header %}
-<header class=" bg-image" id="my-library-header">
-    <div class="overlay"></div>
-    <h1>My Library</h1>
-    <p>All your Tracking Lists</p>
+<header class="bg-image" id="my-library-header">
+  <div class="overlay"></div>
+  <h1>My Library</h1>
+  <p>All your Tracking Lists</p>
 
-    <div>
-        <ul class="nav nav-tabs justify-content-center" id="bookTabs">
-            <li class="nav-item my-library-tab">
-                <a class="nav-link active" aria-current="page" href="#reading-header">Reading</a>
-            </li>
-            <li class="nav-item my-library-tab">
-                <a class="nav-link" href="#plan-to-read-header">Plan to Read</a>
-            </li>
-            <li class="nav-item my-library-tab">
-                <a class="nav-link" href="#complete-header">Complete</a>
-            </li>
-        </ul>
-    </div>
+  <div>
+    <ul class="nav nav-tabs justify-content-center" id="bookTabs">
+      <li class="nav-item my-library-tab">
+        <a class="nav-link active" aria-current="page" href="#reading-header"
+          >Reading</a
+        >
+      </li>
+      <li class="nav-item my-library-tab">
+        <a class="nav-link" href="#plan-to-read-header">Plan to Read</a>
+      </li>
+      <li class="nav-item my-library-tab">
+        <a class="nav-link" href="#complete-header">Complete</a>
+      </li>
+    </ul>
+  </div>
 </header>
-{% endblock %}
+{% endblock %} 
 
 {% block content %}
 <main class="container text-center">
-    <!-- Header with user info -->
+  <!-- Header with user info -->
 
-
-    <!-- Library books section -->
-    <!-- Reading Section -->
-    <section class="space container" id="reading-section">
-
-        <div class="row space">
-            <!-- Reading Section header -->
-            <div class="section-header space">
-                <h2 id="reading-header">Reading</h2>
-                <p>Books you’re currently reading.
-                <br><small>Last updated {{ reading_last_updated|naturaltime }}</small></p>
-            </div>
-            {% if reading_books %}
-            {% for book in reading_books %}
-            <hr class="divider">
-            <div class="library-body space row">
-                <!-- Book Cover -->
-                <div class="library-book-cover space col-12 col-md-3">
-                    <div class="">
-                        <a href="{% url 'book_details' book.book.slug %}">
-                        <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
-                            alt="{{ book.book.title }}" />
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Books details -->
-                <div class="library-book-details space col-12 col-md-4 col-lg-6 text-start">
-                    <a href="{% url 'book_details' book.book.slug %}">
-                        <h3 class="text-start">{{ book.book.title }}</h3>
-                        </a>
-                    <p class="">{{ book.book.author }}</p>
-                    <p><small>Genre:
-                            {% for g in book.genre.all %}
-                            {{ g.name }}{% if not forloop.last %}, {% endif %}
-                            {% empty %}
-                            None
-                            {% endfor %}
-                        </small></p>
-                    <p><small>Published - {{ book.book.published }}</small></p>
-                </div>
-
-                <!-- Edit/Delete section -->
-                <div class="library-book-edit col-12 col-md-3 space row align-items-center">
-                    <div class="btn-group align-items-center">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Update list
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#planModal{{ book.id }}">Plan To Read</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#completeModal{{ book.id }}">Complete</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal{{ book.id }}">Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <!-- Library books section -->
+  <!-- Reading Section -->
+  <section class="space container" id="reading-section">
+    <div class="row space">
+      <!-- Reading Section header -->
+      <div class="section-header space">
+        <h2 id="reading-header">Reading</h2>
+        <p>
+          Books you’re currently reading. <br /><small
+            >Last updated {{ reading_last_updated|naturaltime }}</small
+          >
+        </p>
+      </div>
+      {% if reading_books %} 
+      {% for book in reading_books %}
+      <hr class="divider" />
+      <div class="library-body space row">
+        <!-- Book Cover -->
+        <div class="library-book-cover space col-12 col-md-3">
+          <div class="">
+            <a href="{% url 'book_details' book.book.slug %}">
+              <img
+                src="{{ book.book.cover_image_url }}"
+                class="img-fluid list-books"
+                alt="{{ book.book.title }}"
+              />
+            </a>
+          </div>
         </div>
-        {% endfor %}
-        {% else %}
-        <hr class="divider">
-        <p class="accent"> No books have been added yet. </p>
-        <hr class="divider">
-        {% endif %}
-    </section>
-    <!-- Plan to read Section header -->
-    <section>
 
-        <div class="row space">
-            <!-- Reading Section header -->
-            <div class="section-header space">
-                <h2 id="plan-to-read-header">Plan to Read</h2>
-                <p>Books you plan to read next.
-                <br><small>Last updated {{ plan_last_updated|naturaltime }}</small></p>
-
-            </div>
-            {% if plan_books %}
-            {% for book in plan_books %}
-            <hr class="divider">
-            <div class="library-body space row">
-                <!-- Book Cover -->
-                <div class="library-book-cover space col-12 col-md-3">
-                    <div class="">
-                        <a href="{% url 'book_details' book.book.slug %}">
-                        <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
-                            alt="{{ book.book.title }}" />
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Books details -->
-                <div class="library-book-details space col-12 col-md-4 col-lg-6 text-start">
-                    <a href="{% url 'book_details' book.book.slug %}">
-                        <h3 class="text-start">{{ book.book.title }}</h3>
-                        </a>
-                    <p class="">{{ book.book.author }}</p>
-                    <p><small>Genre:
-                            {% for g in book.genre.all %}
-                            {{ g.name }}{% if not forloop.last %}, {% endif %}
-                            {% empty %}
-                            None
-                            {% endfor %}
-                        </small></p>
-                    <p><small>Published - {{ book.book.published }}</small></p>
-                </div>
-
-                <!-- Edit/Delete section -->
-                <div class="library-book-edit col-12 col-md-3 space row align-items-center">
-                    <div class="btn-group align-items-center">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Update list
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#readingModal{{ book.id }}">Reading</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#completeModal{{ book.id }}">Complete</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal{{ book.id }}">Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <!-- Books details -->
+        <div
+          class="library-book-details space col-12 col-md-4 col-lg-6 text-start"
+        >
+          <a href="{% url 'book_details' book.book.slug %}">
+            <h3 class="text-start">{{ book.book.title }}</h3>
+          </a>
+          <p class="">{{ book.book.author }}</p>
+          <p>
+            <small
+              >Genre: {% for g in book.genre.all %} 
+              {{ g.name }}
+              {% if not forloop.last %}, 
+              {% endif %} 
+              {% empty %} 
+              None 
+              {% endfor %}
+            </small>
+          </p>
+          <p><small>Published - {{ book.book.published }}</small></p>
         </div>
-        {% endfor %}
-        {% else %}
-        <hr class="divider">
-        <p class="accent"> No books have been added yet. </p>
-        <hr class="divider">
-        {% endif %}
-    </section>
 
-    <!-- Complete Section header -->
-    <section>
-
-        <div class="row space">
-            <!-- Reading Section header -->
-            <div class="section-header space">
-                <h2 id="complete-header">Complete</h2>
-                <p>Books you’ve finished reading.
-                <br><small>Last updated {{ completed_last_updated|naturaltime }}</small></p>
-
-            </div>
-            {% if completed_books %}
-            {% for book in completed_books %}
-            <hr class="divider">
-            <div class="library-body space row">
-                <!-- Book Cover -->
-                <div class="library-book-cover space col-12 col-md-3">
-                    <div class="">
-                        <a href="{% url 'book_details' book.book.slug %}">
-                        <img src="{{ book.book.cover_image_url }}" class="img-fluid list-books"
-                            alt="{{ book.book.title }}" />
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Books details -->
-                <div class="library-book-details space col-12 col-md-4 col-lg-6 text-start">
-                    <a href="{% url 'book_details' book.book.slug %}">
-                        <h3 class="text-start">{{ book.book.title }}</h3>
-                        </a>
-                    <p class="">{{ book.book.author }}</p>
-                    <p><small>Genre:
-                            {% for g in book.genre.all %}
-                            {{ g.name }}{% if not forloop.last %}, {% endif %}
-                            {% empty %}
-                            None
-                            {% endfor %}
-                        </small></p>
-                    <p><small>Published - {{ book.book.published }}</small></p>
-                    
-                    {% if book.user_review %}
-                    <p class="text-success"><small>✓ Reviewed: {{ book.user_review.star_rating }}/5 ⭐</small></p>
-                    {% else %}
-                    <p class="text-muted"><small>No review yet - <a href="{% url 'book_details' book.book.slug %}" class="accent">Add one?</a></small></p>
-                    {% endif %}
-                    </div>
-
-                <!-- Edit/Delete section -->
-                <div class="library-book-edit col-12 col-md-3 space row align-items-center">
-                    <div class="btn-group align-items-center">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Update list
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#planModal{{ book.id }}">Plan To Read</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#readingModal{{ book.id }}">Reading</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal{{ book.id }}">Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <!-- Edit/Delete section -->
+        <div
+          class="library-book-edit col-12 col-md-3 space row align-items-center"
+        >
+          <div class="btn-group align-items-center">
+            <button
+              class="btn btn-sm dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Update list
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#planModal{{ book.id }}"
+                  >Plan To Read</a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#completeModal{{ book.id }}"
+                  >Complete</a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal{{ book.id }}"
+                  >Delete</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        {% endfor %}
-        {% else %}
-        <hr class="divider">
-        <p class="accent"> No books have been added yet. </p>
-        <hr class="divider">
-        {% endif %}
-    </section>
-
-        <div class="btt-button shadow-sm rounded-0 border border-black">
-        <a class="btt-link d-flex h-100">
-            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
-        </a>	
+      </div>
     </div>
+    {% endfor %} 
+    {% else %}
+    <hr class="divider" />
+    <p class="accent">No books have been added yet.</p>
+    <hr class="divider" />
+    {% endif %}
+  </section>
+  <!-- Plan to read Section header -->
+  <section>
+    <div class="row space">
+      <!-- Reading Section header -->
+      <div class="section-header space">
+        <h2 id="plan-to-read-header">Plan to Read</h2>
+        <p>
+          Books you plan to read next. <br /><small
+            >Last updated {{ plan_last_updated|naturaltime }}</small
+          >
+        </p>
+      </div>
+      {% if plan_books %} 
+      {% for book in plan_books %}
+      <hr class="divider" />
+      <div class="library-body space row">
+        <!-- Book Cover -->
+        <div class="library-book-cover space col-12 col-md-3">
+          <div class="">
+            <a href="{% url 'book_details' book.book.slug %}">
+              <img
+                src="{{ book.book.cover_image_url }}"
+                class="img-fluid list-books"
+                alt="{{ book.book.title }}"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Books details -->
+        <div
+          class="library-book-details space col-12 col-md-4 col-lg-6 text-start"
+        >
+          <a href="{% url 'book_details' book.book.slug %}">
+            <h3 class="text-start">{{ book.book.title }}</h3>
+          </a>
+          <p class="">{{ book.book.author }}</p>
+          <p>
+            <small
+              >Genre: 
+              {% for g in book.genre.all %} 
+              {{ g.name }}
+              {% if not forloop.last %}, 
+              {% endif %} 
+              {% empty %} 
+              None 
+              {% endfor %}
+            </small>
+          </p>
+          <p><small>Published - {{ book.book.published }}</small></p>
+        </div>
+
+        <!-- Edit/Delete section -->
+        <div
+          class="library-book-edit col-12 col-md-3 space row align-items-center"
+        >
+          <div class="btn-group align-items-center">
+            <button
+              class="btn btn-sm dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Update list
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#readingModal{{ book.id }}"
+                  >Reading</a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#completeModal{{ book.id }}"
+                  >Complete</a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal{{ book.id }}"
+                  >Delete</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <hr class="divider" />
+    <p class="accent">No books have been added yet.</p>
+    <hr class="divider" />
+    {% endif %}
+  </section>
+
+  <!-- Complete Section header -->
+  <section>
+    <div class="row space">
+      <!-- Reading Section header -->
+      <div class="section-header space">
+        <h2 id="complete-header">Complete</h2>
+        <p>
+          Books you’ve finished reading. <br /><small
+            >Last updated {{ completed_last_updated|naturaltime }}</small
+          >
+        </p>
+      </div>
+      {% if completed_books %} {% for book in completed_books %}
+      <hr class="divider" />
+      <div class="library-body space row">
+        <!-- Book Cover -->
+        <div class="library-book-cover space col-12 col-md-3">
+          <div class="">
+            <a href="{% url 'book_details' book.book.slug %}">
+              <img
+                src="{{ book.book.cover_image_url }}"
+                class="img-fluid list-books"
+                alt="{{ book.book.title }}"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Books details -->
+        <div
+          class="library-book-details space col-12 col-md-4 col-lg-6 text-start"
+        >
+          <a href="{% url 'book_details' book.book.slug %}">
+            <h3 class="text-start">{{ book.book.title }}</h3>
+          </a>
+          <p class="">{{ book.book.author }}</p>
+          <p>
+            <small
+              >Genre: {% for g in book.genre.all %} {{ g.name }}{% if not
+              forloop.last %}, {% endif %} {% empty %} None {% endfor %}
+            </small>
+          </p>
+          <p><small>Published - {{ book.book.published }}</small></p>
+
+          {% if book.user_review %}
+          <p class="text-success">
+            <small>✓ Reviewed: {{ book.user_review.star_rating }}/5 ⭐</small>
+          </p>
+          {% else %}
+          <p class="text-muted">
+            <small
+              >No review yet -
+              <a href="{% url 'book_details' book.book.slug %}" class="accent"
+                >Add one?</a
+              ></small
+            >
+          </p>
+          {% endif %}
+        </div>
+
+        <!-- Edit/Delete section -->
+        <div
+          class="library-book-edit col-12 col-md-3 space row align-items-center"
+        >
+          <div class="btn-group align-items-center">
+            <button
+              class="btn btn-sm dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Update list
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#planModal{{ book.id }}"
+                  >Plan To Read</a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#readingModal{{ book.id }}"
+                  >Reading</a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal{{ book.id }}"
+                  >Delete</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <hr class="divider" />
+    <p class="accent">No books have been added yet.</p>
+    <hr class="divider" />
+    {% endif %}
+  </section>
+
+  <div class="btt-button shadow-sm rounded-0 border border-black">
+    <a class="btt-link d-flex h-100">
+      <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+    </a>
+  </div>
 </main>
 
-{% endblock %}
-
-
-{% block modals %}
-{% for book in all_books %}
+{% endblock %} {% block modals %} {% for book in all_books %}
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Delete {{ book.book.title }}?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to <strong>delete</strong> this book from your library?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{% url 'delete_tracker' book.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="deleteModal{{ book.id }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete {{ book.book.title }}?</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to <strong>delete</strong> this book from your
+        library?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <form
+          method="POST"
+          action="{% url 'delete_tracker' book.id %}"
+          style="display: inline"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Move to Complete List Modal -->
-<div class="modal fade" id="completeModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Move {{ book.book.title }} to <strong>Completed</strong>?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to move this book to <strong>Completed</strong>?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="status" value="1">
-                    <button type="submit" class="btn btn-success">Move</button>
-                </form>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="completeModal{{ book.id }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Move {{ book.book.title }} to <strong>Completed</strong>?
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to move this book to <strong>Completed</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <form
+          method="POST"
+          action="{% url 'edit_tracker' book.id %}"
+          style="display: inline"
+        >
+          {% csrf_token %}
+          <input type="hidden" name="status" value="1" />
+          <button type="submit" class="btn btn-success">Move</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Move to Plan to Read List Modal -->
-<div class="modal fade" id="planModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Move {{ book.book.title }} to <strong>Plan to Read</strong>?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to move this book to <strong>Plan to Read</strong>?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="status" value="2">
-                    <button type="submit" class="btn btn-success">Move</button>
-                </form>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="planModal{{ book.id }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Move {{ book.book.title }} to <strong>Plan to Read</strong>?
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to move this book to
+        <strong>Plan to Read</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <form
+          method="POST"
+          action="{% url 'edit_tracker' book.id %}"
+          style="display: inline"
+        >
+          {% csrf_token %}
+          <input type="hidden" name="status" value="2" />
+          <button type="submit" class="btn btn-success">Move</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Move to Reading List Modal -->
-<div class="modal fade" id="readingModal{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Move {{ book.book.title }} to <strong>Reading</strong>?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to move this book to <strong>Reading</strong>?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="status" value="0">
-                    <button type="submit" class="btn btn-success">Move</button>
-                </form>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="readingModal{{ book.id }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Move {{ book.book.title }} to <strong>Reading</strong>?
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to move this book to <strong>Reading</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <form
+          method="POST"
+          action="{% url 'edit_tracker' book.id %}"
+          style="display: inline"
+        >
+          {% csrf_token %}
+          <input type="hidden" name="status" value="0" />
+          <button type="submit" class="btn btn-success">Move</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
-{% endfor %}
-{% endblock %}
+{% endfor %} {% endblock %}

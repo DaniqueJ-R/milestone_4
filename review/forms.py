@@ -11,13 +11,13 @@ class ReviewForm(forms.ModelForm):
         (4, '(4) Very Good'),
         (5, '(5) Amazing'),
     ]
-    
+
     star_rating = forms.ChoiceField(
         choices=RATING_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control'}),
         label='Star Rating'
     )
-    
+
     class Meta:
         model = Review
         fields = ['review_title', 'review_body', 'star_rating']

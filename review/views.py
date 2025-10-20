@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from book.models import Book, TrackerList, TrackerStatus
 from .models import Review
@@ -19,7 +19,10 @@ def add_review(request, book_id):
     ).exists()
 
     if not user_completed:
-        messages.error(request, "You must complete this book before leaving a review.")
+        messages.error(
+            request,
+            "You must complete this book before leaving a review.",
+        )
         return redirect("book_details", slug=book.slug)
 
     # Check if user already reviewed this book
@@ -29,7 +32,6 @@ def add_review(request, book_id):
     ).first()
 
     if request.method == "POST":
-        # Initialize form with POST data and existing review if updating
         form = ReviewForm(request.POST, instance=existing_review)
 
         if form.is_valid():
@@ -49,7 +51,6 @@ def add_review(request, book_id):
             messages.error(request, message)
             return redirect("book_details", slug=book.slug)
 
-    # GET request - shouldn't normally reach here since form is in modal
     return redirect("book_details", slug=book.slug)
 
 
