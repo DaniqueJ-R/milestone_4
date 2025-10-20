@@ -3,6 +3,7 @@ from .models import Donation
 
 # Register your models here.
 
+
 @admin.register(Donation)
 class DonationAdmin(admin.ModelAdmin):
     list_display = ('payment_number', 'full_name', 'email', 'amount', 'date')

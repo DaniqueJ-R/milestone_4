@@ -13,8 +13,9 @@ from review.forms import ReviewForm
 
 
 def books_page(request):
-    """ A view to render index page"""
-
+    """
+    A view to render index page
+    """
     # Get some books for "Books this week"
     featured_books_auth = Book.objects.all().order_by('?')[:6]
     featured_books_unauth = Book.objects.all().order_by('?')[:12]
@@ -22,15 +23,19 @@ def books_page(request):
     # If user is logged in, get their tracked books
     if request.user.is_authenticated:
         reading_books = TrackerList.objects.filter(
-            user=request.user, 
+            user=request.user,
             status=TrackerStatus.READING
         )[:6]
-        reading_count = TrackerList.objects.filter(user=request.user, status=TrackerStatus.READING).count()
-        completed_count = TrackerList.objects.filter(user=request.user, status=TrackerStatus.COMPLETE).count()
-        plan_count = TrackerList.objects.filter(user=request.user, status=TrackerStatus.PLAN_TO).count()
+        reading_count = TrackerList.objects.filter(
+            user=request.user, status=TrackerStatus.READING).count()
+        completed_count = TrackerList.objects.filter(
+            user=request.user, status=TrackerStatus.COMPLETE).count()
+        plan_count = TrackerList.objects.filter(
+            user=request.user, status=TrackerStatus.PLAN_TO).count()
 
         # Recent reviews from this user
-        recent_reviews = Review.objects.filter(user=request.user).order_by('-created_on')[:4]
+        recent_reviews = Review.objects.filter(
+            user=request.user).order_by('-created_on')[:4]
     else:
         reading_books = None
         reading_count = completed_count = plan_count = 0
@@ -50,18 +55,20 @@ def books_page(request):
 
 
 def book_details(request, slug):
-    """ A view to show individual book details """
-
-    book = get_object_or_404(Book, slug=slug)  
+    """
+    A view to show individual book details
+    """
+    book = get_object_or_404(Book, slug=slug)
     book_reviews = Review.objects.filter(book=book).order_by('-created_on')[:4]
     other_books = Book.objects.exclude(id=book.id).order_by('?')[:3]
     avg_rating = book_reviews.aggregate(Avg('star_rating'))['star_rating__avg']
 
     if request.user.is_authenticated:
-        user_review = Review.objects.filter(user=request.user, book=book).first()
+        user_review = Review.objects.filter(
+            user=request.user, book=book).first()
         user_completed = TrackerList.objects.filter(
-            user=request.user, 
-            book=book, 
+            user=request.user,
+            book=book,
             status=TrackerStatus.COMPLETE
         ).exists()
 
@@ -96,7 +103,6 @@ def book_search(request):
     """
     View to handle search queries and return matching books.
     """
-
     books = Book.objects.all()
     search_term = None
 
@@ -106,7 +112,10 @@ def book_search(request):
             messages.error(request, "Please enter a search term.")
             return redirect(reverse("index"))
 
-        queries = Q(title__icontains=search_term) | Q(description__icontains=search_term)
+        queries = (
+            Q(title__icontains=search_term)
+            | Q(description__icontains=search_term)
+        )
         books = books.filter(queries)
 
         if not books.exists():
@@ -121,13 +130,16 @@ def book_search(request):
 
 
 def ajax_book_search(request):
-    """Return JSON response of matching books for live search."""
+    """
+    Return JSON response of matching books for live search.
+    """
     search_term = request.GET.get("q", "").strip()
     results = []
 
     if search_term:
         books = Book.objects.filter(
-            Q(title__icontains=search_term) | Q(description__icontains=search_term)
+            Q(title__icontains=search_term)
+            | Q(description__icontains=search_term)
         )[:5]  # Limit to top 5 results
 
         for book in books:
@@ -140,11 +152,11 @@ def ajax_book_search(request):
     return JsonResponse({"results": results})
 
 
-
 @login_required
 def add_or_update_tracker(request, book_id):
-    """Add book to tracker OR update status if already exists"""
-
+    """
+    Add book to tracker OR update status if already exists
+    """
     book = get_object_or_404(Book, id=book_id)
 
     if request.method == 'POST':
@@ -164,7 +176,11 @@ def add_or_update_tracker(request, book_id):
             # Already exists, update the status
             tracker.status = int(status)
             tracker.save()
-            messages.success(request, f"'{book.title}' moved to {tracker.get_status_display()} list!")
+            messages.success(
+                request,
+                f"'{book.title}' moved to "
+                f"{tracker.get_status_display()} list!"
+            )
 
         return redirect('book_details', slug=book.slug)
 
@@ -184,19 +200,26 @@ def my_library(request):
         user=request.user, status=TrackerStatus.READING).order_by('-added_on')
     plan_books = TrackerList.objects.filter(
         user=request.user, status=TrackerStatus.PLAN_TO).order_by('-added_on')
-    completed_books = TrackerList.objects.filter(
-        user=request.user, 
-        status=TrackerStatus.COMPLETE
-    ).select_related('book').prefetch_related('book__reviews').order_by('-added_on')
+    completed_books = (
+        TrackerList.objects.filter(
+            user=request.user,
+            status=TrackerStatus.COMPLETE
+        )
+        .select_related('book')
+        .prefetch_related('book__reviews')
+        .order_by('-added_on')
+    )
 
     for book in completed_books:
         book.user_review = book.book.reviews.filter(user=request.user).first()
 
     # Get last updated time for the reading list
-    reading_last_updated = reading_books.aggregate(last=Max('updated_on'))['last']
-    plan_last_updated = plan_books.aggregate(last=Max('updated_on'))['last']
-    completed_last_updated = completed_books.aggregate(last=Max('updated_on'))['last']
-
+    reading_last_updated = reading_books.aggregate(
+        last=Max('updated_on'))['last']
+    plan_last_updated = plan_books.aggregate(
+        last=Max('updated_on'))['last']
+    completed_last_updated = completed_books.aggregate(
+        last=Max('updated_on'))['last']
 
     context = {
         'reading_books': reading_books,
@@ -213,6 +236,9 @@ def my_library(request):
 
 @login_required
 def edit_tracker(request, tracker_id):
+    """
+    Updates book from one tracker to another
+    """
     tracker = get_object_or_404(TrackerList, id=tracker_id, user=request.user)
     if request.method == 'POST':
         new_status = request.POST.get('status')
@@ -234,6 +260,9 @@ def edit_tracker(request, tracker_id):
 
 @login_required
 def delete_tracker(request, tracker_id):
+    """
+    Deletes book from tracker.
+    """
     tracker = get_object_or_404(TrackerList, id=tracker_id, user=request.user)
     if request.method == 'POST':
         title = tracker.book.title

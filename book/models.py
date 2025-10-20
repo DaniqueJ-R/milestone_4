@@ -52,7 +52,7 @@ class Genre(models.Model):
 
 class TrackerStatus(models.IntegerChoices):
     """
-    Options for Tracker status in relaion to :model:'tracker.status:'.
+    Options for Tracker status in relaion to :model:'trackerlist.status:'.
     """
     READING = 0, "Reading"
     COMPLETE = 1, "Completed"
@@ -81,4 +81,3 @@ class TrackerList(models.Model):
     def last_updates(self):
         how_many = now() - self.updated_on
         return f"{how_many.days} days ago"
-    
