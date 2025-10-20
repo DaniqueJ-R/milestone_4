@@ -313,7 +313,7 @@ My Library
                 <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
                     <input type="hidden" name="status" value="1">
-                    <button type="submit" class="btn btn-danger">Move</button>
+                    <button type="submit" class="btn btn-success">Move</button>
                 </form>
             </div>
         </div>
@@ -337,7 +337,7 @@ My Library
                 <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
                     <input type="hidden" name="status" value="2">
-                    <button type="submit" class="btn btn-danger">Move</button>
+                    <button type="submit" class="btn btn-success">Move</button>
                 </form>
             </div>
         </div>
@@ -361,7 +361,7 @@ My Library
                 <form method="POST" action="{% url 'edit_tracker' book.id %}" style="display:inline;">
                     {% csrf_token %}
                     <input type="hidden" name="status" value="0">
-                    <button type="submit" class="btn btn-danger">Move</button>
+                    <button type="submit" class="btn btn-success">Move</button>
                 </form>
             </div>
         </div>

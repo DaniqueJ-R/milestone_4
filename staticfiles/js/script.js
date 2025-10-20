@@ -147,7 +147,7 @@ const initTabManagement = () => {
   tabs.forEach(tab => {
     tab.addEventListener("click", function () {
       // Remove 'active' from all tabs
-      tabs.forEach(t => t.classList.remove("active"));
+      tabs.forEach(t => { t.classList.remove("active"); });
       // Add 'active' to the clicked one
       this.classList.add("active");
     });
