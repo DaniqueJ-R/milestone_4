@@ -4,7 +4,7 @@
 
 {% block title %}
 Book Details | {{ book.title }}
-{% endblock%}
+{% endblock title %}
 
 {% block content %}
 <main class="container text-center">
@@ -47,13 +47,13 @@ Book Details | {{ book.title }}
       <div class="space col-12 col-lg-6 text-start">
         <div class="book-details">
           <h1 class="text-start">{{ book.title }}</h1>
-          <p class="">{{ book.author }}</p>
+          <p>{{ book.author }}</p>
           {% if avg_rating %}
           <p>{{ avg_rating|floatformat:1 }}/5 <i class="fa-solid fa-star"></i> ({{ review_count }} reviews)</p>
           {% else %}
           <p>No rating yet</p>
           {% endif %}
-          <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div class="book-details-genre">
             <small>Genre:
               {% for g in book.genre.all %}
               {{ g.name }}{% if not forloop.last %}, {% endif %}
@@ -85,7 +85,7 @@ Book Details | {{ book.title }}
                 {% endif %}
               </p>
 
-              <p class="card-text review-body full-review" id="full-review-{{ review.id }}" style="display:none;">
+              <p class="card-text review-body full-review hide" id="full-review-{{ review.id }}">
                 {{ review.review_body }}
                 <a href="#" class="show-less-link" data-review-id="{{ review.id }}">Show less</a>
               </p>
@@ -131,7 +131,6 @@ Book Details | {{ book.title }}
         </div>
         {% endif %}
 
-
       </div>
       <div class="space col-12 col-lg-3 other-books">
         <h2>Books this week</h2>
@@ -146,8 +145,7 @@ Book Details | {{ book.title }}
     </div>
   </div>
 </main>
-{% endblock %}
-
+{% endblock content %}
 
 {% block modals %}
 <!-- Move to Complete List Modal -->
@@ -223,8 +221,6 @@ Book Details | {{ book.title }}
   </div>
 </div>
 
-
-
 <!-- Review Modal -->
 <div class="modal fade" id="leaveAReview" tabindex="-1" aria-labelledby="leaveAReview" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -271,8 +267,6 @@ Book Details | {{ book.title }}
   </div>
 </div>
 
-
-
 {% endif %}
 
-{% endblock %}
+{% endblock modals %}

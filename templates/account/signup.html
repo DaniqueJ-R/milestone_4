@@ -5,7 +5,7 @@
 
 {% block title %}
 Create Account
-{% endblock%}
+{% endblock title %}
 
 {% block content %}
 
@@ -103,15 +103,14 @@ Create Account
             </a>
         </div>
     </div>
-    </div>
 
 </section>
 
-{% endblock %}
+{% endblock content %}
 
 {% block extra_body %}
 {{ block.super }}
 {% if PASSKEY_LOGIN_ENABLED %}
 {% include "mfa/webauthn/snippets/login_script.html" with button_id="passkey_login" %}
 {% endif %}
-{% endblock %}
+{% endblock extra_body %}

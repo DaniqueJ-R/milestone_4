@@ -4,7 +4,7 @@
 
 {% block title %}
 Make a Donation
-{% endblock %}
+{% endblock title %}
 
 {% block postloadCSS %} 
     <!-- Custom Stripe CSS -->
@@ -13,7 +13,7 @@ Make a Donation
       href="{% static 'donation\css\stripe.css' %}"
       type="text/css"
     />
-{% endblock %} 
+{% endblock postloadCSS %} 
 
 {% block content %}
     <main class="container text-center">
@@ -53,7 +53,7 @@ Make a Donation
               <label class="btn btn-secondary" for="customAmount">Custom</label>
             </div>
 
-            <div id="customAmountInput" class="mt-2" style="display:none;">
+            <div id="customAmountInput hide" class="mt-2">
               <input type="number" step="1" min="1" class="form-control" name="custom_amount" placeholder="Enter custom amount (£)">
             </div>
           </div>
@@ -89,11 +89,11 @@ Make a Donation
     </div>
 
     </main>
-{% endblock %}
+{% endblock content %}
 
 {% block postloadjs %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'donation\js\stripe.js' %}"></script>
-{% endblock %}
+{% endblock postloadjs %}

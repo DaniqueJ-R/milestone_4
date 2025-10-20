@@ -5,15 +5,13 @@
 
 {% block title %}
 Login
-{% endblock%}
+{% endblock title %}
 
 {% block content %}
 
 <section class="login-section text-center">
   <div class="container">
     <h2 class="text-center">Login</h2>
-    <form method="post" action="{% url 'account_login' %}">
-      {% csrf_token %}
 
       <form method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
@@ -66,17 +64,14 @@ Login
           </a>
         </div>
       </div>
-  </div>
-
-
 
 </section>
 
-{% endblock %}
+{% endblock content %}
 
 {% block extra_body %}
 {{ block.super }}
 {% if PASSKEY_LOGIN_ENABLED %}
 {% include "mfa/webauthn/snippets/login_script.html" with button_id="passkey_login" %}
 {% endif %}
-{% endblock %}
+{% endblock extra_body %}

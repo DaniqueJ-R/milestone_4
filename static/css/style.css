@@ -75,6 +75,14 @@ hr {
   text-decoration: none;
 }
 
+.display-inline {
+  display: inline;
+}
+
+.hide {
+  display: none;
+}
+
 .main-color {
   color: var(--highlight-color);
 }
@@ -520,6 +528,7 @@ hr {
 
 .reviews {
   border: transparent;
+  max-width: 540px;
 }
 /* End Index HTML */
 
@@ -551,6 +560,12 @@ hr {
 .book-details,
 .other-books {
   margin-top: 2rem;
+}
+
+.book-details-genre {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
 }
 
 .card-link {

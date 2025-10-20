@@ -2,7 +2,7 @@
 {% load static %} 
 {% load humanize %} 
 
-{% block title %} My Library {% endblock%} 
+{% block title %} My Library {% endblock title %} 
 
 {% block header %}
 <header class="bg-image" id="my-library-header">
@@ -26,7 +26,7 @@
     </ul>
   </div>
 </header>
-{% endblock %} 
+{% endblock header %} 
 
 {% block content %}
 <main class="container text-center">
@@ -51,7 +51,7 @@
       <div class="library-body space row">
         <!-- Book Cover -->
         <div class="library-book-cover space col-12 col-md-3">
-          <div class="">
+          <div>
             <a href="{% url 'book_details' book.book.slug %}">
               <img
                 src="{{ book.book.cover_image_url }}"
@@ -69,7 +69,7 @@
           <a href="{% url 'book_details' book.book.slug %}">
             <h3 class="text-start">{{ book.book.title }}</h3>
           </a>
-          <p class="">{{ book.book.author }}</p>
+          <p>{{ book.book.author }}</p>
           <p>
             <small
               >Genre: {% for g in book.genre.all %} 
@@ -158,7 +158,7 @@
       <div class="library-body space row">
         <!-- Book Cover -->
         <div class="library-book-cover space col-12 col-md-3">
-          <div class="">
+          <div>
             <a href="{% url 'book_details' book.book.slug %}">
               <img
                 src="{{ book.book.cover_image_url }}"
@@ -176,7 +176,7 @@
           <a href="{% url 'book_details' book.book.slug %}">
             <h3 class="text-start">{{ book.book.title }}</h3>
           </a>
-          <p class="">{{ book.book.author }}</p>
+          <p>{{ book.book.author }}</p>
           <p>
             <small
               >Genre: 
@@ -265,7 +265,7 @@
       <div class="library-body space row">
         <!-- Book Cover -->
         <div class="library-book-cover space col-12 col-md-3">
-          <div class="">
+          <div>
             <a href="{% url 'book_details' book.book.slug %}">
               <img
                 src="{{ book.book.cover_image_url }}"
@@ -283,7 +283,7 @@
           <a href="{% url 'book_details' book.book.slug %}">
             <h3 class="text-start">{{ book.book.title }}</h3>
           </a>
-          <p class="">{{ book.book.author }}</p>
+          <p>{{ book.book.author }}</p>
           <p>
             <small
               >Genre: {% for g in book.genre.all %} {{ g.name }}{% if not
@@ -371,7 +371,10 @@
   </div>
 </main>
 
-{% endblock %} {% block modals %} {% for book in all_books %}
+{% endblock content %} 
+
+{% block modals %} 
+{% for book in all_books %}
 
 <!-- Delete Modal -->
 <div
@@ -402,7 +405,7 @@
         <form
           method="POST"
           action="{% url 'delete_tracker' book.id %}"
-          style="display: inline"
+          class="display-inline"
         >
           {% csrf_token %}
           <button type="submit" class="btn btn-danger">Delete</button>
@@ -442,7 +445,7 @@
         <form
           method="POST"
           action="{% url 'edit_tracker' book.id %}"
-          style="display: inline"
+          class="display-inline"
         >
           {% csrf_token %}
           <input type="hidden" name="status" value="1" />
@@ -484,7 +487,7 @@
         <form
           method="POST"
           action="{% url 'edit_tracker' book.id %}"
-          style="display: inline"
+          class="display-inline"
         >
           {% csrf_token %}
           <input type="hidden" name="status" value="2" />
@@ -525,7 +528,7 @@
         <form
           method="POST"
           action="{% url 'edit_tracker' book.id %}"
-          style="display: inline"
+          class="display-inline"
         >
           {% csrf_token %}
           <input type="hidden" name="status" value="0" />
@@ -536,4 +539,5 @@
   </div>
 </div>
 
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endblock modals %}

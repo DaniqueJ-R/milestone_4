@@ -4,7 +4,7 @@
 
 {% block title %}
 Home
-{% endblock %}
+{% endblock title %}
 
 {% block header %}
     <header class="bg-image">
@@ -24,7 +24,7 @@ Home
       </div>
       </div>
       </header>
-{% endblock %}
+{% endblock header %}
 
 {% block content %}
 <main class="container text-center my-2">
@@ -32,7 +32,7 @@ Home
   {% if request.user.is_authenticated %}
   <section class="books-row row-cols-auto py-3 text-center" id="bookshelves">
     <h2>Bookselves</h2>
-    <a href="{% url 'my_library'%}#reading-header " class="shelves-link-text p-3">
+    <a href="{% url 'my_library' %}#reading-header " class="shelves-link-text p-3">
       <span class="accent">{{ reading_count }}</span> Reading
     </a>
     <a href="{% url 'my_library' %}#complete-header" class="shelves-link-text p-3">
@@ -74,7 +74,7 @@ Home
     </div>
   {% if recent_reviews %}
   {% for review in recent_reviews %}
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+    <div class="card mb-3 col-12 col-lg-6 reviews">
       <div class="row g-0">
         <div class="col-md-4">
           <a type="button" href="{% url 'book_details' review.book.slug %}" data-bs-container="body" data-bs-toggle="popover"
@@ -93,7 +93,7 @@ Home
   {% endif %}
 </p>
 
-<p class="card-text review-body full-review" id="full-review-{{ review.id }}" style="display:none;">
+<p class="card-text review-body full-review hide" id="full-review-{{ review.id }}">
   {{ review.review_body }}
   <a href="#" class="show-less-link" data-review-id="{{ review.id }}">Show less</a>
 </p>
@@ -168,7 +168,7 @@ Home
       <p>Below are some popular reviews and lists from this week.  <a href="{% url 'account_signup' %}" class="no-decor main-color accent">Sign up</a> to leave your own signature.</p>
     </div>
       {% for review in recent_reviews %}
-    <div class="card mb-3 col-12 col-lg-6 reviews" style="max-width: 540px;">
+    <div class="card mb-3 col-12 col-lg-6 reviews">
       <div class="row g-0">
         <div class="col-md-4">
           <a type="button" href="{% url 'book_details' review.book.slug %}" data-bs-container="body" data-bs-toggle="popover"
@@ -187,7 +187,7 @@ Home
   {% endif %}
 </p>
 
-<p class="card-text review-body full-review" id="full-review-{{ review.id }}" style="display:none;">
+<p class="card-text review-body full-review hide" id="full-review-{{ review.id }}">
   {{ review.review_body }}
   <a href="#" class="show-less-link" data-review-id="{{ review.id }}">Show less</a>
 </p>
@@ -202,4 +202,4 @@ Home
   </section>
   {% endif %}
 </main>
-{% endblock %}
+{% endblock content %}
