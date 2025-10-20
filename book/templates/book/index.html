@@ -51,7 +51,7 @@ Home
     {% for book in reading_books %}
     <a type="button" href="{% url 'book_details' book.book.slug %}" class="display-books unauth-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.book.title }}" data-bs-trigger="hover focus">
-      <img src="{{ book.book.cover_image_url }}" alt="{{ book.book.title }}">
+      <img class="featured-books" src="{{ book.book.cover_image_url }}" alt="{{ book.book.title }}">
     </a>
     {% endfor %}
     
@@ -64,7 +64,7 @@ Home
     {% for book in featured_books_auth %}
     <a type="button" href="{% url 'book_details' book.slug %}" class="display-books unauth-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.title }}" data-bs-trigger="hover focus">
-      <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
+      <img class="featured-books" src="{{ book.cover_image_url }}" alt="{{ book.title }}">
     </a>
     {% endfor %}
   </section>
