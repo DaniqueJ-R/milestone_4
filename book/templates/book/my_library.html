@@ -286,16 +286,21 @@
           <p>{{ book.book.author }}</p>
           <p>
             <small
-              >Genre: {% for g in book.genre.all %} {{ g.name }}{% if not
-              forloop.last %}, {% endif %} {% empty %} None {% endfor %}
+              >Genre: {% for g in book.genre.all %} 
+              {{ g.name }}
+              {% if not forloop.last %}, 
+              {% endif %} 
+              {% empty %} 
+              None 
+              {% endfor %}
             </small>
           </p>
           <p><small>Published - {{ book.book.published }}</small></p>
 
           {% if book.user_review %}
-          <p class="text-success">
+          <a href="{% url 'book_details' book.book.slug %}" class="text-success">
             <small>✓ Reviewed: {{ book.user_review.star_rating }}/5 ⭐</small>
-          </p>
+          </a>
           {% else %}
           <p class="text-muted">
             <small

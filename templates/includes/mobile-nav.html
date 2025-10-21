@@ -53,7 +53,7 @@
 
               <!-- Donation button -->
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="{% url 'donations' %}">Donate <i class="fa-solid fa-heart"></i></a>
+              <a class="nav-link " aria-current="page" href="{% url 'donations' %}">Donate</a>
             </li>
 
               <!-- Account Dropdown -->
@@ -70,6 +70,8 @@
                 <ul class="dropdown-menu">
                   {% if request.user.is_authenticated %}
                   <li><a href="{% url 'my_library' %}#reading-header" class="dropdown-item black">My Profile</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a href="{% url 'account_change_password' %}">Change Password</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
                     <a
@@ -100,33 +102,19 @@
               
               <!-- Mobile Search -->
               <li class="nav-item">
-<a
-    class="nav-link"
-    href="#"
-    id="mobile-search"
-    data-bs-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-  >
-    <i class="fas fa-search"></i> Search
-  </a>
-  <div
-    class="dropdown-menu border-0 w-100 rounded-0"
-    aria-labelledby="mobile-search"
-  >
-    <form id="mobileSearchForm" class="position-relative" role="search" autocomplete="off">
-      <input
-        id="mobileSearchInput"
-        class="form-control border border-black rounded-0 mb-2"
-        type="text"
-        placeholder="Search for books..."
-      />
-      <div id="mobileSearchResults" class="list-group position-absolute w-100"></div>
-    </form>
-  </div>
+                <a class="nav-link" href="#" id="mobile-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-search"></i> Search
+                </a>
+                <div class="dropdown-menu border-0 w-100 rounded-0" aria-labelledby="mobile-search">
+                  <form id="mobileSearchForm" class="position-relative" role="search" autocomplete="off">
+                    <input id="mobileSearchInput" class="form-control border border-black rounded-0 mb-2" type="text"
+                      placeholder="Search for books..." />
+                    <div id="mobileSearchResults" class="list-group position-absolute w-100"></div>
+                  </form>
+                </div>
                 </div>
               </li>
-
-            </ul>
-          </div>
-      </nav>
+              
+              </ul>
+              </div>
+              </nav>

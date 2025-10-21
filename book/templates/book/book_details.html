@@ -70,7 +70,7 @@ Book Details | {{ book.title }}
         {% if book_reviews %}
         <div class="reviews">
           {% for review in book_reviews %}
-          <div class="card">
+          <div class="card review-card">
             <div class="card-body">
               <h6 class="card-title">By {{ review.user.username }}</h6>
               <p class="my-2"><small class="text-muted"> reviewed {{ review.updated_on|naturaltime }}</small></p>

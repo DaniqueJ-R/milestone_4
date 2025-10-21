@@ -386,7 +386,7 @@ hr {
 }
 
 .signup-section {
-  margin: 2rem 31%;
+  margin: 2rem 36.5%;
 }
 
 .reset-password-section {
@@ -682,6 +682,69 @@ hr {
 /* Donation Pages END */
 
 /* Media query */
+/* Changes settings below 1200px (extra large) */
+@media screen and (max-width: 1200px) {
+  #mobileNav {
+    display: none;
+  }
+}
+
+/* Changes settings below 992px (large) */
+@media screen and (max-width: 992px) {
+  #mobileNav {
+    display: none;
+  }
+}
+
+/* Changes settings below 768px (medium) */
+@media screen and (max-width: 768px) {
+  .Sticky {
+    z-index: 0;
+    position: static;
+    top: 100px;
+    height: fit-content;
+  }
+
+  .bg-image {
+    background: url(../images/front-view-books-with-copy-space.jpg) no-repeat
+      20% center fixed;
+    background-size: cover; /* fills space and crops overflow */
+    height: fit-content;
+  }
+
+  #my-library-header {
+    height: fit-content;
+  }
+
+  .library-book-details {
+    margin-top: 2rem;
+    margin-left: 14%;
+    margin-right: auto;
+    min-width: 16em;
+  }
+
+  .library-book-cover {
+    margin-top: 2rem;
+  }
+
+  .library-book-cover > div > .img-fluid {
+    max-width: 30%;
+  }
+
+  .login-section,
+  .signup-section {
+    margin: 2rem 30%;
+  }
+
+  #desktopNav {
+    display: none;
+  }
+
+  .review-card {
+  left: 15%
+}
+}
+
 /* Changes settings below 619 px (Small) */
 @media screen and (max-width: 619px) {
   .icon-recommended {
@@ -733,63 +796,8 @@ hr {
   .signup-section {
     margin: 2rem 18% !important;
   }
+
+  .review-card {
+  left: 0%
 }
-
-/* Changes settings below 768px (medium) */
-@media screen and (max-width: 768px) {
-  .Sticky {
-    z-index: 0;
-    position: static;
-    top: 100px;
-    height: fit-content;
-  }
-
-  .bg-image {
-    background: url(../images/front-view-books-with-copy-space.jpg) no-repeat
-      20% center fixed;
-    background-size: cover; /* fills space and crops overflow */
-    height: fit-content;
-  }
-
-  #my-library-header {
-    height: fit-content;
-  }
-
-  .library-book-details {
-    margin-top: 2rem;
-    margin-left: 14%;
-    margin-right: auto;
-    min-width: 16em;
-  }
-
-  .library-book-cover {
-    margin-top: 2rem;
-  }
-
-  .library-book-cover > div > .img-fluid {
-    max-width: 30%;
-  }
-
-  .login-section,
-  .signup-section {
-    margin: 2rem 30%;
-  }
-
-  #desktopNav {
-    display: none;
-  }
-}
-
-/* Changes settings below 992px (large) */
-@media screen and (max-width: 992px) {
-  #mobileNav {
-    display: none;
-  }
-}
-
-/* Changes settings below 1200px (extra large) */
-@media screen and (max-width: 1200px) {
-  #mobileNav {
-    display: none;
-  }
 }
