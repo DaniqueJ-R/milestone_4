@@ -165,6 +165,7 @@ hr {
   --bs-dropdown-border-color: var(--light-highlight-color);
   --bs-dropdown-divider-bg: rgba(0, 0, 0, 0.175);
   --bs-dropdown-link-hover-bg: #e5e5e6;
+  --bs-dropdown-link-active-bg: #cdcfcddc;
 }
 
 .form-control {
@@ -183,7 +184,7 @@ hr {
   --bs-list-group-action-hover-color: var(--black);
   --bs-list-group-action-hover-bg: #e5e5e6;
   --bs-list-group-action-active-color: var(--black);
-  --bs-list-group-action-active-bg: #e5e5e6;
+  --bs-list-group-action-active-bg: #cdcfcddc;
 }
 
 .search-item {
