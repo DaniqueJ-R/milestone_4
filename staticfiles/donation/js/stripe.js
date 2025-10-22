@@ -70,7 +70,7 @@ form.addEventListener("submit", async (ev) => {
 	submitButton.setAttribute("disabled", true);
 
 	// Show loading overlay
-	document.getElementById("loading-overlay").style.display = "flex";
+	document.getElementById("loading-overlay").style.display = "block";
 
 	// Get form data
 	const formData = new FormData(form);
