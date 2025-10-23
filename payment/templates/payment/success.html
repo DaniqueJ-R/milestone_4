@@ -12,8 +12,9 @@ Payment Success
           <div class="col-12 text-center">
             <h1 class="display-3 mb-4">Thank you!</h1>
             <p>
-              Your donation of <strong>{{ donation.payment_amout }}</strong> has successfully been
-              applied!
+              Thank you for your generosity!
+              Your donation of <strong>£{{ donation.amount }}</strong> has been received and will help keep Little Library
+              growing.
             </p>
             <p>
               <em
@@ -26,7 +27,7 @@ Payment Success
                   <div class="p-2 border">
                     <div class="row">
                       <div class="col">
-                        <small class="text-muted">Payment Info:</small>
+                        <strong><small class="text-muted">Payment Info:</small></strong>
                       </div>
                     </div>
 
@@ -54,7 +55,7 @@ Payment Success
 
                     <div class="row">
                       <div class="col">
-                        <small class="text-muted">Delivering To:</small>
+                        <strong><small class="text-muted">Delivering To:</small></strong>
                       </div>
                     </div>
 
@@ -93,7 +94,7 @@ Payment Success
 
                     <div class="row">
                       <div class="col">
-                        <small class="text-muted">Billing Info:</small>
+                        <strong><small class="text-muted">Billing Info:</small></strong>
                       </div>
                     </div>
 
@@ -103,8 +104,8 @@ Payment Success
                           Order Total
                         </p>
                       </div>
-                      <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ donation.amount }}</p>
+                      <div class="col-12 col-md-8 text-right">
+                        <p class="mb-0">£{{ donation.amount }}</p>
                       </div>
                     </div>
 
