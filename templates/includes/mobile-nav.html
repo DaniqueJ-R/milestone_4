@@ -5,8 +5,7 @@
             <img
               class="logo"
               src="{% static 'images/little-library-logo.jpg' %}"
-              alt="Little Library"
-            />
+              alt="Little Library">
           </a>
           <a class="navbar-brand" href="{% url 'index' %}">Little Library</a>
 
@@ -42,9 +41,9 @@
                 </a>
                 <ul class="dropdown-menu">
                    <li><a class="dropdown-item black" href="{% url 'my_library' %}#reading-header">Reading</a></li>
-                  <li><hr class="dropdown-divider" /></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item black" href="{% url 'my_library' %}#plan-to-read-header">Plan to read</a></li>
-                  <li><hr class="dropdown-divider" /></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li>
                     <a class="dropdown-item black" href="{% url 'my_library' %}#complete-header">Complete</a>
                   </li>
@@ -70,9 +69,9 @@
                 <ul class="dropdown-menu">
                   {% if request.user.is_authenticated %}
                   <li><a href="{% url 'my_library' %}#reading-header" class="dropdown-item black">My Profile</a></li>
-                  <li><hr class="dropdown-divider" /></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li><a href="{% url 'account_change_password' %}" class="dropdown-item black">Change Password</a></li>
-                  <li><hr class="dropdown-divider" /></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li>
                     <a
                       class="dropdown-item black"
@@ -88,7 +87,7 @@
                       >Login</a
                     >
                   </li>
-                  <li><hr class="dropdown-divider" /></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li>
                     <a
                       href="{% url 'account_signup' %}"
@@ -108,7 +107,7 @@
                 <div class="dropdown-menu border-0 w-100 rounded-0" aria-labelledby="mobile-search">
                   <form id="mobileSearchForm" class="position-relative" role="search" autocomplete="off">
                     <input id="mobileSearchInput" class="form-control border border-black rounded-0 mb-2" type="text"
-                      placeholder="Search for books..." />
+                      placeholder="Search for books...">
                     <div id="mobileSearchResults" class="list-group position-absolute w-100"></div>
                   </form>
                 </div>
