@@ -8,7 +8,7 @@
               alt="Little Library">
           </a>
           <a class="navbar-brand" href="{% url 'index' %}">Little Library</a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
               <!-- Home -->
@@ -35,8 +35,8 @@
                   <li>
                     <a class="dropdown-item black" href="{% url 'my_library' %}#complete-header">Complete</a>
                   </li>
-                  </li>
                 </ul>
+              </li>
 
               <!-- Donation button -->
             <li class="nav-item">
@@ -64,7 +64,8 @@
           </div>
 
           <!-- Account Dropdown -->
-            <li class="nav-item dropdown user-dropdown ul-blank no-decor">
+            <ul>
+              <li class="nav-item dropdown user-dropdown ul-blank no-decor">
                 <a
                   class="nav-link dropdown-toggle"
                   role="button"
@@ -94,7 +95,7 @@
                       class="dropdown-item black"
                       >Login</a
                     >
-                  </li><hr class="dropdown-divider"></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li>
                     <a
                       href="{% url 'account_signup' %}"
@@ -105,5 +106,6 @@
                   {% endif %}
                 </ul>
               </li>
+            </ul>
         </div>
       </nav>
