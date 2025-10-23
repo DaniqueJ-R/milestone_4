@@ -47,13 +47,16 @@ Home
     <a href="" class="no-decor main-color">
       <h2>In Progress</h2>
     </a>
-
+    {% if book in reading_books %}
     {% for book in reading_books %}
     <a type="button" href="{% url 'book_details' book.book.slug %}" class="display-books unauth-books col" data-bs-container="body" data-bs-toggle="popover"
       data-bs-placement="top" data-bs-content="{{ book.book.title }}" data-bs-trigger="hover focus">
       <img class="featured-books" src="{{ book.book.cover_image_url }}" alt="{{ book.book.title }}">
     </a>
     {% endfor %}
+    {% else %}
+    <p class="accent">No books have been added yet. <a class="main-color" href="{% url 'index' %}">Add one below!</a></p>
+    {% endif %}
     
   </section>
   <!-- Books to read this week carasol -->
