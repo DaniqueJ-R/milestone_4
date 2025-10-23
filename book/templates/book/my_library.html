@@ -34,20 +34,19 @@
 
   <!-- Library books section -->
   <!-- Reading Section -->
-  <section class="space container" id="reading-section">
-    <div class="row space">
+<section class="container" id="reading-section">
+    <div class="row">
       <!-- Reading Section header -->
       <div class="section-header space">
         <h2 id="reading-header">Reading</h2>
         <p>
-          Books you’re currently reading. <br /><small
-            >Last updated {{ reading_last_updated|naturaltime }}</small
-          >
+          Books you're currently reading. <br>
+          <small>Last updated {{ reading_last_updated|naturaltime }}</small>
         </p>
       </div>
       {% if reading_books %} 
       {% for book in reading_books %}
-      <hr class="divider" />
+      <hr class="divider">
       <div class="library-body space row">
         <!-- Book Cover -->
         <div class="library-book-cover space col-12 col-md-3">
@@ -56,8 +55,7 @@
               <img
                 src="{{ book.book.cover_image_url }}"
                 class="img-fluid list-books"
-                alt="{{ book.book.title }}"
-              />
+                alt="{{ book.book.title }}">
             </a>
           </div>
         </div>
@@ -107,7 +105,7 @@
                 >
               </li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li>
                 <a
@@ -118,7 +116,7 @@
                 >
               </li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li>
                 <a
@@ -132,30 +130,29 @@
           </div>
         </div>
       </div>
+      {% endfor %} 
+      {% else %}
+      <hr class="divider">
+      <p class="accent">No books have been added yet. <a class="main-color" href="{% url 'index' %}">Add a book here!</a></p>
+      <hr class="divider">
+      {% endif %}
     </div>
-    {% endfor %} 
-    {% else %}
-    <hr class="divider" />
-    <p class="accent">No books have been added yet. <a class="main-color" href="{% url 'index' %}">Add a book here!</a></p>
-    <hr class="divider" />
-    {% endif %}
   </section>
   <!-- Plan to read Section header -->
-  <section>
-    <div class="row space">
-      <!-- Reading Section header -->
-      <div class="section-header space">
+  <section class="container" id="plan-section">
+    <div class="row">
+      <!-- Plan to read  Section header -->
+      <div class="section-header">
         <h2 id="plan-to-read-header">Plan to Read</h2>
         <p>
-          Books you plan to read next. <br /><small
-            >Last updated {{ plan_last_updated|naturaltime }}</small
-          >
+          Books you plan to read next. <br>
+          <small>Last updated {{ plan_last_updated|naturaltime }}</small>
         </p>
       </div>
       {% if plan_books %} 
       {% for book in plan_books %}
-      <hr class="divider" />
-      <div class="library-body space row">
+      <hr class="divider">
+      <div class="library-body row">
         <!-- Book Cover -->
         <div class="library-book-cover space col-12 col-md-3">
           <div>
@@ -163,8 +160,7 @@
               <img
                 src="{{ book.book.cover_image_url }}"
                 class="img-fluid list-books"
-                alt="{{ book.book.title }}"
-              />
+                alt="{{ book.book.title }}">
             </a>
           </div>
         </div>
@@ -215,7 +211,7 @@
                 >
               </li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li>
                 <a
@@ -226,7 +222,7 @@
                 >
               </li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li>
                 <a
@@ -240,28 +236,28 @@
           </div>
         </div>
       </div>
-    </div>
+    
     {% endfor %} {% else %}
-    <hr class="divider" />
+    <hr class="divider">
     <p class="accent">No books have been added yet. <a class="main-color" href="{% url 'index' %}">Add a book here!</a></p>
-    <hr class="divider" />
+    <hr class="divider">
     {% endif %}
+     </div> 
   </section>
 
   <!-- Complete Section header -->
   <section>
-    <div class="row space">
+    <div class="row">
       <!-- Reading Section header -->
       <div class="section-header space">
         <h2 id="complete-header">Complete</h2>
         <p>
-          Books you’ve finished reading. <br /><small
-            >Last updated {{ completed_last_updated|naturaltime }}</small
-          >
+          Books you’ve finished reading. <br>
+          <small>Last updated {{ completed_last_updated|naturaltime }}</small>
         </p>
       </div>
       {% if completed_books %} {% for book in completed_books %}
-      <hr class="divider" />
+      <hr class="divider">
       <div class="library-body space row">
         <!-- Book Cover -->
         <div class="library-book-cover space col-12 col-md-3">
@@ -270,8 +266,7 @@
               <img
                 src="{{ book.book.cover_image_url }}"
                 class="img-fluid list-books"
-                alt="{{ book.book.title }}"
-              />
+                alt="{{ book.book.title }}">
             </a>
           </div>
         </div>
@@ -336,7 +331,7 @@
                 >
               </li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li>
                 <a
@@ -347,7 +342,7 @@
                 >
               </li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li>
                 <a
@@ -361,12 +356,14 @@
           </div>
         </div>
       </div>
-    </div>
-    {% endfor %} {% else %}
-    <hr class="divider" />
+    
+    {% endfor %} 
+    {% else %}
+    <hr class="divider">
     <p class="accent">No books have been added yet. <a class="main-color" href="{% url 'index' %}">Add a book here!</a></p>
-    <hr class="divider" />
+    <hr class="divider">
     {% endif %}
+     </div> 
   </section>
 
   <div class="btt-button shadow-sm rounded-0 border border-black">
@@ -386,7 +383,7 @@
   class="modal fade"
   id="deleteModal{{ book.id }}"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="deleteModal{{ book.id }}"
   aria-hidden="true"
 >
   <div class="modal-dialog">
@@ -425,7 +422,7 @@
   class="modal fade"
   id="completeModal{{ book.id }}"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="completeModal{{ book.id }}"
   aria-hidden="true"
 >
   <div class="modal-dialog">
@@ -453,7 +450,7 @@
           class="display-inline"
         >
           {% csrf_token %}
-          <input type="hidden" name="status" value="1" />
+          <input type="hidden" name="status" value="1">
           <button type="submit" class="btn btn-success">Move</button>
         </form>
       </div>
@@ -466,7 +463,7 @@
   class="modal fade"
   id="planModal{{ book.id }}"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="planModal{{ book.id }}"
   aria-hidden="true"
 >
   <div class="modal-dialog">
@@ -495,7 +492,7 @@
           class="display-inline"
         >
           {% csrf_token %}
-          <input type="hidden" name="status" value="2" />
+          <input type="hidden" name="status" value="2">
           <button type="submit" class="btn btn-success">Move</button>
         </form>
       </div>
@@ -508,7 +505,7 @@
   class="modal fade"
   id="readingModal{{ book.id }}"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="readingModal{{ book.id }}"
   aria-hidden="true"
 >
   <div class="modal-dialog">
@@ -536,7 +533,7 @@
           class="display-inline"
         >
           {% csrf_token %}
-          <input type="hidden" name="status" value="0" />
+          <input type="hidden" name="status" value="0">
           <button type="submit" class="btn btn-success">Move</button>
         </form>
       </div>
