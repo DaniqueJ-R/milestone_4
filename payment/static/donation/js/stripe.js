@@ -1,3 +1,5 @@
+/* jshint esversion: 8 */
+
 console.log("Stripe JS loaded");
 
 // Toggle custom amount input visibility

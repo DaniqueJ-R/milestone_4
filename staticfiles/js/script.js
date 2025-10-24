@@ -1,3 +1,5 @@
+/* jshint esversion: 8 */
+
 console.log("Test script file loaded");
 
 // Funtions from Bootstrap
