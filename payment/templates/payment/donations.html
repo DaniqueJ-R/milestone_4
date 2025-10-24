@@ -21,7 +21,7 @@ Make a Donation
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="card shadow-lg rounded-4 p-4">
-                <h2 class="text-center mb-4 text-success">Make a Donation</h2>
+                <h1 class="h2 text-center mb-4 text-success">Make a Donation</h1>
                 <p class="text-center text-muted"> Thank you for supporting us! Please fill in your details and select a donation amount. </p>
                 <form action="{% url 'donations' %}" method="post" id="donation-form"> {% csrf_token %} <fieldset class="px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
@@ -30,8 +30,8 @@ Make a Donation
                     {{ donation_form.phone_number|as_crispy_field }}
                   </fieldset>
                   <!-- Donation amount section -->
-                  <div class="mb-4">
-                    <label class="form-label fw-semibold">Select Donation Amount (£)</label>
+                  <fieldset class="mb-4">
+                    <legend for="donationAmount" class="form-label fw-semibold">Select Donation Amount (£)</legend>
                     <div class="btn-group w-100 mb-3" role="group" aria-label="Donation amount">
                       <input type="radio" class="btn-check" name="amount" id="amount5" value="5" checked>
                       <label class="btn btn-success" for="amount5">£5</label>
@@ -45,7 +45,7 @@ Make a Donation
                     <div id="customAmountInput" class="hide mt-2">
                       <input type="number" step="1" min="1" class="form-control" name="custom_amount" placeholder="Enter custom amount (£)">
                     </div>
-                  </div>
+                  </fieldset>
                   <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                     <!-- A Stripe card element will go here -->

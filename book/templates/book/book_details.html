@@ -102,7 +102,7 @@ Book Details | {{ book.title }}
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Delete your review?</h5>
+                  <h3 class="modal-title h5">Delete your review?</h3>
                   <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -124,10 +124,10 @@ Book Details | {{ book.title }}
 
         {% else %}
         <div id="reviews">
-          <h5 class="text-center">
+          <h3 class="text-cente h5">
             There are no reviews for this book.
             <a href="{% url 'account_login' %}" data-bs-toggle="modal" data-bs-target="#leaveAReview" class="accent small">Be the first!</a>
-          </h5>
+          </h3>
         </div>
         {% endif %}
 
@@ -155,7 +155,7 @@ Book Details | {{ book.title }}
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add {{ book.title }} to <strong>Completed</strong>?</h5>
+        <h3 class="modal-title h5">Add {{ book.title }} to <strong>Completed</strong>?</h3>
         <button class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
@@ -166,7 +166,7 @@ Book Details | {{ book.title }}
         <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
           {% csrf_token %}
           <input type="hidden" name="status" value="1">
-          <button type="submit" class="btn btn-danger">Add</button>
+          <button type="submit" class="btn btn-success">Add</button>
         </form>
       </div>
     </div>
@@ -179,7 +179,7 @@ Book Details | {{ book.title }}
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add {{ book.title }} to <strong>Plan to Read</strong>?</h5>
+        <h3 class="modal-title h5">Add {{ book.title }} to <strong>Plan to Read</strong>?</h3>
         <button class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
@@ -190,7 +190,7 @@ Book Details | {{ book.title }}
         <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
           {% csrf_token %}
           <input type="hidden" name="status" value="2">
-          <button type="submit" class="btn btn-danger">Add</button>
+          <button type="submit" class="btn btn-success">Add</button>
         </form>
       </div>
     </div>
@@ -203,7 +203,7 @@ Book Details | {{ book.title }}
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add {{ book.title }} to <strong>Reading</strong>?</h5>
+        <h3 class="modal-title h5">Add {{ book.title }} to <strong>Reading</strong>?</h3>
         <button class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
@@ -214,7 +214,7 @@ Book Details | {{ book.title }}
         <form method="POST" action="{% url 'add_tracker' book.id %}" style="display:inline;">
           {% csrf_token %}
           <input type="hidden" name="status" value="0">
-          <button type="submit" class="btn btn-danger">Add</button>
+          <button type="submit" class="btn btn-success">Add</button>
         </form>
       </div>
     </div>
