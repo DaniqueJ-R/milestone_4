@@ -20,6 +20,8 @@ Each book entry includes comprehensive details such as title, author, descriptio
 
 With secure data management, responsive design, and an intuitive interface, Little Library aims to make finding your next great read both easy and inspiring.
 
+Why I Built This: As an avid reader, I wanted a way to track books I've read, organize them into custom shelves, and discover new recommendations. Little Library solves this with a clean interface and social features for book lovers.
+
 ---
 
 ## Table of Contents
